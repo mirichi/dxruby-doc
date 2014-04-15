@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' type='text/css' href='../dxruby-code-highlight.css' />
+<link rel='stylesheet' type='text/css' href='../dxruby.css' />
+<title>DXRuby Sprite</title>
+</head>
+<body>
+<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<section id="document">
+<div class="box">
+
+<section id="content">
+<section class='crumbs'><a href='index.html'>INDEX</a> &gt; <a href='Sprite.html'>Sprite</a></section>
+<h1>class Sprite</h1>
+<h2>Description</h2>
+<p>描画位置、描画パラメータ、画像データを保持し、自分自身を描画する機能を持つ描画プリミティブクラスです。<br />Sprite導入以前は位置やパラメータ、画像を別々に持ってWindow.draw系メソッドで描画していましたが、Spriteオブジェクトでまとめて管理することができます。<br />衝突判定機能では点・矩形・円・三角形の形状を自由に組み合わせて衝突判定を作ることができ、描画エフェクトの回転やスケーリングと連動して変形しますので、画像の見た目と一致した衝突判定を行うことができます。<br />かなり複雑な衝突判定処理ですが、C言語で実装されているため非常に高速です。<br />基本的にはSpriteクラスを継承してSprite#updateを定義して使いますが、Spriteオブジェクトを直接生成して使っても便利に使えます。<br />各種パラメータはSetter/Getterが定義されており容易にアクセスすることができますが、インスタンス変数として定義されてはいません。<br />従ってSpriteを継承したクラス内でもself.xという形でアクセスする必要があります。<br />selfを省略するとローカル変数への代入とみなされるなどしてバグの原因になりますので、できるだけselfを付けてください。<br />この仕様は多少面倒ですが、Spriteを継承したユーザ定義のクラスでインスタンス変数に制限が無いというメリットもあります。<br />Spriteクラスを活用することでゲームのキャラ等を扱う等、DXRubyのゲームプログラミングは一段とラクになるでしょう。<br />具体的な使い方は<a href='../tutorial/sprite.html'>チュートリアル</a>を参照してください。</p>
+
+<h2>Class Methods</h2>
+<dl>
+<dt><a href='Sprite_new.html'>new</a></dt><dd>Spriteオブジェクトを生成します。x/y/imageはそれぞれ座標と画像データです。</dd><dt><a href='Sprite_check.html'>check</a></dt><dd>衝突判定を行います。</dd><dt><a href='Sprite_update.html'>update</a></dt><dd>配列内のすべてのオブジェクトのupdateメソッドを呼び出します。</dd><dt><a href='Sprite_draw.html'>draw</a></dt><dd>配列内のすべてのオブジェクトのdrawメソッドを呼び出します。</dd><dt><a href='Sprite_clean.html'>clean</a></dt><dd>配列内のすべてのオブジェクトのvanished?メソッドを呼び出し、trueが返ってきた要素と、もともとnilだった要素を削除します。</dd>
+</dl>
+
+
+<h2>Instance Methods</h2>
+<dl>
+<dt><a href='Sprite_23draw.html'>draw</a></dt><dd>selfを描画します。</dd><dt><a href='Sprite_23_3D_3D_3D.html'>===</a></dt><dd>渡されたspriteとselfの衝突チェックを行い、衝突している場合に真を返します。</dd><dt><a href='Sprite_23check.html'>check</a></dt><dd>衝突しているSpriteオブジェクトの配列を返します。</dd><dt><a href='Sprite_23x.html'>x</a></dt><dd>X座標を返します。</dd><dt><a href='Sprite_23x_3D.html'>x=</a></dt><dd>X座標を変更します。</dd><dt><a href='Sprite_23y.html'>y</a></dt><dd>Y座標を返します。</dd><dt><a href='Sprite_23y_3D.html'>y=</a></dt><dd>Y座標を変更します。</dd><dt><a href='Sprite_23z.html'>z</a></dt><dd>描画順序を返します。</dd><dt><a href='Sprite_23z_3D.html'>z=</a></dt><dd>描画順序。小さいほど奥になり、同じ値の場合は最初にdrawしたものが一番奥になります。</dd><dt><a href='Sprite_23angle.html'>angle</a></dt><dd>描画時の回転角度を返します。</dd><dt><a href='Sprite_23angle_3D.html'>angle=</a></dt><dd>描画時の回転角度を変更します。</dd><dt><a href='Sprite_23scale_x.html'>scale_x</a></dt><dd>描画時のX軸方向の拡大率を返します。</dd><dt><a href='Sprite_23scale_x_3D.html'>scale_x=</a></dt><dd>描画時のX軸方向の拡大率を変更します。</dd><dt><a href='Sprite_23scale_y.html'>scale_y</a></dt><dd>描画時のY軸方向の拡大率を返します。</dd><dt><a href='Sprite_23scale_y_3D.html'>scale_y=</a></dt><dd>描画時のY軸方向の拡大率を変更します。</dd><dt><a href='Sprite_23center_x.html'>center_x</a></dt><dd>描画時の画像の拡大、回転中心とするX座標を返します。</dd><dt><a href='Sprite_23center_x_3D.html'>center_x=</a></dt><dd>描画時の画像の拡大、回転中心とするX座標を変更します。</dd><dt><a href='Sprite_23center_y.html'>center_y</a></dt><dd>描画時の画像の拡大、回転中心とするY座標を返します。</dd><dt><a href='Sprite_23center_y_3D.html'>center_y=</a></dt><dd>描画時の画像の拡大、回転中心とするY座標を変更します。</dd><dt><a href='Sprite_23alpha.html'>alpha</a></dt><dd>描画時のアルファ値を返します。</dd><dt><a href='Sprite_23alpha_3D.html'>alpha=</a></dt><dd>描画時のアルファ値を変更します。</dd><dt><a href='Sprite_23blend.html'>blend</a></dt><dd>描画時の合成方法を返します。</dd><dt><a href='Sprite_23blend_3D.html'>blend=</a></dt><dd>描画時の合成方法を変更します。</dd><dt><a href='Sprite_23shader.html'>shader</a></dt><dd>描画時に適用するShaderオブジェクトを返します。</dd><dt><a href='Sprite_23shader_3D.html'>shader=</a></dt><dd>描画時に適用するShaderオブジェクトを変更します。</dd><dt><a href='Sprite_23image.html'>image</a></dt><dd>Sprite#drawで描画される画像を返します。</dd><dt><a href='Sprite_23image_3D.html'>image=</a></dt><dd>Sprite#drawで描画される画像を変更します。</dd><dt><a href='Sprite_23target.html'>target</a></dt><dd>Sprite#drawで描画する先を返します。</dd><dt><a href='Sprite_23target_3D.html'>target=</a></dt><dd>Sprite#drawで描画する先をスクリーンではなくRenderTargetオブジェクトにする場合に指定します。</dd><dt><a href='Sprite_23collision.html'>collision</a></dt><dd>衝突判定範囲を返します。</dd><dt><a href='Sprite_23collision_3D.html'>collision=</a></dt><dd>衝突判定範囲を設定します。</dd><dt><a href='Sprite_23collision_enable.html'>collision_enable</a></dt><dd>衝突判定が有効である場合に真を返します。</dd><dt><a href='Sprite_23collision_enable_3D.html'>collision_enable=</a></dt><dd>衝突判定の有効、無効を変更します。</dd><dt><a href='Sprite_23collision_sync.html'>collision_sync</a></dt><dd>衝突判定範囲に回転/スケーリングを加味する場合に真を返します。</dd><dt><a href='Sprite_23collision_sync_3D.html'>collision_sync=</a></dt><dd>衝突判定範囲に回転/スケーリングを加味するかを変更します。</dd><dt><a href='Sprite_23visible.html'>visible</a></dt><dd>Sprite#drawにおいて実際に描画するか場合に真を返します。</dd><dt><a href='Sprite_23visible_3D.html'>visible=</a></dt><dd>Sprite#drawにおいて実際に描画するかを変更します。</dd><dt><a href='Sprite_23vanish.html'>vanish</a></dt><dd>vanishメソッドはSpriteを無効化します。</dd><dt><a href='Sprite_23vanished_3F.html'>vanished?</a></dt><dd>Sprite#vanishによって無効化されている場合に真を返します。</dd><dt><a href='Sprite_23param_hash.html'>param_hash</a></dt><dd>Window.draw_exに渡すことのできるHashオブジェクトを返します。</dd><dt><a href='Sprite_23offset_sync.html'>offset_sync</a></dt><dd>オフセット同期モードである場合に真を返します。</dd><dt><a href='Sprite_23offset_sync_3D.html'>offset_sync=</a></dt><dd>オフセット同期モードにするかを変更します。</dd>
+</dl>
+
+</section>
+
+<section id="navi">
+<span class="title">Method Index</span>
+<ul>
+  <li><strong><a href="Sprite.html">Sprite</a></strong></li>
+  <li>
+    <ul>
+    <li><a href='Sprite_new.html'>new</a></li><li><a href='Sprite_check.html'>check</a></li><li><a href='Sprite_update.html'>update</a></li><li><a href='Sprite_draw.html'>draw</a></li><li><a href='Sprite_clean.html'>clean</a></li><li><a href='Sprite_23draw.html'>draw</a></li><li><a href='Sprite_23_3D_3D_3D.html'>===</a></li><li><a href='Sprite_23check.html'>check</a></li><li><a href='Sprite_23x.html'>x</a></li><li><a href='Sprite_23x_3D.html'>x=</a></li><li><a href='Sprite_23y.html'>y</a></li><li><a href='Sprite_23y_3D.html'>y=</a></li><li><a href='Sprite_23z.html'>z</a></li><li><a href='Sprite_23z_3D.html'>z=</a></li><li><a href='Sprite_23angle.html'>angle</a></li><li><a href='Sprite_23angle_3D.html'>angle=</a></li><li><a href='Sprite_23scale_x.html'>scale_x</a></li><li><a href='Sprite_23scale_x_3D.html'>scale_x=</a></li><li><a href='Sprite_23scale_y.html'>scale_y</a></li><li><a href='Sprite_23scale_y_3D.html'>scale_y=</a></li><li><a href='Sprite_23center_x.html'>center_x</a></li><li><a href='Sprite_23center_x_3D.html'>center_x=</a></li><li><a href='Sprite_23center_y.html'>center_y</a></li><li><a href='Sprite_23center_y_3D.html'>center_y=</a></li><li><a href='Sprite_23alpha.html'>alpha</a></li><li><a href='Sprite_23alpha_3D.html'>alpha=</a></li><li><a href='Sprite_23blend.html'>blend</a></li><li><a href='Sprite_23blend_3D.html'>blend=</a></li><li><a href='Sprite_23shader.html'>shader</a></li><li><a href='Sprite_23shader_3D.html'>shader=</a></li><li><a href='Sprite_23image.html'>image</a></li><li><a href='Sprite_23image_3D.html'>image=</a></li><li><a href='Sprite_23target.html'>target</a></li><li><a href='Sprite_23target_3D.html'>target=</a></li><li><a href='Sprite_23collision.html'>collision</a></li><li><a href='Sprite_23collision_3D.html'>collision=</a></li><li><a href='Sprite_23collision_enable.html'>collision_enable</a></li><li><a href='Sprite_23collision_enable_3D.html'>collision_enable=</a></li><li><a href='Sprite_23collision_sync.html'>collision_sync</a></li><li><a href='Sprite_23collision_sync_3D.html'>collision_sync=</a></li><li><a href='Sprite_23visible.html'>visible</a></li><li><a href='Sprite_23visible_3D.html'>visible=</a></li><li><a href='Sprite_23vanish.html'>vanish</a></li><li><a href='Sprite_23vanished_3F.html'>vanished?</a></li><li><a href='Sprite_23param_hash.html'>param_hash</a></li><li><a href='Sprite_23offset_sync.html'>offset_sync</a></li><li><a href='Sprite_23offset_sync_3D.html'>offset_sync=</a></li>
+    </ul>
+  </li>
+</ul>
+</section>
+
+
+</div>
+
+</section>
+
+<footer>&copy; 2009-2014 mirichi</footer>
+</body>
+</html>

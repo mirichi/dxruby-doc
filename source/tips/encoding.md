@@ -1,0 +1,15 @@
+# 文字コードについて
+
+Windowsは各国語版が存在し、それぞれデフォルトキャラセットというのが存在しています。
+以下の説明は日本語版用のものですが、他国語版でもShiftJISをそれぞれのデフォルトキャラセットに読み替えていただければそのまま通じるはずです。
+
+## Ruby1.8系
+ShiftJIS固定となります。DXRubyのAPIに渡す文字列も、返ってくる文字列も、すべてShiftJISとなります。
+他のエンコーディングを使いたい場合は自分で変換してください。
+
+## Ruby1.9系以降
+DXRubyのAPIは内部でShiftJISを想定していますが、Ruby1.9以降のStringオブジェクトはそれ自身がエンコーディングを保持していますので、自動的にShiftJISに変換されます。
+従って、DXRubyのAPIに渡す文字列はASCII-8BIT以外なら何でも構いません。ASCII-８BITエンコーディングの文字列はShiftJISだと仮定されます。
+また、DXRubyのAPIから返ってくる文字列についてはShiftJISで返ってきますが、Encoding.default_internalに設定されたエンコーディングに変換されます。
+nilが設定されていた(起動時のEオプション無し、Encoding.default_internal設定無しの)場合はShiftJISのままとなります。
+

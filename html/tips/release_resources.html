@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' type='text/css' href='../dxruby-code-highlight.css' />
+<link rel='stylesheet' type='text/css' href='../dxruby.css' />
+<title>DXRuby リソースの解放について</title>
+</head>
+<body>
+<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<section id="document">
+<section id="content">
+<a href='../README.html'>TOPへ戻る</a>
+<h1>リソースの解放について</h1>
+
+<p>DXRubyのImageクラスやSoundクラスのオブジェクトはそれぞれ画像や音のデータ(リソースといいます)を保持していますので、それなりにメモリを占有します。<br>
+RubyはGC(ガベージコレクション)を持っているため、使わなくなったオブジェクトは自動的に破棄されます。<br>
+しかしGCが動作するタイミングは不定であり、使わなくなったからといってすぐ画像や音のデータがメモリから消えるわけではありません。</p>
+
+<p>画像や音のデータを解放するにはRubyでImageやSoundへの参照を切ってからGC.startする手もありますが、参照を切る前にdisposeメソッドを呼び出しておく方法もあります。<br>
+disposeメソッドはオブジェクトが占有していたメモリを解放します。<br>
+そのオブジェクトは使えなくなり、その後なんらかのメソッドを呼ぶと例外が発生します。<br>
+メモリを解放することにより、PCのリソースが有効活用されるようになりますので、パフォーマンスが向上します。</p>
+
+<a href='../README.html'>TOPへ戻る</a>
+</section>
+</section>
+
+<footer>&copy; 2009-2014 mirichi</footer>
+</body>
+</html>
