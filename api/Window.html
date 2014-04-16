@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' type='text/css' href='../dxruby-code-highlight.css' />
+<link rel='stylesheet' type='text/css' href='../dxruby.css' />
+<title>DXRuby Window</title>
+</head>
+<body>
+<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<section id="document">
+<div class="box">
+
+<section id="content">
+<section class='crumbs'><a href='index.html'>INDEX</a> &gt; <a href='Window.html'>Window</a></section>
+<h1>module Window</h1>
+<h2>Description</h2>
+<p>ウィンドウ生成、グラフィック描画、画面更新を扱います。</p>
+
+
+
+
+<h2>Module Methods</h2>
+<dl>
+<dt><a href='Window_23loop.html'>loop</a></dt><dd>メインループとして渡されたブロックを実行し続けます。</dd><dt><a href='Window_23draw.html'>draw</a></dt><dd>単純描画をします。</dd><dt><a href='Window_23draw_scale.html'>draw_scale</a></dt><dd>縦、横の拡大率を指定して描画します。</dd><dt><a href='Window_23draw_rot.html'>draw_rot</a></dt><dd>回転角度と中心を指定して描画します。</dd><dt><a href='Window_23draw_alpha.html'>draw_alpha</a></dt><dd>アルファ値を指定して描画します。</dd><dt><a href='Window_23draw_add.html'>draw_add</a></dt><dd>加算合成描画をします。</dd><dt><a href='Window_23draw_sub.html'>draw_sub</a></dt><dd>減算合成描画をします。</dd><dt><a href='Window_23draw_shader.html'>draw_shader</a></dt><dd>シェーダ処理を適用して描画します。</dd><dt><a href='Window_23draw_ex.html'>draw_ex</a></dt><dd>拡縮、回転、半透明、加算合成を一括指定して描画します。</dd><dt><a href='Window_23draw_font.html'>draw_font</a></dt><dd>DirectX APIで文字を描画します。単純文字描画であるため、描画は高速です。</dd><dt><a href='Window_23draw_font_ex.html'>draw_font_ex</a></dt><dd>内部でImageオブジェクトを生成、Image#draw_font_exを呼び出して描画し、それを画面にWindow.draw_exで描画することで高品質な文字描画を行います。</dd><dt><a href='Window_23draw_morph.html'>draw_morph</a></dt><dd>4点を自由に指定してimageを描画できます。これを使うと自在に変形した画像を描画することができます。</dd><dt><a href='Window_23draw_tile.html'>draw_tile</a></dt><dd>タイルチップと二次元配列を使ってマップ描画をします。</dd><dt><a href='Window_23draw_line.html'>draw_line</a></dt><dd>画面に(x1, y1)～(x2, y2)を結ぶ線を引きます。</dd><dt><a href='Window_23draw_box_fill.html'>draw_box_fill</a></dt><dd>画面に(x1, y1)～(x2, y2)を塗りつぶす矩形を描画します。</dd><dt><a href='Window_23get_screen_shot.html'>get_screen_shot</a></dt><dd>スクリーンショットをファイルに保存します。</dd><dt><a href='Window_23get_load.html'>get_load</a></dt><dd>fps=で指定されたFPSでの1フレームに対する処理時間を返します。</dd><dt><a href='Window_23open_filename.html'>open_filename</a></dt><dd>ファイルオープンダイアログを表示します。</dd><dt><a href='Window_23save_filename.html'>save_filename</a></dt><dd>ファイルセーブダイアログを表示します。</dd><dt><a href='Window_23folder_dialog.html'>folder_dialog</a></dt><dd>フォルダダイアログを表示します。</dd><dt><a href='Window_23create.html'>create</a></dt><dd>ウィンドウを作成します。</dd><dt><a href='Window_23sync.html'>sync</a></dt><dd>Window.fps=で指定されたfpsになるようにウェイトを入れます。</dd><dt><a href='Window_23update.html'>update</a></dt><dd>画面を更新します。</dd><dt><a href='Window_23load_icon.html'>load_icon</a></dt><dd>16*16*4bppの画像ファイルを読み込み、ウィンドウ左上のアイコンを変更します。</dd><dt><a href='Window_23hWnd.html'>hWnd</a></dt><dd>ウィンドウハンドルを返します。</dd><dt><a href='Window_23x.html'>x</a></dt><dd>ウィンドウの表示位置のX座標を返します。</dd><dt><a href='Window_23x_3D.html'>x=</a></dt><dd>ウィンドウの表示位置のX座標を返します。</dd><dt><a href='Window_23y.html'>y</a></dt><dd>ウィンドウの表示位置のY座標を返します。</dd><dt><a href='Window_23y_3D.html'>y=</a></dt><dd>ウィンドウの表示位置のY座標を変更します。</dd><dt><a href='Window_23width.html'>width</a></dt><dd>ウィンドウの画面幅を返します。</dd><dt><a href='Window_23width_3D.html'>width=</a></dt><dd>ウィンドウの画面横幅を変更します。</dd><dt><a href='Window_23height.html'>height</a></dt><dd>ウィンドウの画面幅を返します。</dd><dt><a href='Window_23height_3D.html'>height=</a></dt><dd>ウィンドウの画面縦幅を変更します。</dd><dt><a href='Window_23caption.html'>caption</a></dt><dd>タイトルバーの文字列を返します。</dd><dt><a href='Window_23caption_3D.html'>caption=</a></dt><dd>タイトルバーの文字列を変更します。</dd><dt><a href='Window_23scale.html'>scale</a></dt><dd>ウィンドウの画面サイズに対する拡大率を返します。</dd><dt><a href='Window_23scale_3D.html'>scale=</a></dt><dd>ウィンドウの画面サイズに対する拡大率を変更します。</dd><dt><a href='Window_23windowed_3F.html'>windowed?</a></dt><dd>ウィンドウモードである場合に真を返します。</dd><dt><a href='Window_23windowed_3D.html'>windowed=</a></dt><dd>ウィンドウモード/フルスクリーンモードを変更します。</dd><dt><a href='Window_23real_fps.html'>real_fps</a></dt><dd>画面の秒間更新回数を返します。</dd><dt><a href='Window_23fps.html'>fps</a></dt><dd>画面の秒間更新回数を返します。</dd><dt><a href='Window_23fps_3D.html'>fps=</a></dt><dd>画面の秒間更新回数を変更します。</dd><dt><a href='Window_23frameskip_3F.html'>frameskip?</a></dt><dd>コマ落ち制御をする場合に真を返します。</dd><dt><a href='Window_23frameskip_3D.html'>frameskip=</a></dt><dd>コマ落ち制御をするかどうかを変更します。</dd><dt><a href='Window_23bgcolor.html'>bgcolor</a></dt><dd>毎フレーム自動的に実行される画面のクリアに使う色を返します。</dd><dt><a href='Window_23bgcolor_3D.html'>bgcolor=</a></dt><dd>毎フレーム自動的に実行される画面のクリアに使う色を変更します。</dd><dt><a href='Window_23min_filter.html'>min_filter</a></dt><dd>draw_scaleやdraw_exのscale_x/yキーで縮小する場合に使用されるフィルタを返します。</dd><dt><a href='Window_23min_filter_3D.html'>min_filter=</a></dt><dd>draw_scaleやdraw_exのscale_x/yキーで縮小する場合に使用されるフィルタを変更します。</dd><dt><a href='Window_23mag_filter.html'>mag_filter</a></dt><dd>draw_scaleやdraw_exのscale_x/yキーで拡大する場合に使用されるフィルタを返します。</dd><dt><a href='Window_23mag_filter_3D.html'>mag_filter=</a></dt><dd>draw_scaleやdraw_exのscale_x/yキーで拡大する場合に使用されるフィルタを変更します。</dd><dt><a href='Window_23resize.html'>resize</a></dt><dd>ウィンドウのサイズを変更します。</dd><dt><a href='Window_23active_3F.html'>active?</a></dt><dd>ウィンドウがアクティブかどうかを返します。</dd><dt><a href='Window_23running_time.html'>running_time</a></dt><dd>ウィンドウを生成してからの経過時間をミリ秒単位で返します。</dd><dt><a href='Window_23get_screen_modes.html'>get_screen_modes</a></dt><dd>フルスクリーン時に使用可能な解像度を返します。</dd><dt><a href='Window_23get_current_modes.html'>get_current_modes</a></dt><dd>現在の解像度を返します。</dd><dt><a href='Window_23discard.html'>discard</a></dt><dd>Window.draw系メソッドによる描画予約を取り消します。</dd><dt><a href='Window_23decide.html'>decide</a></dt><dd>Window.discard時の取り消しから保護します。</dd><dt><a href='Window_23before_call.html'>before_call</a></dt><dd>一括処理用のHashオブジェクトを返します。</dd><dt><a href='Window_23after_call.html'>after_call</a></dt><dd>一括処理用のHashオブジェクトを返します。</dd>
+</dl>
+
+</section>
+
+<section id="navi">
+<span class="title">Method Index</span>
+<ul>
+  <li><strong><a href="Window.html">Window</a></strong></li>
+  <li>
+    <ul>
+    <li><a href='Window_23loop.html'>loop</a></li><li><a href='Window_23draw.html'>draw</a></li><li><a href='Window_23draw_scale.html'>draw_scale</a></li><li><a href='Window_23draw_rot.html'>draw_rot</a></li><li><a href='Window_23draw_alpha.html'>draw_alpha</a></li><li><a href='Window_23draw_add.html'>draw_add</a></li><li><a href='Window_23draw_sub.html'>draw_sub</a></li><li><a href='Window_23draw_shader.html'>draw_shader</a></li><li><a href='Window_23draw_ex.html'>draw_ex</a></li><li><a href='Window_23draw_font.html'>draw_font</a></li><li><a href='Window_23draw_font_ex.html'>draw_font_ex</a></li><li><a href='Window_23draw_morph.html'>draw_morph</a></li><li><a href='Window_23draw_tile.html'>draw_tile</a></li><li><a href='Window_23draw_line.html'>draw_line</a></li><li><a href='Window_23draw_box_fill.html'>draw_box_fill</a></li><li><a href='Window_23get_screen_shot.html'>get_screen_shot</a></li><li><a href='Window_23get_load.html'>get_load</a></li><li><a href='Window_23open_filename.html'>open_filename</a></li><li><a href='Window_23save_filename.html'>save_filename</a></li><li><a href='Window_23folder_dialog.html'>folder_dialog</a></li><li><a href='Window_23create.html'>create</a></li><li><a href='Window_23sync.html'>sync</a></li><li><a href='Window_23update.html'>update</a></li><li><a href='Window_23load_icon.html'>load_icon</a></li><li><a href='Window_23hWnd.html'>hWnd</a></li><li><a href='Window_23x.html'>x</a></li><li><a href='Window_23x_3D.html'>x=</a></li><li><a href='Window_23y.html'>y</a></li><li><a href='Window_23y_3D.html'>y=</a></li><li><a href='Window_23width.html'>width</a></li><li><a href='Window_23width_3D.html'>width=</a></li><li><a href='Window_23height.html'>height</a></li><li><a href='Window_23height_3D.html'>height=</a></li><li><a href='Window_23caption.html'>caption</a></li><li><a href='Window_23caption_3D.html'>caption=</a></li><li><a href='Window_23scale.html'>scale</a></li><li><a href='Window_23scale_3D.html'>scale=</a></li><li><a href='Window_23windowed_3F.html'>windowed?</a></li><li><a href='Window_23windowed_3D.html'>windowed=</a></li><li><a href='Window_23real_fps.html'>real_fps</a></li><li><a href='Window_23fps.html'>fps</a></li><li><a href='Window_23fps_3D.html'>fps=</a></li><li><a href='Window_23frameskip_3F.html'>frameskip?</a></li><li><a href='Window_23frameskip_3D.html'>frameskip=</a></li><li><a href='Window_23bgcolor.html'>bgcolor</a></li><li><a href='Window_23bgcolor_3D.html'>bgcolor=</a></li><li><a href='Window_23min_filter.html'>min_filter</a></li><li><a href='Window_23min_filter_3D.html'>min_filter=</a></li><li><a href='Window_23mag_filter.html'>mag_filter</a></li><li><a href='Window_23mag_filter_3D.html'>mag_filter=</a></li><li><a href='Window_23resize.html'>resize</a></li><li><a href='Window_23active_3F.html'>active?</a></li><li><a href='Window_23running_time.html'>running_time</a></li><li><a href='Window_23get_screen_modes.html'>get_screen_modes</a></li><li><a href='Window_23get_current_modes.html'>get_current_modes</a></li><li><a href='Window_23discard.html'>discard</a></li><li><a href='Window_23decide.html'>decide</a></li><li><a href='Window_23before_call.html'>before_call</a></li><li><a href='Window_23after_call.html'>after_call</a></li>
+    </ul>
+  </li>
+</ul>
+</section>
+
+
+</div>
+
+</section>
+
+<footer>&copy; 2009-2014 mirichi</footer>
+</body>
+</html>

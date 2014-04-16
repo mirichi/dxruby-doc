@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' type='text/css' href='../dxruby-code-highlight.css' />
+<link rel='stylesheet' type='text/css' href='../dxruby.css' />
+<title>DXRuby 描画予約と破棄</title>
+</head>
+<body>
+<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<section id="document">
+<section id="content">
+<a href='../README.html'>TOPへ戻る</a>
+<h1>描画予約と破棄</h1>
+
+<p>Window/RenderTargetはdraw系メソッドで描画することができますが、実行時にすぐに描画はしておらず、とりあえず描画情報を内部に保持(描画予約)し、Window.loopの最後、もしくはupdateメソッドで実際の描画が行われます。これは主に描画優先順のソート処理のためです。</p>
+
+<p>ですので、例えばdraw系メソッドで描画予約後に描画したImageオブジェクトを書き換えると、描画されるのは書き換え後の画像になる、といった現象が発生します。</p>
+
+<p>描画予約は通常であれば意識する必要はありませんが、場合によっては描画予約を破棄したいことがあり、そのためにWindow/RenderTargetクラスにdecide/discardというメソッドが用意されています。</p>
+
+<p>discardを実行すると描画予約がすべて破棄されます。対してdecideは描画予約の確定で、実行した時点で存在する描画予約は確定されてdiscardを呼び出しても消えなくなります。<br>
+decideを実行しなくても描画実行時に入っている描画予約はすべて描画されます。</p>
+
+<a href='../README.html'>TOPへ戻る</a>
+</section>
+</section>
+
+<footer>&copy; 2009-2014 mirichi</footer>
+</body>
+</html>

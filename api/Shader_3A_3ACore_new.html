@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+<meta charset="UTF-8">
+<link rel='stylesheet' type='text/css' href='../dxruby-code-highlight.css' />
+<link rel='stylesheet' type='text/css' href='../dxruby.css' />
+<title>DXRuby Shader::Core.new</title>
+</head>
+<body>
+<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<section id="document">
+<div class="box">
+
+<section id="content">
+<section class='crumbs'><a href='index.html'>INDEX</a> &gt; <a href='Shader.html'>Shader</a> &gt; <a href='Shader_3A_3ACore.html'>Core</a> &gt; <a href='Shader_3A_3ACore_new.html'>new</a></section>
+<h1>Shader::Core.new(hlsl, option={})</h1>
+
+<h2>Description</h2>
+<p>hlslで指定されたHLSLプログラムのテキストをコンパイルし、バイナリを保持します。<br />optionに指定されたパラメータをHLSLで受け取ることができます。<br />実際に渡す値はShaderオブジェクトのsetter/getterで設定し、ここではパラメータ名と型のみを指定します。<br />optionに設定する値はパラメータ名をキーに、型を値に持たせたHashオブジェクトとなります。<br />どちらもシンボルで指定してください。<br />型に使えるシンボルは以下の3つです。<br />:int<br />:float<br />:texture<br />HLSL側の変数の型と一致させてください。<br />また、float4などのベクトル型の場合は:floatと指定して、パラメータに渡す値は同じ要素数の配列とします。</p>
+<h2>Parameters</h2><dl><dt><code>hlsl <span class="type">String</span></code></dt>
+<dd>HLSLプログラム</dd>
+
+<dt><code>option <span class="type">Hash</span></code></dt>
+<dd>オプション</dd>
+
+</dl>
+
+
+
+
+
+</section>
+
+<section id="navi">
+<span class="title">Method Index</span>
+<ul>
+  <li><strong><a href="Shader_3A_3ACore.html">Core</a></strong></li>
+  <li>
+    <ul>
+    <li>new</li><li><a href='Shader_3A_3ACore_23dispose.html'>dispose</a></li>
+    </ul>
+  </li>
+</ul>
+</section>
+
+
+</div>
+
+</section>
+
+<footer>&copy; 2009-2014 mirichi</footer>
+</body>
+</html>
