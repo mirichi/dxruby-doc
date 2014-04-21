@@ -1,7 +1,7 @@
 
 # What's this
 dxruby用のリファレンスマニュアルを生成するためのスクリプトです。  
-外部ライブラリとしてredcarpetを利用しています。  
+外部ライブラリとしてredcarpetとrougeを利用しています。  
 
 # How to use
 ```ruby
