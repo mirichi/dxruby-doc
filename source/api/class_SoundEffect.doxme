@@ -1,24 +1,25 @@
 
 class SoundEffect
   プログラム上で効果音を生成するクラスです。
-  矩形波で、周波数とボリュームを1ms単位で変化させることができます。
+  周波数とボリュームを指定時間単位で変化させることができます。
   具体的な使い方は[チュートリアル][tutorial_soundeffect]を参照してください。
   
   
   def self.new(time, wave_type=WAVE_RECT, resolution=1000) { }
     効果音を生成して返します。
-    ブロックへは1ミリ秒ごとの周波数とボリュームの変化を返す式を記述します。
-    timeの数だけ呼ばれます。
+    ブロックへは周波数とボリュームを返す式を記述します。
+    time * resolutuinの数だけ呼ばれます。
     ブロックが返す値は配列で、[周波数, ボリューム]としてください。
     周波数は44.1kHzまで、ボリュームは0が無音で最大255までです。
     @param time Integer ミリ秒単位の時間
-    @param wave_type Constant 基本波形の形状を示す定数。省略すると矩形波になります。
+    @param wave_type Constant 基本波形の形状を示す定数。省略するとWAVE_RECT(矩形波)になります。
       WAVE_SIN(サイン波)
       WAVE_SAW(ノコギリ波)
       WAVE_TRI(三角波)
-      WAVE_RECT(矩形波)  
+      WAVE_RECT(矩形波)
     @param resolution Integer 分解能。省略値は1000(1秒あたり1000回呼び出される)です。
       最大44100まで指定できます。
+    @note WAVE_RECTの場合、ブロックが返す配列に3つ目の要素を設定することでデューティ比を指定できます。この値は省略すると0.5になります。
    
    
    
