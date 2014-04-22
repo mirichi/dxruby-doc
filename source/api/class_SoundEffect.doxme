@@ -8,7 +8,7 @@ class SoundEffect
   def self.new(time, wave_type=WAVE_RECT, resolution=1000) { }
     効果音を生成して返します。
     ブロックへは周波数とボリュームを返す式を記述します。
-    だいたいtime * resolutuinの数だけ呼ばれます。呼び出し回数は周波数の都合で若干の誤差が出ます。
+    だいたいtime * resolutionの数だけ呼ばれます。呼び出し回数は周波数の都合で若干の誤差が出ます。
     ブロックが返す値は配列で、[周波数, ボリューム]としてください。
     周波数は44.1kHzまで、ボリュームは0が無音で最大255までです。
     @param time Integer ミリ秒単位の時間
