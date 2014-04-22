@@ -15,7 +15,7 @@ Window.loop do
   Window.draw(150, 150, image2)  # 青い四角を描画する
 end
 ```
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen07.jpg)
+![sample](../images/gamen07.jpg)
 
  zを指定すると、呼び出し順ではなく、zの順番にソートされます。
 
@@ -30,7 +30,7 @@ Window.loop do
   Window.draw(150, 150, image2, 1)  # 青い四角を描画する
 end
 ```
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen08.jpg)
+![sample](../images/gamen08.jpg)
 
 zを省略すると0を指定したことと同じになり、全てのdrawで0が指定されていると、ソート処理は省略されます。
 従って、全ての描画で描画順を指定しない場合に、描画処理は最も高速となります。

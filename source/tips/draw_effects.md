@@ -22,7 +22,7 @@ Window.loop do
   Window.draw_scale(150, 150, image2, 1.5, 1.5)  # 青い四角を描画する
 end
 ```
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen09.jpg)
+![sample](../images/gamen09.jpg)
 
 また、Window.min_filter=とWindow.mag_filter=メソッドで、それぞれ縮小、拡大時のフィルタを選択することができます。
 詳細はWindowモジュールのリファレンスを参照してください。
@@ -44,7 +44,7 @@ Window.loop do
   Window.draw_rot(150, 150, image2, 45)  # 青い四角を描画する
 end
 ```
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen10.jpg)
+![sample](../images/gamen10.jpg)
 
 
 ## draw_alpha
@@ -64,7 +64,7 @@ Window.loop do
   Window.draw_alpha(150, 150, image2, 128)  # 青い四角を描画する
 end
 ```
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen11.jpg)
+![sample](../images/gamen11.jpg)
 
 雲や霧、ガラスなど、向こう側が見えているけど少し色があるものなどに使います。
 
@@ -85,7 +85,7 @@ Window.loop do
 end
 ```
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen12.jpg)
+![sample](../images/gamen12.jpg)
 
 単純足し算なので、赤と青が足されると紫になります。
 主に爆発やレーザーなど、光の表現に使います。
@@ -108,7 +108,7 @@ Window.loop do
 end
 ```
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen13.jpg)
+![sample](../images/gamen13.jpg)
 
 主に画面のフェードイン／アウトなどの効果に使用します。
 
@@ -130,7 +130,7 @@ Window.loop do
 end
 ```
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen14.jpg)
+![sample](../images/gamen14.jpg)
 
 このメソッドは、これまでのそれぞれ単体ではできない効果を生み出すことができます。
 この例では、半透明のα値を指定しつつ加算合成をしているので、効果が加算半透明となっています。

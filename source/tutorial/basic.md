@@ -18,7 +18,7 @@ Window.loopメソッドは、何も設定しなければ、実行時に640*480�
 
 このスクリプトを実行すると、以下のようなウィンドウが表示されます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen01.jpg)
+![sample](../images/gamen01.jpg)
 
 このウィンドウを閉じると、Window.loopメソッドは自動的に終了します。
 また、breakなどでWindow.loopを抜けると、自動的にウィンドウが閉じられます。
@@ -45,7 +45,7 @@ Windowモジュールのdrawメソッドは、指定の位置にImageオブジ�
 
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると、以下のようなウィンドウが表示されます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen02.jpg)
+![sample](../images/gamen02.jpg)
 
 
 
@@ -70,7 +70,7 @@ Imageクラスのload_tilesメソッドは、指定した画像ファイルを�
 配列に格納される順番は、左上から右へ、上から下の順番となります。
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると、以下のようなウィンドウが表示されます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen03.jpg)
+![sample](../images/gamen03.jpg)
 
 
 
@@ -92,7 +92,7 @@ end
 Imageクラスのsliceメソッドは、指定したImageオブジェクトの１部分を切り出し、新たなImageオブジェクトを生成して返します。
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると、以下のようなウィンドウが表示されます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen04.jpg)
+![sample](../images/gamen04.jpg)
 
 
 
@@ -121,7 +121,7 @@ Input.x、Input.yメソッドは、カーソルキーもしくは、１つ目の
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると以下のようなウィンドウが表示され、
 カーソルキーか、１つ目のゲームパッドの十字キーで移動させることができます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen05.jpg)
+![sample](../images/gamen05.jpg)
 
 
 
@@ -166,7 +166,7 @@ pad_push?メソッドは押された瞬間のみtrueになるメソッドです�
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると、以下のようなウィンドウが表示されます。
 カーソルキーか１つ目のゲームパッドの十字キーで移動させることができ、Zキーかパッドのボタン０を押している間、倍速で移動します。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen05.jpg)
+![sample](../images/gamen05.jpg)
 
 
 
@@ -191,7 +191,7 @@ mouse_pos_x／mouse_pos_yメソッドで取得できる値は画面内の座標�
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると、以下のようなウィンドウが表示されます。
 マウスカーソルの位置に画像が移動します。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen02.jpg)
+![sample](../images/gamen02.jpg)
 
 
 
@@ -216,7 +216,7 @@ end
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると、
 以下のようなウィンドウが表示され、Escキーで終了することができます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen02.jpg)
+![sample](../images/gamen02.jpg)
 
 
 
@@ -239,7 +239,7 @@ Windowモジュールのdraw_fontメソッドは、指定の位置に指定の�
 この例では、x座標100、y座標100の位置に、ＭＳゴシックの32pixelサイズで"ふぉんと"を描画しています。
 上記スクリプトを実行すると、以下のようなウィンドウが表示されます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gamen06.jpg)
+![sample](../images/gamen06.jpg)
 
 **注** Ruby1.9.1以上を使う場合、先頭行にマジックコメントを挿入してください。
 マジックコメントの例

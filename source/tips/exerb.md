@@ -12,7 +12,7 @@ ActiveScriptRubyに同梱されており、更に簡単にexeを生成できるr
 rb2exeを起動するには、スタートメニューからプログラム→Ruby 1.8→rb2exeと選択します。
 以下のような画面が表示されると思います。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gazou02.jpg)
+![sample](../images/gazou02.jpg)
 
 
 スクリプトファイルの右の参照ボタンを押して、D:\temp\sample.rbを選択し、そのまま下の実行ボタンを押します。
@@ -20,7 +20,7 @@ rb2exeを起動するには、スタートメニューからプログラム→Ru
 なぜこんなことをするかというと、Exerbは実際にスクリプトを実行させてみて本当に必要なファイルをスキャンしているからです。
 終了させると以下の画面になります。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gazou03.jpg)
+![sample](../images/gazou03.jpg)
 
 表示されているのはExerbがexe化するのに使う設定ファイルの中身です。
 これについて詳細を知りたい人はExerbのマニュアルを参照してください。
@@ -31,7 +31,7 @@ rb2exeを起動するには、スタートメニューからプログラム→Ru
 コマンドプロンプトウィンドウを出ないようにするためには、もう一つ作業が必要です。
 Exerbボタンではなく、ウィンドウ内の色が変わっているところをクリックすると画面が戻ります。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gazou04.jpg)
+![sample](../images/gazou04.jpg)
 
 冷静に、書いてある順番に操作してみてください。
 さきほどの操作で、sample.rbと同じディレクトリ（この例ではd:\temp)にsample.exyというファイルができているはずです。
@@ -42,12 +42,12 @@ Exerbボタンではなく、ウィンドウ内の色が変わっているとこ
 以下のような画面になるはずです。
 文字が潰れてみにくいと困るので縮小せずに貼り付けておきます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gazou05.jpg)
+![sample](../images/gazou05.jpg)
 
 この状態で、下の実行ボタンを押します。
 すると、以下の画面になり、D:\tempにsample.exeができているはずです。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gazou06.jpg)
+![sample](../images/gazou06.jpg)
 
 実行して動くことを確認しましょう。
 

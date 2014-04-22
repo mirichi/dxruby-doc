@@ -9,7 +9,7 @@ SoundEffect.newの第1引数で指定した時間の分だけバッファが作�
 デフォルトでは1ms単位にブロックが呼ばれますので、1msごとに周波数とボリュームを変更することができます。
 これにより、音程を上げ下げしたり、音がだんだん小さくなっていくような音を作ることができます。
 
-![sample](http://dxruby.sourceforge.jp/DXRubyReference/Capture/gazou01.jpg)
+![sample](../images/gazou01.jpg)
 
 絵がしょぼいのはなんとも言い訳できません。
 あとで綺麗に描ける人にお願いするつもりですが、とりあえずはこんな感じで。
