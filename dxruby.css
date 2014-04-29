@@ -59,8 +59,8 @@ body {
 
 h1, h2, h3, h4 {
   font-weight: 200;
-  margin-bottom: 12px;
-  font-family: 'Open Sans Light',sans-serif;
+  margin-bottom: 15px;
+  font-family: 'Open Sans Light','ƒqƒ‰ƒMƒmŠpƒS Pro W3','Hiragino Kaku Gothic Pro','ƒƒCƒŠƒI',Meiryo,'‚l‚r ‚oƒSƒVƒbƒN',sans-serif;
 }
 
 h1 {
@@ -71,9 +71,15 @@ h1 {
 }
 
 h2 {
-  font-size: 18px;
+  margin-top: 40px;
+  font-size: 19px;
   letter-spacing: -0.5px;
 }
+
+h3 {
+  margin-top: 30px;
+}
+
 
 h2, h3, h4 {
   line-height: 100%;
