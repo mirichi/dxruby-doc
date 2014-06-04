@@ -59,8 +59,8 @@ body {
 
 h1, h2, h3, h4 {
   font-weight: 200;
-  margin-bottom: 12px;
-  font-family: 'Open Sans Light',sans-serif;
+  margin-bottom: 15px;
+  font-family: 'Open Sans Light','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
 
 h1 {
@@ -71,9 +71,17 @@ h1 {
 }
 
 h2 {
-  font-size: 18px;
+  margin-top: 40px;
+  font-size: 19px;
   letter-spacing: -0.5px;
+  border-left: 5px solid #4D4E53;
+  padding-left: 10px;
 }
+
+h3 {
+  margin-top: 30px;
+}
+
 
 h2, h3, h4 {
   line-height: 100%;
@@ -204,9 +212,7 @@ td.first, th.first {text-align:left}
 
 td.last {border-right:none;}
 
-/*
-Background gradients are completely unnessary but a neat effect.
-*/
+
 
 td {
   background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
@@ -222,13 +228,6 @@ th {
   background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
   background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
 }
-
-/*
-I know this is annoying, but we need dditional styling so webkit will recognize rounded corners on background elements.
-Nice write up of this issue: http://www.onenaught.com/posts/266/css-inner-elements-breaking-border-radius
-
-And, since we've applied the background colors to td/th element because of IE, Gecko browsers also need it.
-*/
 
 tr:first-child th.first {
   -moz-border-radius-topleft:5px;
