@@ -18,7 +18,7 @@
 <h2>Description</h2>
 <p>描画時の合成方法を変更します。</p>
 <h2>Parameters</h2><dl><dt><code>val <span class="type">Symbol</span></code></dt>
-<dd>:alpha :blend :alpha、:none、:add、:add2、:subのいずれかを指定します。<br />:noneは透明色、半透明色もそのまま上書き描画します。<br />:addはソースにアルファ値を、:add2は背景に255-アルファ値を適用します。<br />:subはアルファ値を全ての色の合成に、:sub2はRGBの色をそれぞれ別々に合成に適用します。</dd>
+<dd>:alpha、:none、:add、:add2、:subのいずれかを指定します。<br />:alphaはデフォルト（アルファ値をそのまま適用）です。<br />:noneはアルファ値を無視して描画します。<br />:addはソースにアルファ値を加算合成して描画します。<br />:add2は背景に255-アルファ値を適用して描画します。<br />:subはアルファ値を全ての色の合成に、:sub2はRGBの色をそれぞれ別々に合成に適用します。</dd>
 
 </dl>
 
