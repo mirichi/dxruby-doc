@@ -26,7 +26,7 @@ DirectXで使うシェーダにはいくつかの種類がありますが、DXRu
 画像を描画するとDirectXはまず描画対象のピクセルがどれかを計算します。
 
 ```ruby
-image = Image,new(100,100,[255,255,255])
+image = Image.new(100,100,[255,255,255])
 Window.draw(0,0,image)
 ```
 

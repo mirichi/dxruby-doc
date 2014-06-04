@@ -71,7 +71,7 @@ module Window
       @option :center_x Integer nil 回転、拡大の中心X座標。nilで画像の中心になります。
       @option :center_y Integer nil 回転、拡大の中心Y座標。nilで画像の中心になります。
       @option :alpha Integer 255 アルファ値(0～255)
-      @option :blend Symbol :alpha :blend :alpha、:none、:add、:add2、:subで合成方法を指定。:noneは透明色、半透明色もそのまま上書き描画します。:addはソースにアルファ値を、:add2は背景に255-アルファ値を適用します。:subはアルファ値を全ての色の合成に、:sub2はRGBの色をそれぞれ別々に合成に適用します。
+      @option :blend Symbol :alpha :alpha、:none、:add、:add2、:subで合成方法を指定。:noneは透明色、半透明色もそのまま上書き描画します。:addはソースにアルファ値を、:add2は背景に255-アルファ値を適用します。:subはアルファ値を全ての色の合成に、:sub2はRGBの色をそれぞれ別々に合成に適用します。
       @option :color Array [255,255,255] [RGB色配列][constant_color]
       @option :angle Integer 0 360度系で画像の回転角度を指定します。拡大率と同時に指定した場合は拡大率が先に適用されます。
       @option :z Integer|Float 0 3D的な奥行きではなく、[描画順][zindex]です。

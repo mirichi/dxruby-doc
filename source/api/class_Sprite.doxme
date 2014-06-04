@@ -189,9 +189,11 @@ class Sprite
   
   def blend=(val)
     描画時の合成方法を変更します。
-    @param val Symbol :alpha :blend :alpha、:none、:add、:add2、:subのいずれかを指定します。
-      :noneは透明色、半透明色もそのまま上書き描画します。
-      :addはソースにアルファ値を、:add2は背景に255-アルファ値を適用します。
+    @param val Symbol :alpha、:none、:add、:add2、:subのいずれかを指定します。
+      :alphaはデフォルト（アルファ値をそのまま適用）です。
+      :noneはアルファ値を無視して描画します。
+      :addはソースにアルファ値を加算合成して描画します。
+      :add2は背景に255-アルファ値を適用して描画します。
       :subはアルファ値を全ての色の合成に、:sub2はRGBの色をそれぞれ別々に合成に適用します。
     
     
