@@ -256,7 +256,7 @@ class RenderTarget
     詳細は[描画予約と破棄][draw_reservation]を参照してください。
 
 
-  def resize(x, y)
+  def resize(width, height)
     サイズを変更します。
     中身は消去されますが、描画予約は残ります。
   
