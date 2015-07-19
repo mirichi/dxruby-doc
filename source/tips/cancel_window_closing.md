@@ -13,7 +13,7 @@ Window.loop(true) do
   end
 
   if flg
-    Window.draw_text(0, 0, "閉じる？(y/n)", Font.default)
+    Window.draw_font(0, 0, "閉じる？(y/n)", Font.default)
     if Input.key_push?(K_Y)
       Window.close
     elsif Input.key_push?(K_N)

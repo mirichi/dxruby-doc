@@ -34,7 +34,7 @@ Ayame/Rubyも追加しました。一長一短です。
   * [描画順序](tips/zindex.md)
   * [画像効果](tips/draw_effects.md)
   * [描画予約と破棄](tips/draw_reservation.md)
-  * [文字コード](tips/encoding.md)
+  * [エンコーディング](tips/encoding.md)
   * [リソースの解放](tips/release_resources.md)
   * ['ウィンドウを閉じる'のキャンセル](tips/cancel_window_closing.md)
   * [ocraによるexe化](tips/ocra.md)
