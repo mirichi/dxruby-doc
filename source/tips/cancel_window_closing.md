@@ -1,31 +1,25 @@
 # 'ウィンドウを閉じる'のキャンセル
 
-DXRuby1.0.7からInput.updateの戻り値が、ユーザーが閉じる操作（右上のｘボタンを押す、ALT+F4を押す)をした瞬間のみtrueになるように、また、ウィンドウのクローズは自動的にキャンセルされるように変更されました。
-これにより、ユーザーに本当に閉じるのかを確認することができます。
+DXRuby1.4.2からWindow.loopの引数にclose_cancel(初期値false)が追加され、trueを指定するとユーザの閉じる操作で閉じられなくできるようになりました。
+この機能とInput.requested_close?を使うと閉じる操作の確認を以前より簡単に実現することができます。
 
 ```ruby
 require 'dxruby'
 
-font = Font.new(32)
-image = Image.new(32,32,[255,255,255])
-flag = false
-x = 0
-
-Window.create
-loop do
-  flag = true if Input.update
-  if flag
-    Window.draw_font(0,0,'とじますか(y/n)',font)
-    break if Input.key_down?(K_Y)
-    flag = false if Input.key_down?(K_N)
-  else
-    x += Input.x
+flg = false
+Window.loop(true) do
+  if Input.requested_close?
+    flg = true
   end
 
-  Window.draw(x,100,image)
-
-  Window.sync
-  Window.update
+  if flg
+    Window.draw_text(0, 0, "閉じる？(y/n)", Font.default)
+    if Input.key_push?(K_Y)
+      Window.close
+    elsif Input.key_push?(K_N)
+      flg = false
+    end
+  end
 end
 ```
 
