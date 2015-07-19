@@ -30,13 +30,11 @@ class Sprite
 
   def self.check(o, d, shot=:shot, hit=:hit) -> bool
     衝突判定を行います。
-    判定範囲はSprite#collision=による指定、それが無い場合はSprite#image=で設定された画像サイズの矩形でなされます。
-    どちらも指定されていないと例外が生じます。
-    衝突が検出された場合、o側のSpriteオブジェクトのshotメソッド、d側のhitメソッドが順に呼ばれます。
-    衝突判定範囲にはSpriteオブジェクトのangle/scale_x/scale_y/center_x/center_yが反映されます。
-    Sprite#collision_sync=falseで反映されなくなります。
-    shot/hitメソッドの戻り値としてシンボルの:discardを返すと、そのcheck呼び出し内のそれ以後はオブジェクトのshot/hitが呼ばれなくなります。
-    衝突相手のshot/hitも呼ばれません。
+    判定範囲はSprite#collision=による指定、それが無い場合はSprite#image=で設定された画像サイズの矩形でなされます。どちらも指定されていないと衝突判定されません。
+    衝突が検出された場合、o側のSpriteオブジェクトのshotメソッド、d側のhitメソッドが順に呼ばれます。それぞれ、引数には衝突相手のオブジェクトが渡されます。
+    衝突判定範囲にはSpriteオブジェクトのangle/scale_x/scale_y/center_x/center_yが反映されます。Sprite#collision_sync=falseで反映されなくなります。
+    shot/hitメソッドの戻り値としてシンボルの:discardを返すと、そのcheck呼び出し内のそれ以後はオブジェクトの衝突判定がされなくなります。
+    Sprite#collision_enable=falseで衝突判定されなくなります。Sprite#visible=falseでもSprite#collision_enable=trueなら衝突判定されます。
     どれかひとつでも衝突していればtrue、どれも衝突していなければfalseを返します。
     @param o Sprite|Array SpriteオブジェクトもしくはSpriteオブジェクトの配列。
       配列内にSprite以外のオブジェクトがあった場合、無視されます。

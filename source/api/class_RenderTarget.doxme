@@ -181,21 +181,40 @@ class RenderTarget
     @param size_y Integer 描画するマップタイルの枚数を縦横の数で指定します。nilを指定すると画面サイズから適切な数が算出されます。
 
 
+  def draw_pixel(x, y, color, z=0)
+    画面の(x, y)に点を描画します。
+    @param color Array [RGB色配列][constant_color]
+  
+  
   def draw_line(x1, y1, x2, y2, color, z=0)
     画面に(x1, y1)～(x2, y2)を結ぶ線を引きます。
-    @param x1 Integer X1座標
-    @param y1 Integer Y1座標
-    @param x2 Integer X2座標
-    @param y2 Integer Y2座標
+    @param x1 Integer 開始X座標
+    @param y1 Integer 開始Y座標
+    @param x2 Integer 終了X座標
+    @param y2 Integer 終了Y座標
     @param color Array [RGB色配列][constant_color]
+  
+  
+  def draw_box(x1, y1, x2, y2, color, z=0)
+    画面に(x1, y1)～(x2, y2)の矩形を描画します。
   
   
   def draw_box_fill(x1, y1, x2, y2, color, z=0)
     画面に(x1, y1)～(x2, y2)を塗りつぶす矩形を描画します。
   
   
+  def draw_circle(x, y, r, color, z=0)
+    画面の(x, y)を中心に半径rの円を描画します。
+    @param r Integer 半径
+  
+  
+  def draw_circle_fill(x, y, r, color, z=0)
+    画面の(x, y)を中心に半径rの塗りつぶした円を描画します。
+  
+  
   def update
     描画を実行します。
+    @note 描画に使ったときに自動実行されますので、通常使う必要はありません。呼び出すコードの互換性の為に残っています。
   
   
   def width -> Integer

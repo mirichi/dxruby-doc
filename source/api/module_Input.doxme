@@ -114,18 +114,26 @@ module Input
     デフォルトでは十字ボタンとカーソルキー、P_BUTTON0とZ、P_BUTTON1とX、P_BUTTON2とCを割り当てています。
   
   
-  def mouse_pos_x -> Integer
+  def mouse_x -> Integer
     マウスのX座標を返します。
     座標はウィンドウの左上を(0,0)としたスクリーン座標です。
-    @see mouse_pos_y
-    @see set_mouse_pos
+    @see mouse_y
+  
+  
+  def mouse_y -> Integer
+    マウスのY座標を返します。
+    座標はウィンドウの左上を(0,0)としたスクリーン座標です。
+    @see mouse_x
+  
+  
+  def mouse_pos_x -> Integer
+    マウスのX座標を返します。mouse_xの古い名称です。
+    @see mouse_x
   
   
   def mouse_pos_y -> Integer
-    マウスのY座標を返します。
-    座標はウィンドウの左上を(0,0)としたスクリーン座標です。
-    @see mouse_pos_x
-    @see set_mouse_pos
+    マウスのY座標を返します。mouse_yの古い名称です。
+    @see mouse_y
   
   
   def set_mouse_pos(x, y)
@@ -181,11 +189,17 @@ module Input
     現在押されているパッドのボタン定数を配列で返します。
   
   
+  def requested_close? -> bool
+    そのフレームの前にウィンドウが閉じられた場合にtrueを返します。
+    ユーザの閉じる操作でウィンドウが閉じられないようにしたい場合に、Window.loopの引数にtrueを渡すのと合わせて使います。
+  
+  
   def update -> bool
     入力情報を更新します。
     Window.loopの中で同じ処理がされていますので、Window.loopを使わずに自分でゲームループを組み立てるときにのみ使ってください。
     通常は偽を返しますが、ウィンドウを閉じる操作がされたときのみ真を返します。
     これを無視するとウィンドウを閉じる操作（右上のxボタンやALT+F4）が無視されます。
+    @note この機能はDXruby1.4.2以降では推奨されません。
   
   
   def pad_num -> Integer

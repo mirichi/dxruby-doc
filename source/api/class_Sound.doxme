@@ -9,6 +9,11 @@ class Sound
     @param path String ファイルパス
   
   
+  def self.load_from_memory(string) -> Sound
+    Stringオブジェクトでファイルデータを渡してSoundオブジェクトを生成します。
+    @param string String 音のバイナリデータ
+  
+  
   def dispose
     selfのサウンドリソースを解放します。
     使わなくなったデータをdisposeしておくとPCのメインメモリやサウンドメモリを節約することができ、GC時の負荷も軽くなります。
@@ -29,8 +34,8 @@ class Sound
   def start=(pos)
     再生開始位置を変更します。
     @param pos Integer 再生開始位置。デフォルト値は0で、4分音符１個分で768です。
-
-
+  
+  
   def loop_start=(pos)
     ループ時の開始位置を変更します。
     @param pos Integer ループ時の開始位置。
@@ -45,16 +50,16 @@ class Sound
       デフォルト値は0で、4分音符１個分で768です。
     @see loop_start=
     @see loop_count=
-    
-
+  
+  
   def loop_count=(n)
     ループの再生回数を変更します。
     @param n Integer ループ回数。
       -1を設定すると無限ループになります。
     @see loop_start=
     @see loop_end=
-    
-
+  
+  
   def stop
     音の再生を止めます。
   
@@ -66,4 +71,23 @@ class Sound
       デフォルト値は230となっています。
     @param time Integer 現在の値から設定値までの変化にかける時間で、ミリ秒単位で指定します。
       省略すると0（即時に変更）となります。
-
+  
+  
+  def pan -> Integer
+    パンを取得します。
+    値は-10000から+10000まで、左右の音のdB差を表します。
+  
+  
+  def pan=(pan)
+    パンを設定します。
+    値は-10000から+10000まで、左右の音のdB差を表します。
+    @param pan Integer 左右の音のdB差
+  
+  
+  def frequency -> Integer
+    周波数を取得します。
+  
+  
+  def frequency=(f)
+    周波数を設定します。
+    @param f Integer 周波数

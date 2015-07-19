@@ -144,7 +144,6 @@ class Image
     @param color Array [RGB色配列][constant_color]
       ARGBでも指定可能ですが、現在のバージョンではAは無視されます。
     @obsolete
-    @note Ruby1.8の場合、文字コードはSJISにのみ対応します。
 
 
   def draw_font_ex(x, y, text, font, option={})
@@ -163,7 +162,6 @@ class Image
     @option :shadow_x Integer font.size/24+1 影の位置を相対座標で指定します。+1は1ピクセル右になります。省略するとフォントサイズ/24+1になります。
     @option :shadow_y Integer font.size/24+1 影の位置を相対座標で指定します。+1は1ピクセル下になります。省略するとフォントサイズ/24+1になります。
     @option :aa bool true アンチエイリアスの有無
-    @note Ruby1.8の場合、文字コードはSJISにのみ対応します。
     
 
   def save(path, format=nil)

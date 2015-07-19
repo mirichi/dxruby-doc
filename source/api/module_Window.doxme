@@ -2,15 +2,28 @@
 module Window
   ウィンドウ生成、グラフィック描画、画面更新を扱います。
   
-  def loop { } -> bool
+  def loop(close_cancel=false) { } -> bool
     メインループとして渡されたブロックを実行し続けます。
     デフォルト設定ではウィンドウ(640*480pixel)が作られ、閉じられたら終了します。
     このループは秒間60回実行(60FPS)になるよう、待ち時間が自動調整されます。
-    
+    引数のclose_cancelはtrueにするとユーザのウィンドウを閉じる操作で閉じられなくなります。Input.requested_close?と合わせて処理することで間違った操作で閉じられてしまうことを防ぐことができます。
     @code ruby
       Window.loop do
         # ここにゲームの処理を書く
       end
+    @param close_cancel bool ユーザのウィンドウ閉じる操作で閉じなくする場合true
+
+
+  def close
+    ウィンドウを明示的に閉じます。閉じるとWindow.loopがそのフレームで終了します。
+
+
+  def created? -> bool
+    ウィンドウが開いている場合にtrueを返します。
+
+
+  def closed? -> bool
+    ウィンドウが閉じられている場合にtrueを返します。
 
 
   def draw(x, y, image, z=0)
@@ -96,7 +109,6 @@ module Window
     @see Image#draw_font
     @see Image#draw_font_ex
     @note 内部の動作の詳細は不明ですが、24ポイント以下の文字にはアンチエイリアスがかからないようです。
-      Ruby1.8の場合、文字コードはSJISにのみ対応します。
 
 
   def draw_font_ex(x, y, string, font, option={})
@@ -121,25 +133,24 @@ module Window
     @option :shadow_x Integer font.size/24+1 影の位置を相対座標で指定します。+1は1ピクセル右になります。省略するとフォントサイズ/24+1になります。
     @option :shadow_y Integer font.size/24+1 影の位置を相対座標で指定します。+1は1ピクセル下になります。省略するとフォントサイズ/24+1になります。
     @option :z
-    @note Ruby1.8の場合、文字コードはSJISにのみ対応します。
 
 
   def draw_morph(x1, y1, x2, y2, x3, y3, x4, y4, image, option={})
     4点を自由に指定してimageを描画できます。これを使うと自在に変形した画像を描画することができます。
     ただし、実際にはoptionで指定するdividexとdivideyの数だけ絵を分割して変形しますので、分割数が少ない場合/描画面積が大きい場合に見え方がぎこちなくなることがあります。その場合は分割数を増やしてください。分割数を増やすと描画枚数が増えるのでパフォーマンスは下がります。
     座標はx1から順に右回りで指定してください。順番が違う場合の描画結果は保証されません。
-    @param x1 Integer X1座標。
-    @param y1 Integer Y1座標。
-    @param x2 Integer X2座標。
-    @param y2 Integer Y2座標。
-    @param x3 Integer X3座標。
-    @param y3 Integer Y3座標。
-    @param x4 Integer X4座標。
-    @param y4 Integer Y4座標。
+    @param x1 Integer X1座標
+    @param y1 Integer Y1座標
+    @param x2 Integer X2座標
+    @param y2 Integer Y2座標
+    @param x3 Integer X3座標
+    @param y3 Integer Y3座標
+    @param x4 Integer X4座標
+    @param y4 Integer Y4座標
     @option :alpha
     @option :blend
-    @option :dividex Integer 1 横の分割数を指定します。
-    @option :dividey Integer 1 縦の分割数を指定します。
+    @option :dividex Integer 1 横の分割数を指定します
+    @option :dividey Integer 1 縦の分割数を指定します
     @option :z
     @option :color
 
@@ -166,6 +177,11 @@ module Window
     @param size_y Integer 描画するマップタイルの枚数を縦横の数で指定します。nilを指定すると画面サイズから適切な数が算出されます。
   
   
+  def draw_pixel(x, y, color, z=0)
+    画面の(x, y)に点を描画します。
+    @param color Array [RGB色配列][constant_color]
+  
+  
   def draw_line(x1, y1, x2, y2, color, z=0)
     画面に(x1, y1)～(x2, y2)を結ぶ線を引きます。
     @param x1 Integer 開始X座標
@@ -173,10 +189,49 @@ module Window
     @param x2 Integer 終了X座標
     @param y2 Integer 終了Y座標
     @param color Array [RGB色配列][constant_color]
-
+  
+  
+  def draw_box(x1, y1, x2, y2, color, z=0)
+    画面に(x1, y1)～(x2, y2)の矩形を描画します。
+  
   
   def draw_box_fill(x1, y1, x2, y2, color, z=0)
     画面に(x1, y1)～(x2, y2)を塗りつぶす矩形を描画します。
+  
+  
+  def draw_circle(x, y, r, color, z=0)
+    画面の(x, y)を中心に半径rの円を描画します。
+    @param r Integer 半径
+  
+  
+  def draw_circle_fill(x, y, r, color, z=0)
+    画面の(x, y)を中心に半径rの塗りつぶした円を描画します。
+  
+  
+  def ox -> Integer
+    X軸方向の描画位置補正を返します。
+    デフォルト値は0です。
+  
+  
+  def ox=(x)
+    X軸方向の描画位置補正を変更します。
+    デフォルト値は0です。
+    Windowに対する描画のすべての座標に-oxを加算します。
+    画面をはみ出すような広大な座標系をイメージして、表示される範囲(画面)の左上座標がox/oyになるような感じです。
+    この指定はdraw系メソッドと、Sprite#targetにWindowもしくはnilを指定したSpriteの描画、及び、衝突判定に影響します。
+  
+  
+  def oy -> Integer
+    Y軸方向の描画位置補正を返します。
+    デフォルト値は0です。
+  
+  
+  def oy=(y)
+    Y軸方向の描画位置補正を変更します。
+    デフォルト値は0です。
+    Windowに対する描画のすべての座標に-oyを加算します。
+    画面をはみ出すような広大な座標系をイメージして、表示される範囲(画面)の左上座標がox/oyになるような感じです。
+    この指定はdraw系メソッドと、Sprite#targetにWindowもしくはnilを指定したSpriteの描画、及び、衝突判定に影響します。
   
   
   def get_screen_shot(path, format=FORMAT_JPG)
@@ -198,7 +253,6 @@ module Window
     filter、titleへ渡す文字コードに制限はありません。
     @param filter Array [["すべてのファイル(*.*)", "*.*"]["JPGファイル(*.jpg)", "*.jpg"]]という形式の配列
     @param title String ダイアログのタイトルバーに表示する文字列
-    @note Ruby1.8の場合、文字コードはSJISにのみ対応します。
   
   
   def save_filename(filter, title) -> String|nil
@@ -207,7 +261,6 @@ module Window
     Encoding.default_internalがnilの場合はSJISです。
     ダイアログがキャンセルされるとnilを返します。
     filter、titleへ渡す文字コードに制限はありません。
-    @note Ruby1.8の場合、文字コードはSJISにのみ対応します。
   
   
   def folder_dialog(title, default_dir) -> String|nil
@@ -217,22 +270,23 @@ module Window
     ダイアログがキャンセルされるとnilを返します。
     filter、titleへ渡す文字コードに制限はありません。
     @param default_dir String 初期表示時に選択されるディレクトリパス
-    @note Ruby1.8の場合、文字コードはSJISにのみ対応します。
   
   
   def create
     ウィンドウを作成します。
-    Window.loopの初めに同じ処理がされていますので、Window.loopを使わずに自分でゲームループを組み立てるときだけ使ってください。
+    Window.loopの初めに同じ処理がされていますので、通常これを使う必要はありません。
   
   
   def sync
     Window.fps=で指定されたfpsになるようにウェイトを入れます。
     Window.loopの中で同じ処理がされていますので、Window.loopを使わずに自分でゲームループを組み立てるときだけ使ってください。
+    @note この機能はDXruby1.4.2以降では推奨されません。
   
   
   def update
     画面を更新します。
     Window.loopの中で同じ処理がされていますので、Window.loopを使わずに自分でゲームループを組み立てるときだけ使ってください。
+    @note この機能はDXruby1.4.2以降では推奨されません。
   
   
   def load_icon(path)
@@ -295,14 +349,12 @@ module Window
     タイトルバーの文字列を返します。
     Encoding.default_internalに指定した文字コードが使われます。
     Encoding.default_internalがnilの場合はSJISです。
-    @note Ruby1.8の場合、文字コードはSJISにのみ対応します。
   
   
   def caption=(title)
     タイトルバーの文字列を変更します。
     デフォルト値は"DXRubyApplication"です。
     @param title String タイトルバーのキャプション
-    @note Ruby1.8の場合、文字コードはSJISにのみ対応します。
 
   
   def scale -> Float
@@ -319,16 +371,26 @@ module Window
   
   def windowed? -> bool
     ウィンドウモードである場合に真を返します。
-    設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、ウィンドウモードになります。
-    フルスクリーンモードは60fps固定となります。
+    @see full_screen?
   
   
   def windowed=(val)
     ウィンドウモード/フルスクリーンモードを変更します。
-    設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、
-    ウィンドウモードになります。
-    フルスクリーンモードは60fps固定となります。
+    設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、ウィンドウモードになります。フルスクリーンモードは60fps固定となります。
     @param val bool trueを指定するとウィンドウモードで、falseでフルスクリーンモードになります。
+    @see full_screen=
+  
+  
+  def full_screen? -> bool
+    フルスクリーンモードである場合に真を返します。windowed?の逆です。
+    @see windowed?
+  
+  
+  def full_screen=(val)
+    ウィンドウモード/フルスクリーンモードを変更します。windowed=の逆です。
+    設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、ウィンドウモードになります。フルスクリーンモードは60fps固定となります。
+    @param val bool trueを指定するとフルスクリーンモードで、falseでウィンドウモードになります。
+    @see windowed=
   
   
   def real_fps -> Integer
