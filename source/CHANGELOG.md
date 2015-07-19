@@ -1,6 +1,18 @@
 # 更新履歴
 
 ## DXRuby
+* 2015/07/19 1.4.2
+  * 内部UTF16化で表示できなかった文字ができるようになりました。
+  * デフォルトアイコンを設定しました。
+  * 衝突判定配列がネストできるようになりました。
+  * Window.loopが複数置けるようになりました。Window.loopに引数close_cancelを追加しました。
+  * Window.created?/closed?/close/ox/oy/ox=/oy=/draw_pixel/draw_box/draw_circle/draw_circle_fill/full_screen=/full_screen?追加。
+  * 既存のメソッドInput.mouse_pos_x/yのalias、Input.mouse_x/yを追加しました。
+  * Font#name追加。
+  * Image#change_hlsバグ修正。
+  * Input.requested_close?追加。
+  * Sound.load_from_memory、Sound#pan/pan=/frequency/frequency=追加。
+  * Sprite.checkのコールバックメソッドに引数が無くても動くようにしました。
 * 2014/03/09 1.4.1
   * ウィンドウのタイトルをマウスで掴んでも止まらなくなりました。
   * RenderTargetオブジェクトを画面や別のRenderTargetオブジェクトに描画する際、自動的にupdateされるようになりました。
