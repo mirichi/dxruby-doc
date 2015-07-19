@@ -1,12 +1,12 @@
-# DXRuby 1.4.1 リファレンスマニュアル
+# DXRuby 1.4.2 リファレンスマニュアル
 ## はじめに
 DXRubyは、オブジェクト指向スクリプト言語RubyからDirectXを扱う為の拡張ライブラリです。
 Rubyを使ってWindows用2Dアクションゲームなどを作ることができます。
 このヘルプファイルはDXRubyのリファレンスマニュアルとなっております。
-更なる情報をお求めの方はSourceForge.jpのプロジェクトWikiを参照してください。
+更なる情報をお求めの方はosdn.jpのプロジェクトWikiを参照してください。
 
 * プロジェクトWiki  
-  <http://dxruby.sourceforge.jp/cgi-bin/hiki.cgi>
+  <http://dxruby.osdn.jp/cgi-bin/hiki.cgi>
 
 また、プロジェクトWebにはOggVorbis再生ライブラリVoxをRubyから使うラッパvox.rb、
 高機能オーディオライブラリを扱うラッパbass.rbも置いてあります。
@@ -14,7 +14,7 @@ Ayame/Rubyも追加しました。一長一短です。
 未完成な部分もありますが、用途に合わせてお使いください。
 
 * プロジェクトWeb
-  <http://dxruby.sourceforge.jp/>
+  <http://dxruby.osdn.jp/>
 
 
 * チュートリアル
@@ -36,8 +36,7 @@ Ayame/Rubyも追加しました。一長一短です。
   * [文字コード](tips/encoding.md)
   * [リソースの解放](tips/release_resources.md)
   * ['ウィンドウを閉じる'のキャンセル](tips/cancel_window_closing.md)
-  * [Exerbによるexe化 ※Ruby1.8専用](tips/exerb.md)
-  * [ocraによるexe化 ※Ruby1.9以降](tips/ocra.md)
+  * [ocraによるexe化](tips/ocra.md)
   * [DXRubyExtension](tips/dxruby_extension.md)
 
 
@@ -50,7 +49,7 @@ DXRubyは以下のような特徴を持つライブラリです。
 * RubyからDirectXを自然に扱える、Rubyと親和性の高い設計がされています。
 * 初心者でも簡単に使えるよう、非常にシンプルなAPI構成になっています。
 * 描画が速いので、遅いといわれるRubyでも普通にゲームが作れるぐらいの実行速度が出ます。
-* Ruby1.8系/1.9系/2.0系に対応しています。自分でコンパイルできれば2.1でも動きます。
+* Ruby2.0系/2.1系/2.2系に対応しています。自分でコンパイルできればそれ以降でも動くと思います。
 * 配布しやすいよう、コンパクトな拡張ライブラリとなっています。
 
 また、デメリットとしては以下のものがあります。
@@ -58,7 +57,6 @@ DXRubyは以下のような特徴を持つライブラリです。
 * DirectXを扱うのでWindows専用となります。
 * 2Dゲーム専用です。
 * 複雑なことを行うAPIは提供していません。
-* Ruby1.8をお使いの場合、文字コードはShiftJISにのみ対応します。
 
 DXRubyが提供する機能は大まかに以下のものです。
 
@@ -74,7 +72,7 @@ DXRubyが提供する機能は大まかに以下のものです。
 DXRubyを実行するのに必要な環境は以下のものです。
 
 * Ruby本体
-  * mswin32もしくはmingw32のRuby1.8系、Ruby1.9.1系、Ruby2.0系。
+  * mswin32もしくはmingw32のRuby2.0系、Ruby2.1系、Ruby2.2系。
   * ActiveScriptRuby同梱版など、mswin32/mingw32以外でもそれ用にコンパイルされていれば動作します。
   * 64bit版では動作しません。
 * OS
@@ -109,6 +107,8 @@ DXRuby本体は1.2.0安定版から、DXRubyExtensionは1.0.3からzlib/libpng�
 
 * 世界地図
   * [かんたんネットさま](http://kantan-net.main.jp/worldmap/)
+
+* デフォルトアイコンは鳴海つかささま。
 
 * それ以外の絵は水視アズマさま(GPL)。
 
