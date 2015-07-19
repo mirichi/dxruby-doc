@@ -24,7 +24,8 @@ Ayame/Rubyも追加しました。一長一短です。
   * [応用/Shader](tutorial/shader.md)
 
 
-* [APIリファレンス](api/index.md)
+* リファレンス
+  * [APIリファレンス](api/index.md)
   * [キーコード定数](api/constant_keycode.md)
   * [色定数](api/constant_color.md)
 
