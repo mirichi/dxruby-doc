@@ -17,12 +17,13 @@ Ayame/Rubyも追加しました。一長一短です。
   <http://dxruby.osdn.jp/>
 
 
+## マニュアル
+
 * チュートリアル
   * [基本](tutorial/basic.md)
   * [応用/SoundEffect](tutorial/soundeffect.md)
   * [応用/Sprite](tutorial/sprite.md)
   * [応用/Shader](tutorial/shader.md)
-
 
 * リファレンス
   * [APIリファレンス](api/index.md)
@@ -39,11 +40,10 @@ Ayame/Rubyも追加しました。一長一短です。
   * [ocraによるexe化](tips/ocra.md)
   * [DXRubyExtension](tips/dxruby_extension.md)
 
-
 * [更新履歴](CHANGELOG.md)
 
 
-### DXRubyの特徴
+## DXRubyの特徴
 DXRubyは以下のような特徴を持つライブラリです。
 
 * RubyからDirectXを自然に扱える、Rubyと親和性の高い設計がされています。
@@ -81,7 +81,7 @@ DXRubyを実行するのに必要な環境は以下のものです。
   * 9.0c以降
 
 
-### インストール方法
+## インストール方法
 **注意**
 arton氏作のActiveScriptRubyは、コンパイラのバージョンが違うためSourceForge.jpからダウンロードしてインストールしても動作しません。
 ActiveScriptRuby同梱のバージョンをお使いください。
@@ -90,7 +90,7 @@ dxruby.soとdxrubyex.so、install.rbが同じディレクトリにある状態�
 install.rbを実行したら、sampleディレクトリ以下のファイルを実行してみて、きちんと動作すればインストール成功です。
 
 
-### ライセンス
+## ライセンス
 DXRuby本体は1.2.0安定版から、DXRubyExtensionは1.0.3からzlib/libpngライセンスを採用しています。
 
 添付のサンプルスクリプト及びドキュメント内のスクリプトは全てパブリックドメインとします。著作者人格権は行使しません。
