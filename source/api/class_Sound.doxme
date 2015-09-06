@@ -9,9 +9,11 @@ class Sound
     @param path String ファイルパス
   
   
-  def self.load_from_memory(string) -> Sound
+  def self.load_from_memory(string, type) -> Sound
     Stringオブジェクトでファイルデータを渡してSoundオブジェクトを生成します。
+    typeはTYPE_MIDIとTYPE_WAVの定数で渡します。
     @param string String 音のバイナリデータ
+    @param type Constant 音の種類(TYPE_MIDI/TYPE_WAV)
   
   
   def dispose
