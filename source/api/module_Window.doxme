@@ -2,7 +2,7 @@
 module Window
   ウィンドウ生成、グラフィック描画、画面更新を扱います。
   
-  def loop(close_cancel=false) { } -> bool
+  def self.loop(close_cancel=false) { } -> bool
     メインループとして渡されたブロックを実行し続けます。
     デフォルト設定ではウィンドウ(640*480pixel)が作られ、閉じられたら終了します。
     このループは秒間60回実行(60FPS)になるよう、待ち時間が自動調整されます。
@@ -14,19 +14,19 @@ module Window
     @param close_cancel bool ユーザのウィンドウ閉じる操作で閉じなくする場合true
 
 
-  def close
+  def self.close
     ウィンドウを明示的に閉じます。閉じるとWindow.loopがそのフレームで終了します。
 
 
-  def created? -> bool
+  def self.created? -> bool
     ウィンドウが開いている場合にtrueを返します。
 
 
-  def closed? -> bool
+  def self.closed? -> bool
     ウィンドウが閉じられている場合にtrueを返します。
 
 
-  def draw(x, y, image, z=0)
+  def self.draw(x, y, image, z=0)
     単純描画をします。
     @param x Integer X座標
     @param y Integer Y座標
@@ -35,7 +35,7 @@ module Window
       小さいほど奥になり、同じ値の場合は最初にdrawしたものが一番奥になります。
 
 
-  def draw_scale(x, y, image, scale_x, scale_y, center_x=nil, center_y=nil, z=0)
+  def self.draw_scale(x, y, image, scale_x, scale_y, center_x=nil, center_y=nil, z=0)
     縦、横の拡大率を指定して描画します。
     具体例は[TIPS][tips]を参照してください。
     @param scale_x Float X方向の拡大率。1が等倍、-1で上下反転します。
@@ -44,7 +44,7 @@ module Window
     @param center_y Integer 画像の拡大中心とするY座標。nilの場合は画像中央になります。
 
 
-  def draw_rot(x, y, image, angle, center_x=nil, center_y=nil, z=0)
+  def self.draw_rot(x, y, image, angle, center_x=nil, center_y=nil, z=0)
     回転角度と中心を指定して描画します。
     具体例は[TIPS][tips]を参照してください。
     center_x/center_y省略時は画像の中心を原点として回転します。
@@ -53,29 +53,29 @@ module Window
     @param center_y Integer 画像の回転中心とするY座標
 
 
-  def draw_alpha(x, y, image, alpha, z=0)
+  def self.draw_alpha(x, y, image, alpha, z=0)
     アルファ値を指定して描画します。
     具体例は[TIPS][tips]を参照してください。
     @param alpha Integer アルファ値。範囲は0(完全に透明)から255(完全に不透明)までです。
 
 
-  def draw_add(x, y, image, z=0)
+  def self.draw_add(x, y, image, z=0)
     加算合成描画をします。
     具体例は[TIPS][tips]を参照してください。
 
 
-  def draw_sub(x, y, image, z=0)
+  def self.draw_sub(x, y, image, z=0)
     減算合成描画をします。
     具体例は[TIPS][tips]を参照してください。
   
   
-  def draw_shader(x, y, image, shader, z=0)
+  def self.draw_shader(x, y, image, shader, z=0)
     シェーダ処理を適用して描画します。
     @param shader Shader 適用するShaderオブジェクト
     @see Shader
 
 
-  def draw_ex(x, y, image, option={})
+  def self.draw_ex(x, y, image, option={})
     拡縮、回転、半透明、加算合成を一括指定して描画します。
     具体例は[TIPS][tips]を参照してください。
     @param option Hash オプション
@@ -91,7 +91,7 @@ module Window
         小さいほど奥になり、同じ値の場合は最初にdrawしたものが一番奥になります。
 
 
-  def draw_font(x, y, string, font, option={})
+  def self.draw_font(x, y, string, font, option={})
     DirectX APIで文字を描画します。単純文字描画であるため、描画は高速です。
     改行文字が有効となります。
     @param string String 描画する文字列
@@ -111,7 +111,7 @@ module Window
     @note 内部の動作の詳細は不明ですが、24ポイント以下の文字にはアンチエイリアスがかからないようです。
 
 
-  def draw_font_ex(x, y, string, font, option={})
+  def self.draw_font_ex(x, y, string, font, option={})
     内部でImageオブジェクトを生成、Image#draw_font_exを呼び出して描画し、それを画面にWindow.draw_exで描画することで高品質な文字描画を行います。
     改行文字は無視されます。
     @see draw_font
@@ -135,7 +135,7 @@ module Window
     @option :z
 
 
-  def draw_morph(x1, y1, x2, y2, x3, y3, x4, y4, image, option={})
+  def self.draw_morph(x1, y1, x2, y2, x3, y3, x4, y4, image, option={})
     4点を自由に指定してimageを描画できます。これを使うと自在に変形した画像を描画することができます。
     ただし、実際にはoptionで指定するdividexとdivideyの数だけ絵を分割して変形しますので、分割数が少ない場合/描画面積が大きい場合に見え方がぎこちなくなることがあります。その場合は分割数を増やしてください。分割数を増やすと描画枚数が増えるのでパフォーマンスは下がります。
     座標はx1から順に右回りで指定してください。順番が違う場合の描画結果は保証されません。
@@ -155,7 +155,7 @@ module Window
     @option :color
 
 
-  def draw_tile(base_x, base_y, map, image_array, start_x, start_y, size_x, size_y, z=0)
+  def self.draw_tile(base_x, base_y, map, image_array, start_x, start_y, size_x, size_y, z=0)
     タイルチップと二次元配列を使ってマップ描画をします。
     画像のサイズはimage_arrの先頭の画像から返します。すべて同じサイズのImageオブジェクトを使用してください。
     マップ配列の長さが要素によって異なる場合の動作は未定義です。長さはすべて一致させてください。
@@ -177,12 +177,12 @@ module Window
     @param size_y Integer 描画するマップタイルの枚数を縦横の数で指定します。nilを指定すると画面サイズから適切な数が算出されます。
   
   
-  def draw_pixel(x, y, color, z=0)
+  def self.draw_pixel(x, y, color, z=0)
     画面の(x, y)に点を描画します。
     @param color Array [RGB色配列][constant_color]
   
   
-  def draw_line(x1, y1, x2, y2, color, z=0)
+  def self.draw_line(x1, y1, x2, y2, color, z=0)
     画面に(x1, y1)～(x2, y2)を結ぶ線を引きます。
     @param x1 Integer 開始X座標
     @param y1 Integer 開始Y座標
@@ -191,29 +191,29 @@ module Window
     @param color Array [RGB色配列][constant_color]
   
   
-  def draw_box(x1, y1, x2, y2, color, z=0)
+  def self.draw_box(x1, y1, x2, y2, color, z=0)
     画面に(x1, y1)～(x2, y2)の矩形を描画します。
   
   
-  def draw_box_fill(x1, y1, x2, y2, color, z=0)
+  def self.draw_box_fill(x1, y1, x2, y2, color, z=0)
     画面に(x1, y1)～(x2, y2)を塗りつぶす矩形を描画します。
   
   
-  def draw_circle(x, y, r, color, z=0)
+  def self.draw_circle(x, y, r, color, z=0)
     画面の(x, y)を中心に半径rの円を描画します。
     @param r Integer 半径
   
   
-  def draw_circle_fill(x, y, r, color, z=0)
+  def self.draw_circle_fill(x, y, r, color, z=0)
     画面の(x, y)を中心に半径rの塗りつぶした円を描画します。
   
   
-  def ox -> Integer
+  def self.ox -> Integer
     X軸方向の描画位置補正を返します。
     デフォルト値は0です。
   
   
-  def ox=(x)
+  def self.ox=(x)
     X軸方向の描画位置補正を変更します。
     デフォルト値は0です。
     Windowに対する描画のすべての座標に-oxを加算します。
@@ -221,12 +221,12 @@ module Window
     この指定はdraw系メソッドと、Sprite#targetにWindowもしくはnilを指定したSpriteの描画、及び、衝突判定に影響します。
   
   
-  def oy -> Integer
+  def self.oy -> Integer
     Y軸方向の描画位置補正を返します。
     デフォルト値は0です。
   
   
-  def oy=(y)
+  def self.oy=(y)
     Y軸方向の描画位置補正を変更します。
     デフォルト値は0です。
     Windowに対する描画のすべての座標に-oyを加算します。
@@ -234,18 +234,18 @@ module Window
     この指定はdraw系メソッドと、Sprite#targetにWindowもしくはnilを指定したSpriteの描画、及び、衝突判定に影響します。
   
   
-  def get_screen_shot(path, format=FORMAT_JPG)
+  def self.get_screen_shot(path, format=FORMAT_JPG)
     スクリーンショットをファイルに保存します。
     省略するとFORMAT_JPGになります。
     @param path String ファイルパス
     @param format Constant 保存形式。FORMAT_JPG/FORMAT_PNG/FORMAT_BMP/FORMAT_DDSのいずれかを指定してください。
   
   
-  def get_load -> Float
+  def self.get_load -> Float
     fps=で指定されたFPSでの1フレームに対する処理時間を返します。
   
   
-  def open_filename(filter, title) -> String|nil
+  def self.open_filename(filter, title) -> String|nil
     ファイルオープンダイアログを表示します。
     Encoding.default_internalに指定した文字コードでファイル名を返します。
     Encoding.default_internalがnilの場合はSJISです。
@@ -255,7 +255,7 @@ module Window
     @param title String ダイアログのタイトルバーに表示する文字列
   
   
-  def save_filename(filter, title) -> String|nil
+  def self.save_filename(filter, title) -> String|nil
     ファイルセーブダイアログを表示します。
     Encoding.default_internalに指定した文字コードでファイル名を返します。
     Encoding.default_internalがnilの場合はSJISです。
@@ -263,7 +263,7 @@ module Window
     filter、titleへ渡す文字コードに制限はありません。
   
   
-  def folder_dialog(title, default_dir) -> String|nil
+  def self.folder_dialog(title, default_dir) -> String|nil
     フォルダダイアログを表示します。
     Encoding.default_internalに指定した文字コードで選択したディレクトリ名を返します。
     Encoding.default_internalがnilの場合はSJISです。
@@ -272,60 +272,60 @@ module Window
     @param default_dir String 初期表示時に選択されるディレクトリパス
   
   
-  def create
+  def self.create
     ウィンドウを作成します。
     Window.loopの初めに同じ処理がされていますので、通常これを使う必要はありません。
   
   
-  def sync
+  def self.sync
     Window.fps=で指定されたfpsになるようにウェイトを入れます。
     Window.loopの中で同じ処理がされていますので、Window.loopを使わずに自分でゲームループを組み立てるときだけ使ってください。
     @note この機能はDXruby1.4.2以降では推奨されません。
   
   
-  def update
+  def self.update
     画面を更新します。
     Window.loopの中で同じ処理がされていますので、Window.loopを使わずに自分でゲームループを組み立てるときだけ使ってください。
     @note この機能はDXruby1.4.2以降では推奨されません。
   
   
-  def load_icon(path)
+  def self.load_icon(path)
     16*16*4bppの画像ファイルを読み込み、ウィンドウ左上のアイコンを変更します。
     指定できるのは拡張子が.icoのファイルです。
   
   
-  def hWnd -> Integer
+  def self.hWnd -> Integer
     ウィンドウハンドルを返します。
     Window.loop、Window.createを実行する前に使用可能です。
   
   
-  def x -> Integer
+  def self.x -> Integer
     ウィンドウの表示位置のX座標を返します。
   
   
-  def x=(pos)
+  def self.x=(pos)
     ウィンドウの表示位置のX座標を返します。
     Window.loop、Window.createメソッドを呼び出す前のみ可能です。
     表示位置設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、OSデフォルト位置に設定します。
     @param pos Integer ウィンドウのX座標。
   
   
-  def y -> Integer
+  def self.y -> Integer
     ウィンドウの表示位置のY座標を返します。
   
   
-  def y=(pos)
+  def self.y=(pos)
     ウィンドウの表示位置のY座標を変更します。
     Window.loop、Window.createメソッドを呼び出す前のみ可能です。
     表示位置設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、OSデフォルト位置に設定します。
     @param pos Integer ウィンドウのY座標。
   
   
-  def width -> Integer
+  def self.width -> Integer
     ウィンドウの画面幅を返します。
   
   
-  def width=(size)
+  def self.width=(size)
     ウィンドウの画面横幅を変更します。
     Window.loop、Window.createメソッドを呼び出す前のみ可能です。
     サイズ設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、幅640ピクセルに設定します。
@@ -333,11 +333,11 @@ module Window
     @see resize
   
   
-  def height -> Integer
+  def self.height -> Integer
     ウィンドウの画面幅を返します。
   
   
-  def height=(size)
+  def self.height=(size)
     ウィンドウの画面縦幅を変更します。
     Window.loop、Window.createメソッドを呼び出す前のみ可能です。
     サイズ設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、高さ480ピクセルに設定します。
@@ -345,23 +345,23 @@ module Window
     @see resize
   
   
-  def caption -> String
+  def self.caption -> String
     タイトルバーの文字列を返します。
     Encoding.default_internalに指定した文字コードが使われます。
     Encoding.default_internalがnilの場合はSJISです。
   
   
-  def caption=(title)
+  def self.caption=(title)
     タイトルバーの文字列を変更します。
     デフォルト値は"DXRubyApplication"です。
     @param title String タイトルバーのキャプション
 
   
-  def scale -> Float
+  def self.scale -> Float
     ウィンドウの画面サイズに対する拡大率を返します。
   
   
-  def scale=(val)
+  def self.scale=(val)
     ウィンドウの画面サイズに対する拡大率を変更します。
     縦横同じ比率が適用されます。
     width、heightで指定した値に、この値を掛けたものが実際のウィンドウのサイズです。
@@ -369,43 +369,43 @@ module Window
     @param val Float ウィンドウの拡大率。
   
   
-  def windowed? -> bool
+  def self.windowed? -> bool
     ウィンドウモードである場合に真を返します。
     @see full_screen?
   
   
-  def windowed=(val)
+  def self.windowed=(val)
     ウィンドウモード/フルスクリーンモードを変更します。
     設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、ウィンドウモードになります。フルスクリーンモードは60fps固定となります。
     @param val bool trueを指定するとウィンドウモードで、falseでフルスクリーンモードになります。
     @see full_screen=
   
   
-  def full_screen? -> bool
+  def self.full_screen? -> bool
     フルスクリーンモードである場合に真を返します。windowed?の逆です。
     @see windowed?
   
   
-  def full_screen=(val)
+  def self.full_screen=(val)
     ウィンドウモード/フルスクリーンモードを変更します。windowed=の逆です。
     設定を行わずにWindow.loop、Window.createメソッドを呼び出した場合、ウィンドウモードになります。フルスクリーンモードは60fps固定となります。
     @param val bool trueを指定するとフルスクリーンモードで、falseでウィンドウモードになります。
     @see windowed=
   
   
-  def real_fps -> Integer
+  def self.real_fps -> Integer
     画面の秒間更新回数を返します。
     @see fps
     @see fps=
   
   
-  def fps -> Integer
+  def self.fps -> Integer
     画面の秒間更新回数を返します。
     @see real_fps
     @see fps=
   
   
-  def fps=(val)
+  def self.fps=(val)
     画面の秒間更新回数を変更します。
     デフォルト値は60です。
     処理が重く更新頻度が保てない場合、自動的に描画をスキップします。
@@ -413,11 +413,11 @@ module Window
     @param val Integer 秒間の画面更新頻度。
   
   
-  def frameskip? -> bool
+  def self.frameskip? -> bool
     コマ落ち制御をする場合に真を返します。
   
   
-  def frameskip=(val)
+  def self.frameskip=(val)
     コマ落ち制御をするかどうかを変更します。
     trueを指定すると、fps=で指定したFPSに処理が間に合わない場合、1フレームだけ描画処理を省きます。
     描画を省いてでもfps=の動作間隔を守るモードです。
@@ -427,21 +427,21 @@ module Window
     @param val bool コマ落ち制御をするかどうか
   
   
-  def bgcolor -> Array
+  def self.bgcolor -> Array
     毎フレーム自動的に実行される画面のクリアに使う色を返します。
   
   
-  def bgcolor=(color)
+  def self.bgcolor=(color)
     毎フレーム自動的に実行される画面のクリアに使う色を変更します。
   
   
-  def min_filter -> Constant
+  def self.min_filter -> Constant
     draw_scaleやdraw_exのscale_x/yキーで縮小する場合に使用されるフィルタを返します。
     @see min_filter=
     @see mag_filter
   
   
-  def min_filter=(filter)
+  def self.min_filter=(filter)
     draw_scaleやdraw_exのscale_x/yキーで縮小する場合に使用されるフィルタを変更します。
     この設定はWindow.scale=には反映されません。
     @param filter Constant 以下のフィルタ定数
@@ -449,18 +449,18 @@ module Window
       TEXF_LINEAR 線形補間フィルタ（デフォルト）
       TEXF_GAUSSIANQUAD 4-サンプルガウスフィルタ
     
-  def mag_filter -> Constant
+  def self.mag_filter -> Constant
     draw_scaleやdraw_exのscale_x/yキーで拡大する場合に使用されるフィルタを返します。
     @see mag_filter=
     @see min_filter
   
   
-  def mag_filter=(filter)
+  def self.mag_filter=(filter)
     draw_scaleやdraw_exのscale_x/yキーで拡大する場合に使用されるフィルタを変更します。
     この設定はWindow.scale=には反映されません。
   
   
-  def resize(width, height)
+  def self.resize(width, height)
     ウィンドウのサイズを変更します。
     このメソッドはウィンドウ生成後でも実行することができます。
     フルスクリーンで実行する場合、
@@ -471,25 +471,25 @@ module Window
     @see get_screen_modes
   
   
-  def active? -> bool
+  def self.active? -> bool
     ウィンドウがアクティブかどうかを返します。
     非アクティブ状態の場合に一時停止するなどの場合に使います。
   
 
-  def running_time -> Float
+  def self.running_time -> Float
     ウィンドウを生成してからの経過時間をミリ秒単位で返します。
     ループ中のどこで何回実行してもそのフレームの開始時点の時間を返します。
 
 
-  def get_screen_modes -> [[width, height, refreshrate], ...]
+  def self.get_screen_modes -> [[width, height, refreshrate], ...]
     フルスクリーン時に使用可能な解像度を返します。
 
 
-  def get_current_modes -> [width, height, refreshrate]
+  def self.get_current_modes -> [width, height, refreshrate]
     現在の解像度を返します。
     
 
-  def discard
+  def self.discard
     Window.draw系メソッドによる描画予約を取り消します。
     詳細は[描画予約と破棄][draw_reservation]を参照してください。
     @note RenderTarget#decideを実行した場合、実行前の描画予約は消去されません。
@@ -497,13 +497,13 @@ module Window
     @see decide
 
 
-  def decide
+  def self.decide
     Window.discard時の取り消しから保護します。
     これを実行しないと描画されないということではありません。 
     詳細は[描画予約と破棄][draw_reservation]を参照してください。
 
 
-  def before_call -> Hash
+  def self.before_call -> Hash
     一括処理用のHashオブジェクトを返します。
     Window.loopの開始時に当該Hashオブジェクトの値に対してcallメソッドを実行するため、毎フレーム呼び出す処理が登録されることを想定しています。
     標準でcallメソッドを持つProc/Methodに限らず、callメソッドが実装されたオブジェクトであれば実行します。
@@ -512,7 +512,7 @@ module Window
     @see after_call
 
 
-  def after_call -> Hash
+  def self.after_call -> Hash
     一括処理用のHashオブジェクトを返します。
     Window.loopの開始時に当該Hashオブジェクトの値に対してcallメソッドを実行するため、毎フレーム呼び出す処理が登録されることを想定しています。
     標準でcallメソッドを持つProc/Methodに限らず、callメソッドが実装されたオブジェクトであれば実行します。
