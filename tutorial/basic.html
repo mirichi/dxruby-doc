@@ -7,7 +7,7 @@
 <title>チュートリアル</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -35,12 +35,12 @@
 <h2>基本の形</h2>
 
 <p>最低限のスクリプトは以下のようになります。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="c1"># ここにゲームの処理を書く</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>dxrubyをrequireして、Window.loopメソッドの中にゲームの処理を書きます。<br>
 Window.loopメソッドは、何も設定しなければ、実行時に640*480のウィンドウを作成し、タイトルを&quot;DXRuby Application&quot;とします。<br>
@@ -59,14 +59,14 @@ Window.loopメソッドは、何も設定しなければ、実行時に640*480�
 <h2>画像の読み込みと描画</h2>
 
 <p>画像の読み込みはImageクラスで行い、描画はWindowモジュールのdrawメソッドを使用します。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="s1">'data.png'</span><span class="p">)</span>  <span class="c1"># data.pngを読み込む</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>  <span class="c1"># data.pngを描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>Imageクラスのloadメソッドは、指定したファイル名の画像を読み込んで、Imageオブジェクトを返します。<br>
 Windowモジュールのdrawメソッドは、指定の位置にImageオブジェクトを描画します。<br>
@@ -83,17 +83,17 @@ Windowモジュールのdrawメソッドは、指定の位置にImageオブジ�
 
 <p>ゲームを作る場合、複数の画像を１つのファイルにまとめることがよくあります。<br>
 そういったファイルを読み込んで、複数のImageオブジェクトを生成するには、Imageクラスのload_tilesメソッドを使います。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">load_tiles</span><span class="p">(</span><span class="s1">'data.png'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># data.pngを読み込んで、横２つ、縦２つに分割する</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
-  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)</span>  <span class="c1"># data.pngの左上を描画する</span>
-  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>  <span class="c1"># data.pngの右上を描画する</span>
-  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">)</span>  <span class="c1"># data.pngの左下を描画する</span>
-  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">)</span>  <span class="c1"># data.pngの右下を描画する</span>
+  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># data.pngの左上を描画する</span>
+  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># data.pngの右上を描画する</span>
+  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># data.pngの左下を描画する</span>
+  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># data.pngの右下を描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>Imageクラスのload_tilesメソッドは、指定した画像ファイルを縦、横に分割し、Imageオブジェクトの配列として返します。<br>
 配列に格納される順番は、左上から右へ、上から下の順番となります。<br>
@@ -107,7 +107,7 @@ Windowモジュールのdrawメソッドは、指定の位置にImageオブジ�
 
 <p>load_tilesメソッドは、全ての画像が同じサイズであることが前提となっています。<br>
 １つのファイルに違うサイズの画像が混在している場合は、sliceメソッドを使って１部分だけ切り出します。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">baseimage</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="s1">'data.png'</span><span class="p">)</span>  <span class="c1"># data.pngを読み込む</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">baseimage</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># data.pngの(0, 0)から20*20pixel分だけ画像を切り出す</span>
@@ -115,7 +115,7 @@ Windowモジュールのdrawメソッドは、指定の位置にImageオブジ�
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>  <span class="c1"># data.pngの左上20pixel正方形を描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>Imageクラスのsliceメソッドは、指定したImageオブジェクトの１部分を切り出し、新たなImageオブジェクトを生成して返します。<br>
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると、以下のようなウィンドウが表示されます。</p>
@@ -128,7 +128,7 @@ Windowモジュールのdrawメソッドは、指定の位置にImageオブジ�
 
 <p>入力の取得はInputモジュールを使います。<br>
 キャラの移動に使うカーソルキーやゲームパッドの十字キーの入力には、Input.x、Input.yを使います。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="s1">'data.png'</span><span class="p">)</span>  <span class="c1"># data.pngを読み込む</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
@@ -140,7 +140,7 @@ Windowモジュールのdrawメソッドは、指定の位置にImageオブジ�
 
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>  <span class="c1"># data.pngを描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>Input.x、Input.yメソッドは、カーソルキーもしくは、１つ目のゲームパッドの十字キーの入力を、それぞれx座標の増分、y座標の増分で返します。<br>
 左・上を押した場合は-1、右・下は1、押していなければ0です。左右同時押し、上下同時押しの場合も0になります。</p>
@@ -163,7 +163,7 @@ DXRubyでは１つ目のゲームパッドとキーボードが連動してい�
 * ZXCと、ボタン０～２</p>
 
 <p>パッドの入力を取得するには、Input.pad_down?／Input.pad_push?メソッドを使います。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="s1">'data.png'</span><span class="p">)</span>  <span class="c1"># data.pngを読み込む</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
@@ -185,7 +185,7 @@ DXRubyでは１つ目のゲームパッドとキーボードが連動してい�
 
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>  <span class="c1"># data.pngを描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>pad_down?メソッドは、ボタンが押されているかどうかを判定し、true/falseを返します。<br>
 pad_push?メソッドは押された瞬間のみtrueになるメソッドです。<br>
@@ -199,7 +199,7 @@ pad_push?メソッドは押された瞬間のみtrueになるメソッドです�
 <h2>マウスの入力</h2>
 
 <p>マウスカーソルの入力はmouse_pos_x／mouse_pos_y、ボタンの状態はmouse_push?／mouse_down?で取得できます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="s1">'data.png'</span><span class="p">)</span>  <span class="c1"># data.pngを読み込む</span>
 
@@ -209,7 +209,7 @@ pad_push?メソッドは押された瞬間のみtrueになるメソッドです�
 
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>  <span class="c1"># data.pngを描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>mouse_pos_x／mouse_pos_yメソッドで取得できる値は画面内の座標と一致します。<br>
 マウスのボタン入力は、パッドの入力と同じような感じでメソッド名と引数が違い、引数はM_LBUTTONが左ボタン、M_RBUTTONが右ボタンとなります。<br>
@@ -224,7 +224,7 @@ pad_push?メソッドは押された瞬間のみtrueになるメソッドです�
 
 <p>キーボードの入力を取得するには、Input.key_down?／Input.key_push?メソッドを使います。<br>
 パッドの入力と同様に、関連付けられているキーはパッドが押されていてもtrueが返ります。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="s1">'data.png'</span><span class="p">)</span>  <span class="c1"># data.pngを読み込む</span>
 
@@ -234,7 +234,7 @@ pad_push?メソッドは押された瞬間のみtrueになるメソッドです�
     <span class="k">break</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>判定できるキーの種類とそれぞれの指定する引数は、リファレンスを参照してください。<br>
 上記スクリプトとDXRubyのsampleディレクトリ下のdata.pngを同じディレクトリに置いて実行すると、<br>
@@ -247,14 +247,14 @@ pad_push?メソッドは押された瞬間のみtrueになるメソッドです�
 <h2>文字の描画</h2>
 
 <p>文字を扱うにはFontクラスを使い、描画はWindowモジュールのdraw_fontメソッドを使用します。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">font</span> <span class="o">=</span> <span class="no">Font</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>  <span class="c1"># 第２引数を省略するとＭＳ Pゴシックになります</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_font</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">"ふぉんと"</span><span class="p">,</span> <span class="n">font</span><span class="p">)</span>  <span class="c1"># "ふぉんと"を描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>Fontクラスはフォントのサイズとフォント名を指定します。<br>
 たとえばＭＳ明朝を扱うなら、Font.newの第２引数に&quot;ＭＳ 明朝&quot;を渡します。マイクロソフトのフォント名はＭＳと明朝が全角、間のスペースは半角です。<br>
@@ -266,15 +266,15 @@ Windowモジュールのdraw_fontメソッドは、指定の位置に指定の�
 
 <p><strong>注</strong> Ruby1.9.1以上を使う場合、先頭行にマジックコメントを挿入してください。<br>
 マジックコメントの例</p>
-<pre class="highlight ruby"><span class="c1"># coding: shift_jis</span>
-</pre>
+<pre class="highlight ruby"><code><span class="c1"># coding: shift_jis</span>
+</code></pre>
 
 <p><a name='AUTOINDEXANCHOR_9'></a></p>
 
 <h2>音を出す</h2>
 
 <p>BGMとしてMIDIを、効果音としてWAVファイルを扱うことができます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">sound</span> <span class="o">=</span> <span class="no">Sound</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"sound.wav"</span><span class="p">)</span>  <span class="c1"># sound.wav読み込み</span>
 <span class="n">bgm</span> <span class="o">=</span> <span class="no">Sound</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"bgm.mid"</span><span class="p">)</span>  <span class="c1"># bgm.mid読み込み</span>
@@ -286,7 +286,7 @@ Windowモジュールのdraw_fontメソッドは、指定の位置に指定の�
     <span class="n">sound</span><span class="p">.</span><span class="nf">play</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>Soundクラスのnewメソッドでファイルを読み込み、playを呼び出します。<br>
 midiはループ再生され、wavは１回で再生が終了します。<br>
@@ -297,6 +297,6 @@ DXRubyには音のファイルは同梱しておりませんので、上記の�
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

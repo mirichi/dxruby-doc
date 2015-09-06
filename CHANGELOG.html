@@ -7,7 +7,7 @@
 <title>更新履歴</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='index.html'>TOPへ戻る</a>
@@ -27,6 +27,21 @@
 <h2>DXRuby</h2>
 
 <ul>
+<li>2015/07/19 1.4.2
+
+<ul>
+<li>内部UTF16化で表示できなかった文字ができるようになりました。</li>
+<li>デフォルトアイコンを設定しました。</li>
+<li>衝突判定配列がネストできるようになりました。</li>
+<li>Window.loopが複数置けるようになりました。Window.loopに引数close_cancelを追加しました。</li>
+<li>Window.created?/closed?/close/ox/oy/ox=/oy=/draw_pixel/draw_box/draw_circle/draw_circle_fill/full_screen=/full_screen?追加。</li>
+<li>既存のメソッドInput.mouse_pos_x/yのalias、Input.mouse_x/yを追加しました。</li>
+<li>Font#name追加。</li>
+<li>Image#change_hlsバグ修正。</li>
+<li>Input.requested_close?追加。</li>
+<li>Sound.load_from_memory、Sound#pan/pan=/frequency/frequency=追加。</li>
+<li>Sprite.checkのコールバックメソッドに引数が無くても動くようにしました。</li>
+</ul></li>
 <li>2014/03/09 1.4.1
 
 <ul>
@@ -303,6 +318,6 @@
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

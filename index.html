@@ -4,25 +4,23 @@
 <meta charset="UTF-8">
 <link rel='stylesheet' type='text/css' href='dxruby-code-highlight.css' />
 <link rel='stylesheet' type='text/css' href='dxruby.css' />
-<title>DXRuby 1.4.1 リファレンスマニュアル</title>
+<title>DXRuby 1.4.2 リファレンスマニュアル</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 
-<h1>DXRuby 1.4.1 リファレンスマニュアル</h1>
+<h1>DXRuby 1.4.2 リファレンスマニュアル</h1>
 
 <h2>目次</h2>
 
 <ol>
-<li><a href="#AUTOINDEXANCHOR_0">はじめに</a>
-
-<ol>
-<li><a href="#AUTOINDEXANCHOR_1">DXRubyの特徴</a></li>
-<li><a href="#AUTOINDEXANCHOR_2">インストール方法</a></li>
-<li><a href="#AUTOINDEXANCHOR_3">ライセンス</a></li>
-</ol></li>
+<li><a href="#AUTOINDEXANCHOR_0">はじめに</a></li>
+<li><a href="#AUTOINDEXANCHOR_1">マニュアル</a></li>
+<li><a href="#AUTOINDEXANCHOR_2">DXRubyの特徴</a></li>
+<li><a href="#AUTOINDEXANCHOR_3">インストール方法</a></li>
+<li><a href="#AUTOINDEXANCHOR_4">ライセンス</a></li>
 </ol>
 
 <hr>
@@ -34,11 +32,11 @@
 <p>DXRubyは、オブジェクト指向スクリプト言語RubyからDirectXを扱う為の拡張ライブラリです。<br>
 Rubyを使ってWindows用2Dアクションゲームなどを作ることができます。<br>
 このヘルプファイルはDXRubyのリファレンスマニュアルとなっております。<br>
-更なる情報をお求めの方はSourceForge.jpのプロジェクトWikiを参照してください。</p>
+更なる情報をお求めの方はosdn.jpのプロジェクトWikiを参照してください。</p>
 
 <ul>
 <li>プロジェクトWiki<br>
-<a href="http://dxruby.sourceforge.jp/cgi-bin/hiki.cgi">http://dxruby.sourceforge.jp/cgi-bin/hiki.cgi</a></li>
+<a href="http://dxruby.osdn.jp/cgi-bin/hiki.cgi">http://dxruby.osdn.jp/cgi-bin/hiki.cgi</a></li>
 </ul>
 
 <p>また、プロジェクトWebにはOggVorbis再生ライブラリVoxをRubyから使うラッパvox.rb、<br>
@@ -47,8 +45,15 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 未完成な部分もありますが、用途に合わせてお使いください。</p>
 
 <ul>
-<li><p>プロジェクトWeb<br>
-<a href="http://dxruby.sourceforge.jp/">http://dxruby.sourceforge.jp/</a></p></li>
+<li>プロジェクトWeb
+<a href="http://dxruby.osdn.jp/">http://dxruby.osdn.jp/</a></li>
+</ul>
+
+<p><a name='AUTOINDEXANCHOR_1'></a></p>
+
+<h2>マニュアル</h2>
+
+<ul>
 <li><p>チュートリアル</p>
 
 <ul>
@@ -57,9 +62,10 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 <li><a href="tutorial/sprite.html">応用/Sprite</a></li>
 <li><a href="tutorial/shader.html">応用/Shader</a></li>
 </ul></li>
-<li><p><a href="api/index.html">APIリファレンス</a></p>
+<li><p>リファレンス</p>
 
 <ul>
+<li><a href="api/index.html">APIリファレンス</a></li>
 <li><a href="api/constant_keycode.html">キーコード定数</a></li>
 <li><a href="api/constant_color.html">色定数</a></li>
 </ul></li>
@@ -69,19 +75,18 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 <li><a href="tips/zindex.html">描画順序</a></li>
 <li><a href="tips/draw_effects.html">画像効果</a></li>
 <li><a href="tips/draw_reservation.html">描画予約と破棄</a></li>
-<li><a href="tips/encoding.html">文字コード</a></li>
+<li><a href="tips/encoding.html">エンコーディング</a></li>
 <li><a href="tips/release_resources.html">リソースの解放</a></li>
 <li><a href="tips/cancel_window_closing.html">&#39;ウィンドウを閉じる&#39;のキャンセル</a></li>
-<li><a href="tips/exerb.html">Exerbによるexe化 ※Ruby1.8専用</a></li>
-<li><a href="tips/ocra.html">ocraによるexe化 ※Ruby1.9以降</a></li>
+<li><a href="tips/ocra.html">ocraによるexe化</a></li>
 <li><a href="tips/dxruby_extension.html">DXRubyExtension</a></li>
 </ul></li>
 <li><p><a href="CHANGELOG.html">更新履歴</a></p></li>
 </ul>
 
-<p><a name='AUTOINDEXANCHOR_1'></a></p>
+<p><a name='AUTOINDEXANCHOR_2'></a></p>
 
-<h3>DXRubyの特徴</h3>
+<h2>DXRubyの特徴</h2>
 
 <p>DXRubyは以下のような特徴を持つライブラリです。</p>
 
@@ -89,7 +94,7 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 <li>RubyからDirectXを自然に扱える、Rubyと親和性の高い設計がされています。</li>
 <li>初心者でも簡単に使えるよう、非常にシンプルなAPI構成になっています。</li>
 <li>描画が速いので、遅いといわれるRubyでも普通にゲームが作れるぐらいの実行速度が出ます。</li>
-<li>Ruby1.8系/1.9系/2.0系に対応しています。自分でコンパイルできれば2.1でも動きます。</li>
+<li>Ruby2.0系/2.1系/2.2系に対応しています。自分でコンパイルできればそれ以降でも動くと思います。</li>
 <li>配布しやすいよう、コンパクトな拡張ライブラリとなっています。</li>
 </ul>
 
@@ -99,7 +104,6 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 <li>DirectXを扱うのでWindows専用となります。</li>
 <li>2Dゲーム専用です。</li>
 <li>複雑なことを行うAPIは提供していません。</li>
-<li>Ruby1.8をお使いの場合、文字コードはShiftJISにのみ対応します。</li>
 </ul>
 
 <p>DXRubyが提供する機能は大まかに以下のものです。</p>
@@ -121,7 +125,7 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 <li>Ruby本体
 
 <ul>
-<li>mswin32もしくはmingw32のRuby1.8系、Ruby1.9.1系、Ruby2.0系。</li>
+<li>mswin32もしくはmingw32のRuby2.0系、Ruby2.1系、Ruby2.2系。</li>
 <li>ActiveScriptRuby同梱版など、mswin32/mingw32以外でもそれ用にコンパイルされていれば動作します。</li>
 <li>64bit版では動作しません。</li>
 </ul></li>
@@ -137,9 +141,9 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 </ul></li>
 </ul>
 
-<p><a name='AUTOINDEXANCHOR_2'></a></p>
+<p><a name='AUTOINDEXANCHOR_3'></a></p>
 
-<h3>インストール方法</h3>
+<h2>インストール方法</h2>
 
 <p><strong>注意</strong><br>
 arton氏作のActiveScriptRubyは、コンパイラのバージョンが違うためSourceForge.jpからダウンロードしてインストールしても動作しません。<br>
@@ -148,9 +152,9 @@ ActiveScriptRuby同梱のバージョンをお使いください。<br>
 dxruby.soとdxrubyex.so、install.rbが同じディレクトリにある状態で、install.rbを実行してください。<br>
 install.rbを実行したら、sampleディレクトリ以下のファイルを実行してみて、きちんと動作すればインストール成功です。</p>
 
-<p><a name='AUTOINDEXANCHOR_3'></a></p>
+<p><a name='AUTOINDEXANCHOR_4'></a></p>
 
-<h3>ライセンス</h3>
+<h2>ライセンス</h2>
 
 <p>DXRuby本体は1.2.0安定版から、DXRubyExtensionは1.0.3からzlib/libpngライセンスを採用しています。</p>
 
@@ -176,6 +180,7 @@ install.rbを実行したら、sampleディレクトリ以下のファイルを�
 <ul>
 <li><a href="http://kantan-net.main.jp/worldmap/">かんたんネットさま</a></li>
 </ul></li>
+<li><p>デフォルトアイコンは鳴海つかささま。</p></li>
 <li><p>それ以外の絵は水視アズマさま(GPL)。</p></li>
 </ul>
 
@@ -191,7 +196,7 @@ install.rbを実行したら、sampleディレクトリ以下のファイルを�
 使うだけでは著作権表示がいらないぶん、1.0.9以前で採用していたMITライセンスよりももうちょっとゆるくなっています。<br>
 また、著作権表示は以下のものです。<br>
 これそのものがzlib/libpngライセンス自体の原文で、上記のようなことが書いてあります。</p>
-<pre class="highlight plaintext">The zlib/libpng License
+<pre class="highlight plaintext"><code>The zlib/libpng License
 Copyright (c) &lt;2012&gt; &lt;DXRubyDevelopers&gt;
 
 This software is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
@@ -203,12 +208,12 @@ Permission is granted to anyone to use this software for any purpose, including 
 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 
 3. This notice may not be removed or altered from any source distribution.
-</pre>
+</code></pre>
 
 
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

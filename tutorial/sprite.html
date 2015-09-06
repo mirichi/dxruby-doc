@@ -7,7 +7,7 @@
 <title>Spriteを使うためのチュートリアル</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -54,14 +54,14 @@
 <p><a name='AUTOINDEXANCHOR_1'></a></p>
 
 <h3>最も基本的な使い方</h3>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">))</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="n">s</span><span class="p">.</span><span class="nf">draw</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>こんな感じでしょうか。<br>
 Sprite.newの引数はx座標、y座標、画像データで、画像データはImage.newして直接渡しています。<br>
@@ -70,7 +70,7 @@ Sprite.newの引数はx座標、y座標、画像データで、画像データ�
 <p><a name='AUTOINDEXANCHOR_2'></a></p>
 
 <h3>絵を動かす</h3>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">))</span>
 
@@ -78,12 +78,12 @@ Sprite.newの引数はx座標、y座標、画像データで、画像データ�
   <span class="n">s</span><span class="p">.</span><span class="nf">x</span> <span class="o">+=</span> <span class="mi">1</span>
   <span class="n">s</span><span class="p">.</span><span class="nf">draw</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>ベタですが、このようにするとSpriteオブジェクトのx座標を1ずつ増やしていくことができます。<br>
 同様にy座標も変更することができます。<br>
 Spriteオブジェクトごとに別々に座標を持っているので、例えば以下のようにすると2つのキャラを別々に動かすことができます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">)</span>
 <span class="n">s1</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
@@ -96,14 +96,14 @@ Spriteオブジェクトごとに別々に座標を持っているので、例�
   <span class="n">s2</span><span class="p">.</span><span class="nf">y</span> <span class="o">+=</span> <span class="mi">1</span>
   <span class="n">s2</span><span class="p">.</span><span class="nf">draw</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><a name='AUTOINDEXANCHOR_3'></a></p>
 
 <h3>回転など</h3>
 
 <p>Window.draw_exの持つエフェクト機能はすべて同じ名前の代入/参照メソッドを持っていて、同様の指定方法で設定することができます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">))</span>
 
@@ -112,7 +112,7 @@ Spriteオブジェクトごとに別々に座標を持っているので、例�
   <span class="n">s</span><span class="p">.</span><span class="nf">alpha</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">alpha</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">?</span> <span class="mi">255</span> <span class="p">:</span> <span class="n">s</span><span class="p">.</span><span class="nf">alpha</span> <span class="o">-</span> <span class="mi">5</span>
   <span class="n">s</span><span class="p">.</span><span class="nf">draw</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <hr>
 
@@ -125,7 +125,7 @@ Spriteオブジェクトごとに別々に座標を持っているので、例�
 initializeで初期値を設定し、updateで移動などをさせます。<br>
 updateはSpriteクラスに定義されてはいますが、中身はからっぽです。<br>
 継承したクラスで上書きして使います。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="k">class</span> <span class="nc">MySprite</span> <span class="o">&lt;</span> <span class="no">Sprite</span>
   <span class="vc">@@image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">)</span>
@@ -148,7 +148,7 @@ updateはSpriteクラスに定義されてはいますが、中身はからっ�
   <span class="n">s</span><span class="p">.</span><span class="nf">update</span>
   <span class="n">s</span><span class="p">.</span><span class="nf">draw</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>メソッドを呼び出すときはself.xのようにselfをつけて呼び出すようにすると、無駄にバグを作りこむことがなくなりますのでオススメです。<br>
 また複数オブジェクトを生成して画像を共有する場合は、クラス変数にImageオブジェクトを入れておくようにするとクラス定義時に1回だけ生成されるようになりますので、速度的に有利です。<br>
@@ -159,7 +159,7 @@ initializeでImage.new/loadするとSpriteオブジェクトを作るたびに�
 <h3>クラスメソッドを使う</h3>
 
 <p>Sprite.update、Sprite.drawを使うと複数のオブジェクトを配列に入れてまとめて管理することができます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="k">class</span> <span class="nc">MySprite1</span> <span class="o">&lt;</span> <span class="no">Sprite</span>
   <span class="vc">@@image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">)</span>
@@ -191,13 +191,13 @@ initializeでImage.new/loadするとSpriteオブジェクトを作るたびに�
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">s</span> <span class="o">=</span> <span class="o">[</span><span class="no">MySprite1</span><span class="p">.</span><span class="nf">new</span><span class="p">,</span> <span class="no">MySprite2</span><span class="p">.</span><span class="nf">new</span><span class="o">]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="no">MySprite1</span><span class="p">.</span><span class="nf">new</span><span class="p">,</span> <span class="no">MySprite2</span><span class="p">.</span><span class="nf">new</span><span class="p">]</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><a name='AUTOINDEXANCHOR_6'></a></p>
 
@@ -206,7 +206,7 @@ initializeでImage.new/loadするとSpriteオブジェクトを作るたびに�
 <p>Sprite.update、Sprite.drawはSpriteオブジェクト以外のオブジェクトが配列に入っていても、updateやdrawを呼び出そうと試みます。<br>
 無くてもエラーにはならず呼ばれないだけです。<br>
 したがって自作クラスのupdate/drawの定義されたオブジェクトを配列に入れておけば、Sprite以外のオブジェクトも同様に動作させることができます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="k">class</span> <span class="nc">MySprite1</span> <span class="o">&lt;</span> <span class="no">Sprite</span>
   <span class="vc">@@image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">)</span>
@@ -239,13 +239,13 @@ initializeでImage.new/loadするとSpriteオブジェクトを作るたびに�
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">s</span> <span class="o">=</span> <span class="o">[</span><span class="no">MySprite1</span><span class="p">.</span><span class="nf">new</span><span class="p">,</span> <span class="no">Count</span><span class="p">.</span><span class="nf">new</span><span class="o">]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="no">MySprite1</span><span class="p">.</span><span class="nf">new</span><span class="p">,</span> <span class="no">Count</span><span class="p">.</span><span class="nf">new</span><span class="p">]</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>これで何ができるのかと言うと、例えばゲームの進行を制御するオブジェクトなどを一緒に配列に入れておいて動かすとか、背景やスコアなどの描画も同様に扱ってしまうとか、そういったSpriteを継承するのが変な場合などに使えます。<br>
 もちろん使わなくてもゲームは作れます。</p>
@@ -260,7 +260,7 @@ trueになったオブジェクトはSprite#drawを呼び出しても描画さ�
 また、Sprite.cleanメソッドで配列から削除することができます。</p>
 
 <p>Sprite.cleanを毎フレーム呼び出すようにしておいて、画面から外に出たとか、キャラが破壊されて消えるときとか、なんらかの条件でキャラを消す場合にSprite#vanishを呼び出すようにすればSprite.cleanで配列から削除されますので、キャラのオブジェクトの管理が自然にできます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="k">class</span> <span class="nc">MySprite1</span> <span class="o">&lt;</span> <span class="no">Sprite</span>
   <span class="vc">@@image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">)</span>
@@ -278,7 +278,7 @@ trueになったオブジェクトはSprite#drawを呼び出しても描画さ�
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">s</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">count</span> <span class="o">=</span> <span class="mi">20</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
@@ -292,7 +292,7 @@ trueになったオブジェクトはSprite#drawを呼び出しても描画さ�
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">clean</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><a name='AUTOINDEXANCHOR_8'></a></p>
 
@@ -318,7 +318,7 @@ Sprite#collision=で設定していないと画像データサイズの矩形で
 今回はSprite.check/Sprite#check/Sprite#===の使い分けに焦点を当てて解説します。</p>
 
 <p>最も簡単なのはSprite#===を使う方法です。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
@@ -335,15 +335,15 @@ Sprite#collision=で設定していないと画像データサイズの矩形で
     <span class="no">Window</span><span class="p">.</span><span class="nf">draw_font</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"hit!"</span><span class="p">,</span> <span class="n">font</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>Sprite#===は衝突していたらtrueを返すメソッドなので、このような形に書くことができます。<br>
 また、===の右側にはSpriteオブジェクトの配列を指定することもでき、どれか1つに当たっていたらtrueが返ります。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
-<span class="n">s</span> <span class="o">=</span> <span class="o">[</span><span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_RED</span><span class="p">)),</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_RED</span><span class="p">)),</span>
      <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_GREEN</span><span class="p">)),</span>
-     <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_BLUE</span><span class="p">))</span><span class="o">]</span>
+     <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_BLUE</span><span class="p">))]</span>
 <span class="n">m</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">))</span>
 <span class="n">font</span> <span class="o">=</span> <span class="no">Font</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
 
@@ -357,10 +357,10 @@ Sprite#collision=で設定していないと画像データサイズの矩形で
     <span class="no">Window</span><span class="p">.</span><span class="nf">draw_font</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"hit!"</span><span class="p">,</span> <span class="n">font</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>Sprite#===はRubyのcase～whenでの比較に使われるメソッドなので、case～whenで比較することもできます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">s1</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_RED</span><span class="p">))</span>
 <span class="n">s2</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_GREEN</span><span class="p">))</span>
@@ -385,7 +385,7 @@ Sprite#collision=で設定していないと画像データサイズの矩形で
       <span class="no">Window</span><span class="p">.</span><span class="nf">draw_font</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"blue hit!"</span><span class="p">,</span> <span class="n">font</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><a name='AUTOINDEXANCHOR_11'></a></p>
 
@@ -394,12 +394,12 @@ Sprite#collision=で設定していないと画像データサイズの矩形で
 <p>Sprite#===で配列を対象に判定した場合、true/falseが返るだけでどれが衝突しているのかを知ることはできません。<br>
 衝突したオブジェクトを取得したい場合はSprite#checkを使います。<br>
 Sprite#checkはあるSpriteオブジェクトと衝突しているオブジェクトの配列を返すメソッドです。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_WHITE</span><span class="p">)</span>
 <span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="no">C_RED</span><span class="p">)</span>
 
-<span class="n">s</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">do</span>
+<span class="n">s</span> <span class="o">=</span> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">do</span>
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nb">rand</span> <span class="o">*</span> <span class="mi">600</span><span class="p">,</span> <span class="nb">rand</span> <span class="o">*</span> <span class="mi">440</span><span class="p">,</span> <span class="n">image1</span><span class="p">)</span>
 <span class="k">end</span>
 
@@ -415,21 +415,21 @@ Sprite#checkはあるSpriteオブジェクトと衝突しているオブジェ�
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
   <span class="n">m</span><span class="p">.</span><span class="nf">draw</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><a name='AUTOINDEXANCHOR_12'></a></p>
 
 <h3>衝突コールバック機能</h3>
 
 <p>Sprite.checkは引数に2つのオブジェクト(どちらも配列指定可)のすべての組み合わせを判定し、衝突しているオブジェクトのメソッドを呼び出します。</p>
-<pre class="highlight ruby"><span class="no">Sprite</span><span class="p">.</span><span class="nf">check</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">shot</span><span class="o">=</span><span class="ss">:shot</span><span class="p">,</span> <span class="n">hit</span><span class="o">=</span><span class="ss">:hit</span><span class="p">)</span>
-</pre>
+<pre class="highlight ruby"><code><span class="no">Sprite</span><span class="p">.</span><span class="nf">check</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">shot</span><span class="o">=</span><span class="ss">:shot</span><span class="p">,</span> <span class="n">hit</span><span class="o">=</span><span class="ss">:hit</span><span class="p">)</span>
+</code></pre>
 
 <p>oとdがそれぞれ攻撃側と防御側というイメージで、衝突している組み合わせのo側のオブジェクトのshotメソッドと、d側のオブジェクトのhitメソッドが呼ばれます。<br>
 3つ目と4つ目の引数でそれぞれメソッド名を変更することができます。<br>
 shot/hitメソッドはそれぞれ衝突相手のオブジェクトを引数に渡してきますので、例えば衝突相手の攻撃力を取得するとかの場合に活用できます。<br>
 受け取る必要はありますが、使い道が無ければ無理に使う必要はありません。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="k">class</span> <span class="nc">Box</span> <span class="o">&lt;</span> <span class="no">Sprite</span>
   <span class="vc">@@image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="no">C_RED</span><span class="p">)</span>
@@ -449,7 +449,7 @@ shot/hitメソッドはそれぞれ衝突相手のオブジェクトを引数に
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">s</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">m</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="no">C_WHITE</span><span class="p">))</span>
 <span class="n">count</span> <span class="o">=</span> <span class="mi">50</span>
 
@@ -468,7 +468,7 @@ shot/hitメソッドはそれぞれ衝突相手のオブジェクトを引数に
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
   <span class="n">m</span><span class="p">.</span><span class="nf">draw</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><a name='AUTOINDEXANCHOR_13'></a></p>
 
@@ -476,10 +476,10 @@ shot/hitメソッドはそれぞれ衝突相手のオブジェクトを引数に
 
 <p>画面内に描画されるすべての物体を相互に衝突判定したい時は、Sprite.checkのoだけを設定するか、oとdに同じ配列を指定します。<br>
 衝突していたらそれぞれのhitメソッドが呼び出されます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="k">class</span> <span class="nc">Toufu</span> <span class="o">&lt;</span> <span class="no">Sprite</span>
-  <span class="vc">@@image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="o">[</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="o">]</span><span class="p">)</span>
+  <span class="vc">@@image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,[</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">150</span><span class="p">])</span>
 
   <span class="k">def</span> <span class="nf">initialize</span>
     <span class="k">super</span>
@@ -506,7 +506,7 @@ shot/hitメソッドはそれぞれ衝突相手のオブジェクトを引数に
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">s</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span> <span class="no">Toufu</span><span class="p">.</span><span class="nf">new</span> <span class="p">}</span>
+<span class="n">s</span> <span class="o">=</span> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span> <span class="no">Toufu</span><span class="p">.</span><span class="nf">new</span> <span class="p">}</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Sprite</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -515,7 +515,7 @@ shot/hitメソッドはそれぞれ衝突相手のオブジェクトを引数に
 
   <span class="k">break</span> <span class="k">if</span> <span class="no">Input</span><span class="p">.</span><span class="nf">keyPush?</span><span class="p">(</span><span class="no">K_ESCAPE</span><span class="p">)</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><a name='AUTOINDEXANCHOR_14'></a></p>
 
@@ -529,6 +529,6 @@ shot/hitメソッドはそれぞれ衝突相手のオブジェクトを引数に
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <title>DXRuby Sprite.check</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <div class="box">
 
@@ -16,7 +16,7 @@
 <h1>Sprite.check(o, d, shot=:shot, hit=:hit)</h1>
 
 <h2>Description</h2>
-<p>衝突判定を行います。<br />判定範囲はSprite#collision=による指定、それが無い場合はSprite#image=で設定された画像サイズの矩形でなされます。<br />どちらも指定されていないと例外が生じます。<br />衝突が検出された場合、o側のSpriteオブジェクトのshotメソッド、d側のhitメソッドが順に呼ばれます。<br />衝突判定範囲にはSpriteオブジェクトのangle/scale_x/scale_y/center_x/center_yが反映されます。<br />Sprite#collision_sync=falseで反映されなくなります。<br />shot/hitメソッドの戻り値としてシンボルの:discardを返すと、そのcheck呼び出し内のそれ以後はオブジェクトのshot/hitが呼ばれなくなります。<br />衝突相手のshot/hitも呼ばれません。<br />どれかひとつでも衝突していればtrue、どれも衝突していなければfalseを返します。</p>
+<p>衝突判定を行います。<br />判定範囲はSprite#collision=による指定、それが無い場合はSprite#image=で設定された画像サイズの矩形でなされます。どちらも指定されていないと衝突判定されません。<br />衝突が検出された場合、o側のSpriteオブジェクトのshotメソッド、d側のhitメソッドが順に呼ばれます。それぞれ、引数には衝突相手のオブジェクトが渡されます。<br />衝突判定範囲にはSpriteオブジェクトのangle/scale_x/scale_y/center_x/center_yが反映されます。Sprite#collision_sync=falseで反映されなくなります。<br />shot/hitメソッドの戻り値としてシンボルの:discardを返すと、そのcheck呼び出し内のそれ以後はオブジェクトの衝突判定がされなくなります。<br />Sprite#collision_enable=falseで衝突判定されなくなります。Sprite#visible=falseでもSprite#collision_enable=trueなら衝突判定されます。<br />どれかひとつでも衝突していればtrue、どれも衝突していなければfalseを返します。</p>
 <h2>Parameters</h2><dl><dt><code>o <span class="type">Sprite|Array</span></code></dt>
 <dd>SpriteオブジェクトもしくはSpriteオブジェクトの配列。<br />配列内にSprite以外のオブジェクトがあった場合、無視されます。</dd>
 
@@ -58,6 +58,6 @@
 
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

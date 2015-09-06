@@ -4,47 +4,41 @@
 <meta charset="UTF-8">
 <link rel='stylesheet' type='text/css' href='../dxruby-code-highlight.css' />
 <link rel='stylesheet' type='text/css' href='../dxruby.css' />
-<title>文字コードについて</title>
+<title>エンコーディングについて</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
-<h1>文字コードについて</h1>
-
-<p>Windowsは各国語版が存在し、それぞれデフォルトキャラセットというのが存在しています。<br>
-以下の説明は日本語版用のものですが、他国語版でもShiftJISをそれぞれのデフォルトキャラセットに読み替えていただければそのまま通じるはずです。</p>
+<h1>エンコーディングについて</h1>
 
 <h2>目次</h2>
 
 <ol>
-<li><a href="#AUTOINDEXANCHOR_0">Ruby1.8系</a></li>
-<li><a href="#AUTOINDEXANCHOR_1">Ruby1.9系以降</a></li>
+<li><a href="#AUTOINDEXANCHOR_0">文字列について</a></li>
+<li><a href="#AUTOINDEXANCHOR_1">エラーメッセージについて</a></li>
 </ol>
 
 <hr>
 
 <p><a name='AUTOINDEXANCHOR_0'></a></p>
 
-<h2>Ruby1.8系</h2>
+<h2>文字列について</h2>
 
-<p>ShiftJIS固定となります。DXRubyのAPIに渡す文字列も、返ってくる文字列も、すべてShiftJISとなります。<br>
-他のエンコーディングを使いたい場合は自分で変換してください。</p>
+<p>RubyではStringオブジェクトがエンコーディングを保持しており、DXRubyは内部でそれをUTF-16に変換してWindowsに渡します。従って、何かしらのエンコーディング情報が付与されていればエンコーディングは何でも問題なく使えます。ただし、エンコーディング情報が無い場合はWindowsのデフォルトエンコーディング(日本語版だとShift_JIS)と仮定されます。<br>
+DXRubyが返す文字列はEncoding.default_internalに設定されたエンコーディングに変換されます。</p>
 
 <p><a name='AUTOINDEXANCHOR_1'></a></p>
 
-<h2>Ruby1.9系以降</h2>
+<h2>エラーメッセージについて</h2>
 
-<p>DXRubyのAPIは内部でShiftJISを想定していますが、Ruby1.9以降のStringオブジェクトはそれ自身がエンコーディングを保持していますので、自動的にShiftJISに変換されます。<br>
-従って、DXRubyのAPIに渡す文字列はASCII-8BIT以外なら何でも構いません。ASCII-８BITエンコーディングの文字列はShiftJISだと仮定されます。<br>
-また、DXRubyのAPIから返ってくる文字列についてはShiftJISで返ってきますが、Encoding.default_internalに設定されたエンコーディングに変換されます。<br>
-nilが設定されていた(起動時のEオプション無し、Encoding.default_internal設定無しの)場合はShiftJISのままとなります。</p>
+<p>現状Shift_JIS固定で日本語文字列となっています。今後どうにかするように考えてはいます。</p>
 
 <a href='../index.html'>TOPへ戻る</a>
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

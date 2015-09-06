@@ -7,43 +7,37 @@
 <title>'ウィンドウを閉じる'のキャンセル</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
 <h1>&#39;ウィンドウを閉じる&#39;のキャンセル</h1>
 
-<p>DXRuby1.0.7からInput.updateの戻り値が、ユーザーが閉じる操作（右上のｘボタンを押す、ALT+F4を押す)をした瞬間のみtrueになるように、また、ウィンドウのクローズは自動的にキャンセルされるように変更されました。<br>
-これにより、ユーザーに本当に閉じるのかを確認することができます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<p>DXRuby1.4.2からWindow.loopの引数にclose_cancel(初期値false)が追加され、trueを指定するとユーザの閉じる操作で閉じられなくできるようになりました。<br>
+この機能とInput.requested_close?を使うと閉じる操作の確認を以前より簡単に実現することができます。</p>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
-<span class="n">font</span> <span class="o">=</span> <span class="no">Font</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
-<span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="o">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="o">]</span><span class="p">)</span>
-<span class="n">flag</span> <span class="o">=</span> <span class="kp">false</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="no">Window</span><span class="p">.</span><span class="nf">create</span>
-<span class="kp">loop</span> <span class="k">do</span>
-  <span class="n">flag</span> <span class="o">=</span> <span class="kp">true</span> <span class="k">if</span> <span class="no">Input</span><span class="p">.</span><span class="nf">update</span>
-  <span class="k">if</span> <span class="n">flag</span>
-    <span class="no">Window</span><span class="p">.</span><span class="nf">draw_font</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">'とじますか(y/n)'</span><span class="p">,</span><span class="n">font</span><span class="p">)</span>
-    <span class="k">break</span> <span class="k">if</span> <span class="no">Input</span><span class="p">.</span><span class="nf">key_down?</span><span class="p">(</span><span class="no">K_Y</span><span class="p">)</span>
-    <span class="n">flag</span> <span class="o">=</span> <span class="kp">false</span> <span class="k">if</span> <span class="no">Input</span><span class="p">.</span><span class="nf">key_down?</span><span class="p">(</span><span class="no">K_N</span><span class="p">)</span>
-  <span class="k">else</span>
-    <span class="n">x</span> <span class="o">+=</span> <span class="no">Input</span><span class="p">.</span><span class="nf">x</span>
+<span class="n">flg</span> <span class="o">=</span> <span class="kp">false</span>
+<span class="no">Window</span><span class="p">.</span><span class="nf">loop</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
+  <span class="k">if</span> <span class="no">Input</span><span class="p">.</span><span class="nf">requested_close?</span>
+    <span class="n">flg</span> <span class="o">=</span> <span class="kp">true</span>
   <span class="k">end</span>
 
-  <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">image</span><span class="p">)</span>
-
-  <span class="no">Window</span><span class="p">.</span><span class="nf">sync</span>
-  <span class="no">Window</span><span class="p">.</span><span class="nf">update</span>
+  <span class="k">if</span> <span class="n">flg</span>
+    <span class="no">Window</span><span class="p">.</span><span class="nf">draw_font</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"閉じる？(y/n)"</span><span class="p">,</span> <span class="no">Font</span><span class="p">.</span><span class="nf">default</span><span class="p">)</span>
+    <span class="k">if</span> <span class="no">Input</span><span class="p">.</span><span class="nf">key_push?</span><span class="p">(</span><span class="no">K_Y</span><span class="p">)</span>
+      <span class="no">Window</span><span class="p">.</span><span class="nf">close</span>
+    <span class="k">elsif</span> <span class="no">Input</span><span class="p">.</span><span class="nf">key_push?</span><span class="p">(</span><span class="no">K_N</span><span class="p">)</span>
+      <span class="n">flg</span> <span class="o">=</span> <span class="kp">false</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <a href='../index.html'>TOPへ戻る</a>
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <title>DXRubyExtension</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -41,8 +41,8 @@ requrieする前に$dxrubyex_no_include = trueと書くとインクルードさ�
 <p><a name='AUTOINDEXANCHOR_1'></a></p>
 
 <h2>Collisionモジュール</h2>
-<pre class="highlight plaintext">Collision.check(o, d)
-</pre>
+<pre class="highlight plaintext"><code>Collision.check(o, d)
+</code></pre>
 
 <p>oとdはそれぞれ、CollisionXxxクラスのオブジェクト（以後、判定範囲オブジェクト）、もしくは判定範囲オブジェクトを格納した配列を指定してください。<br>
 衝突していたら、oの配列の衝突通知先オブジェクトのshotメソッドが、dの側はhitメソッドがそれぞれ、衝突相手のオブジェクトを引数にして呼ばれます。<br>
@@ -57,46 +57,46 @@ oとdに同じ配列を指定すると、それぞれ1回ずつの比較がさ�
 
 <p>CollisionBox（矩形範囲）、CollisionCircle（円判定）、CollisionTriangle（三角形判定）、CollisionPoint（点判定）の4種類のクラスがあります。<br>
 サポートする全てのクラス同士の判定が可能です。</p>
-<pre class="highlight plaintext">CollisionBox.new(self, x1, y1, x2, y2)
+<pre class="highlight plaintext"><code>CollisionBox.new(self, x1, y1, x2, y2)
 CollisionCircle.new(self, x1, y1, r)
 CollisionTriangle.new(self, x1, y1, x2, y2, x3, y3)
 CollisionPoint.new(self)
-</pre>
+</code></pre>
 
 <p>当たったとみなされる判定範囲（キャラの絵の座標を原点とするそれぞれの形状）を指定します。<br>
 selfは衝突通知先オブジェクトを指定してください。nilを指定すると衝突通知は行われません。<br>
 矩形は左上と右下、円は中心と半径、三角は3点の座標、点は原点のみが判定範囲になります。<br>
 Triangleを応用すると、たとえば3点のうち2点を同じ座標にすると線分、Triangleを2つ使うと自由な形状の四角形など、様々な形状の判定が実現できます。</p>
-<pre class="highlight plaintext">CollisionBox#set(x, y)
+<pre class="highlight plaintext"><code>CollisionBox#set(x, y)
 CollisionCircle#set(x, y)
 CollisionTriangle#set(x, y)
 CollisionPoint#set(x, y)
-</pre>
+</code></pre>
 
 <p>キャラの座標を設定します。<br>
 この座標に対して、newもしくはsetRangeで指定した座標範囲を適用し、衝突判定されます。<br>
 new時に範囲を指定しておけば、あとはsetで移動させるだけですむようになっています。</p>
-<pre class="highlight plaintext">CollisionBox#setRange(x1, y1, x2, y2)
+<pre class="highlight plaintext"><code>CollisionBox#setRange(x1, y1, x2, y2)
 CollisionCircle#setRange(r)
 CollisionTriangle#setRange(x1, y1, x2, y2, x3, y3)
-</pre>
+</code></pre>
 
 <p>キャラの衝突判定の範囲を変更します。<br>
 通常はnewした時の判定範囲をそのまま継続しますが、アニメーションごとに判定範囲が変わる場合などはこれを使用します。</p>
-<pre class="highlight plaintext">CollisionBox#delete
+<pre class="highlight plaintext"><code>CollisionBox#delete
 CollisionCircle#delete
 CollisionTriangle#delete
 CollisionPoint#delete
-</pre>
+</code></pre>
 
 <p>判定範囲オブジェクトを無効にします。<br>
 内部フラグをセットするだけで、オブジェクトが消えるわけではありません。<br>
 判定中のshot、hitメソッドでは判定配列からオブジェクトを消さないでください。</p>
-<pre class="highlight plaintext">CollisionBox#getHitRange
+<pre class="highlight plaintext"><code>CollisionBox#getHitRange
 CollisionCircle#getHitRange
 CollisionTriangle#getHitRange
 CollisionPoint#getHitRange
-</pre>
+</code></pre>
 
 <p>当たり判定範囲の画面座標を取得します。<br>
 Boxは[x1, y1, x2, y2]、<br>
@@ -104,11 +104,11 @@ Circleは[x, y, r]、<br>
 Triangleは[x1, y1, x2, y2, x3, y3]、<br>
 Pointは[x, y]、<br>
 と、配列で取得できます。</p>
-<pre class="highlight plaintext">CollisionBox#notifyObject
+<pre class="highlight plaintext"><code>CollisionBox#notifyObject
 CollisionCircle#notifyObject
 CollisionTriangle#notifyObject
 CollisionPoint#notifyObject
-</pre>
+</code></pre>
 
 <p>new時に指定した通知先オブジェクトを返します。 </p>
 
@@ -118,13 +118,13 @@ CollisionPoint#notifyObject
 
 <p>Arrayクラスにincludeして使います。<br>
 単純にメソッドを１個呼ぶだけの使い方をする場合に、eachよりも速いhs_eachと、同様にhs_delete_ifがあります。</p>
-<pre class="highlight plaintext">ArrayExtension#hs_each(val)
-</pre>
+<pre class="highlight plaintext"><code>ArrayExtension#hs_each(val)
+</code></pre>
 
 <p>引数にはメソッド名のシンボルもしくは文字列を指定します。<br>
 配列内の全ての要素に対して、指定されたメソッドを1回ずつ呼びます。</p>
-<pre class="highlight plaintext">ArrayExtension#hs_delete_if(val)
-</pre>
+<pre class="highlight plaintext"><code>ArrayExtension#hs_delete_if(val)
+</code></pre>
 
 <p>引数にはメソッド名のシンボルもしくは文字列を指定します。<br>
 配列内の全ての要素に対して、指定されたメソッドを1回ずつ呼び、結果が真だった場合にその要素を削除します。</p>
@@ -133,6 +133,6 @@ CollisionPoint#notifyObject
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

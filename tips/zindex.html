@@ -7,7 +7,7 @@
 <title>画像の描画順について</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -16,30 +16,30 @@
 <p>Window.draw系のメソッドの引数にzというものがあります。<br>
 これは3D的な奥行きではなく、描画順を表しています。<br>
 zを省略すると0となり、同じ値が指定されていると、Window.draw系を呼んだ順番に奥から描画されます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
-<span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">)</span>  <span class="c1"># 赤い四角</span>
-<span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="o">]</span><span class="p">)</span>  <span class="c1"># 青い四角</span>
+<span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># 赤い四角</span>
+<span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>  <span class="c1"># 青い四角</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image1</span><span class="p">)</span>  <span class="c1"># 赤い四角を描画する</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><img src="../images/gamen07.jpg" alt="sample"></p>
 
 <p>zを指定すると、呼び出し順ではなく、zの順番にソートされます。</p>
-<pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
-<span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">]</span><span class="p">)</span>  <span class="c1"># 赤い四角</span>
-<span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="o">]</span><span class="p">)</span>  <span class="c1"># 青い四角</span>
+<span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># 赤い四角</span>
+<span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>  <span class="c1"># 青い四角</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 赤い四角を描画する</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p><img src="../images/gamen08.jpg" alt="sample"></p>
 
@@ -52,6 +52,6 @@ zを省略すると0となり、同じ値が指定されていると、Window.dr
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>

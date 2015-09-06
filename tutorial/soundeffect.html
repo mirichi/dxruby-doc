@@ -7,7 +7,7 @@
 <title>SoundEffectチュートリアル</title>
 </head>
 <body>
-<header>DXRuby 1.4.1 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -32,7 +32,7 @@ SoundEffectでは、ブロックの返り値で指定された周波数とボリ
 これがこのまま、サウンドバッファのイメージになります。</p>
 
 <p>以下に具体例を示します。これはDXRubyのサンプルに入っているコードです。</p>
-<pre class="highlight ruby"><span class="n">v</span> <span class="o">=</span> <span class="mi">100</span><span class="o">.</span><span class="mi">0</span>
+<pre class="highlight ruby"><code><span class="n">v</span> <span class="o">=</span> <span class="mi">100</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mi">60</span>
 <span class="n">f</span> <span class="o">=</span> <span class="mi">1300</span>
 <span class="n">s1</span> <span class="o">=</span> <span class="no">SoundEffect</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">do</span>
@@ -41,9 +41,9 @@ SoundEffectでは、ブロックの返り値で指定された周波数とボリ
     <span class="n">v</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="mi">0</span><span class="o">.</span><span class="mi">2</span>
     <span class="n">f</span> <span class="o">=</span> <span class="mi">1760</span>
   <span class="k">end</span>
-  <span class="o">[</span><span class="n">f</span><span class="p">,</span> <span class="n">v</span><span class="o">]</span>
+  <span class="p">[</span><span class="n">f</span><span class="p">,</span> <span class="n">v</span><span class="p">]</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>この例では、500msのバッファを作成し、周波数fは1300Hz、ボリュームは100ではじまります。<br>
 1msごとにカウンタcがデクリメントされ、60ms経過したら周波数を1760Hzに変更、ボリュームを0.2ずつ下げていきます。<br>
@@ -51,16 +51,16 @@ SoundEffectでは、ブロックの返り値で指定された周波数とボリ
 
 <p>また、SoundEffectには和音を生成する機能があります。<br>
 例を示します。これもサンプルに入っているコードです。</p>
-<pre class="highlight ruby"><span class="n">s2</span> <span class="o">=</span> <span class="no">SoundEffect</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="no">WAVE_TRI</span><span class="p">)</span> <span class="k">do</span> <span class="c1"># 低音は三角波</span>
-  <span class="o">[</span><span class="mi">110</span><span class="p">,</span> <span class="mi">80</span><span class="o">]</span>
+<pre class="highlight ruby"><code><span class="n">s2</span> <span class="o">=</span> <span class="no">SoundEffect</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="no">WAVE_TRI</span><span class="p">)</span> <span class="k">do</span> <span class="c1"># 低音は三角波</span>
+  <span class="p">[</span><span class="mi">110</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
 <span class="k">end</span>
 <span class="n">s2</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="no">WAVE_RECT</span><span class="p">)</span> <span class="k">do</span> <span class="c1"># 矩形波</span>
-  <span class="o">[</span><span class="mi">275</span><span class="p">,</span> <span class="mi">40</span><span class="o">]</span>
+  <span class="p">[</span><span class="mi">275</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 <span class="k">end</span>
 <span class="n">s2</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="no">WAVE_RECT</span><span class="p">)</span> <span class="k">do</span> <span class="c1"># 矩形波</span>
-  <span class="o">[</span><span class="mi">330</span><span class="p">,</span> <span class="mi">40</span><span class="o">]</span>
+  <span class="p">[</span><span class="mi">330</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>この例ではファミコンのPSG音源を再現しています。<br>
 矩形波はファミコンのメインの音、三角波は低音の波形で、SoundEffect.newの第2引数で指定することができます。<br>
@@ -68,14 +68,14 @@ SoundEffect#addメソッドは、newで生成したバッファに対して、�
 合成すると単純に音が追加されますが、波形の高さも上がるので、合計のボリュームは255までになるようにしないと波形が歪んでしまいますので注意してください。</p>
 
 <p>もうひとつサンプルからの例ですが、次のコードは簡易FM音源を再現します。</p>
-<pre class="highlight ruby"><span class="n">f</span> <span class="o">=</span> <span class="mi">0</span>
+<pre class="highlight ruby"><code><span class="n">f</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">v</span> <span class="o">=</span> <span class="mi">150</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="no">SoundEffect</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="no">WAVE_SIN</span><span class="p">)</span> <span class="k">do</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="mi">0</span><span class="o">.</span><span class="mi">2</span>
-  <span class="o">[</span><span class="mi">880</span> <span class="o">+</span> <span class="no">Math</span><span class="p">.</span><span class="nf">sin</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">*</span> <span class="mi">200</span><span class="p">,</span> <span class="n">v</span><span class="o">]</span>
+  <span class="p">[</span><span class="mi">880</span> <span class="o">+</span> <span class="no">Math</span><span class="p">.</span><span class="nf">sin</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">*</span> <span class="mi">200</span><span class="p">,</span> <span class="n">v</span><span class="p">]</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>計算式はかなりいい加減ですが、出力する周波数に対して、sin波で周波数変調をかけています。<br>
 これが（たぶん）FM音源の原理です。<br>
@@ -88,12 +88,12 @@ FM音源は音を思い通りに作るのが非常に難しい音源でしたが
 ちなみに恥ずかしい話ですが作者も使いこなせておりません。</p>
 
 <p>最後に、るびま用サンプルで使ったノイズ生成のコードを示します。</p>
-<pre class="highlight ruby"><span class="n">v</span> <span class="o">=</span> <span class="mi">80</span>
+<pre class="highlight ruby"><code><span class="n">v</span> <span class="o">=</span> <span class="mi">80</span>
 <span class="vc">@@sound</span> <span class="o">=</span> <span class="no">SoundEffect</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">4000</span><span class="p">,</span><span class="no">WAVE_RECT</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span> <span class="k">do</span>
   <span class="n">v</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="mi">0</span><span class="o">.</span><span class="mo">03</span>
-  <span class="o">[</span><span class="nb">rand</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span> <span class="n">v</span><span class="o">]</span>
+  <span class="p">[</span><span class="nb">rand</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span> <span class="n">v</span><span class="p">]</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>ノイズは周波数をランダムで変更することで生成できます。<br>
 音の分解能が1ms単位だと綺麗なノイズにならないので、第3引数に5000を設定して、0.2ms単位でブロックを呼び出すようにしています。<br>
@@ -108,6 +108,6 @@ FM音源は音を思い通りに作るのが非常に難しい音源でしたが
 </section>
 </section>
 
-<footer>&copy; 2009-2014 mirichi</footer>
+<footer>&copy; 2009-2015 mirichi</footer>
 </body>
 </html>
