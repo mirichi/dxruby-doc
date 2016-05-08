@@ -1,21 +1,16 @@
-# DXRuby 1.4.2 リファレンスマニュアル
+# DXRuby 1.4.4 リファレンスマニュアル
 ## はじめに
 DXRubyは、オブジェクト指向スクリプト言語RubyからDirectXを扱う為の拡張ライブラリです。
 Rubyを使ってWindows用2Dアクションゲームなどを作ることができます。
 このヘルプファイルはDXRubyのリファレンスマニュアルとなっております。
-更なる情報をお求めの方はosdn.jpのプロジェクトWikiを参照してください。
-
-* プロジェクトWiki  
-  <http://dxruby.osdn.jp/cgi-bin/hiki.cgi>
-
-また、プロジェクトWebにはOggVorbis再生ライブラリVoxをRubyから使うラッパvox.rb、
-高機能オーディオライブラリを扱うラッパbass.rbも置いてあります。
-Ayame/Rubyも追加しました。一長一短です。
-未完成な部分もありますが、用途に合わせてお使いください。
 
 * プロジェクトWeb
   <http://dxruby.osdn.jp/>
 
+また、貧弱なオーディオ関連を補間するためのオーディオライブラリAyame/RubyをWikiに置いてありますのでご利用ください。DXRuby用のサンプルコードもここに置いてあります。
+
+* プロジェクトWiki
+  <https://github.com/mirichi/dxruby-doc/wiki>
 
 ## マニュアル
 
@@ -38,7 +33,6 @@ Ayame/Rubyも追加しました。一長一短です。
   * [リソースの解放](tips/release_resources.md)
   * ['ウィンドウを閉じる'のキャンセル](tips/cancel_window_closing.md)
   * [ocraによるexe化](tips/ocra.md)
-  * [DXRubyExtension](tips/dxruby_extension.md)
 
 * [更新履歴](CHANGELOG.md)
 
@@ -72,9 +66,9 @@ DXRubyが提供する機能は大まかに以下のものです。
 DXRubyを実行するのに必要な環境は以下のものです。
 
 * Ruby本体
-  * mswin32もしくはmingw32のRuby2.0系、Ruby2.1系、Ruby2.2系。
+  * mswin32もしくはmingw32のRuby2.1系、Ruby2.2系、Ruby2.3系。
   * ActiveScriptRuby同梱版など、mswin32/mingw32以外でもそれ用にコンパイルされていれば動作します。
-  * 64bit版では動作しません。
+  * 64bit版Rubyでは動作しません。64bitOSでも32bit版Rubyをお使いください。
 * OS
   * Windows2000以降
 * DirectX
@@ -83,11 +77,10 @@ DXRubyを実行するのに必要な環境は以下のものです。
 
 ## インストール方法
 **注意**
-arton氏作のActiveScriptRubyは、コンパイラのバージョンが違うためSourceForge.jpからダウンロードしてインストールしても動作しません。
-ActiveScriptRuby同梱のバージョンをお使いください。
+arton氏作のActiveScriptRubyの場合は、ActiveScriptRuby同梱のバージョンをお使いください(入っていれば)。
 その他のWindows用パッケージでmswin32/mingw32のRuby(RubyInstller for Windowsなど)を使っている方は
-dxruby.soとdxrubyex.so、install.rbが同じディレクトリにある状態で、install.rbを実行してください。
-install.rbを実行したら、sampleディレクトリ以下のファイルを実行してみて、きちんと動作すればインストール成功です。
+gem install dxruby
+でどうぞ。
 
 
 ## ライセンス

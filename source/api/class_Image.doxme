@@ -44,7 +44,49 @@ class Image
   def self.load_from_file_in_memory(binary_data) -> Image
     メモリ上のデータからImageオブジェクトを生成して返します。
     @param binary_data String 画像ファイルのバイナリ
-    
+  
+  
+  def self.perlin_noise(x, y, z, repeat_x=256, repeat_y=256, repeat_z=256) -> Float
+    パーリンノイズを計算して0.0～1.0の値を返します。
+    具体的な使い方は[作者ブログの該当記事][perlin_noise]を参照してください。
+    @param x Float パーリンノイズを求めるx座標を指定します。
+    @param y Float パーリンノイズを求めるy座標を指定します。
+    @param z Float パーリンノイズを求めるz座標を指定します。
+    @param repeat_x Integer xの繰り返し最大値を指定します。
+    @param repeat_y Integer yの繰り返し最大値を指定します。
+    @param repeat_z Integer zの繰り返し最大値を指定します。
+  
+  
+  def self.octave_perlin_noise(x, y, z, octave, persistence, repeat_x=256, repeat_y=256, repeat_z=256) -> Float
+    パーリンノイズを計算して0.0～1.0の値を返します。octaveで指定された回数だけ再帰合成されます。2回目以降はxyzの値を2^回数倍、取得した値をpersistence倍して合成します。
+    具体的な使い方は[作者ブログの該当記事][perlin_noise]を参照してください。
+    @param x Float パーリンノイズを求めるx座標を指定します。
+    @param y Float パーリンノイズを求めるy座標を指定します。
+    @param z Float パーリンノイズを求めるz座標を指定します。
+    @param octave Float 繰り返し回数を指定します。
+    @param persistence Float 繰り返した場合の影響度を指定します。
+    @param repeat_x Integer xの繰り返し最大値を指定します。
+    @param repeat_y Integer yの繰り返し最大値を指定します。
+    @param repeat_z Integer zの繰り返し最大値を指定します。
+  
+  
+  def self.custom_perlin_noise(x, y, z, ary, repeat_x=256, repeat_y=256, repeat_z=256) -> Float
+    パーリンノイズを計算して0.0～1.0の値を返します。octave_perlin_noizeよりももっと自由に直接的に合成パラメータを指定できます。
+    aryには[周波数倍率, 取得値の倍率]という配列を配列にしたものを渡し、それらを全て算出して合成した値を返します。
+    具体的な使い方は[作者ブログの該当記事][perlin_noise]を参照してください。
+    @param x Float パーリンノイズを求めるx座標を指定します。
+    @param y Float パーリンノイズを求めるy座標を指定します。
+    @param z Float パーリンノイズを求めるz座標を指定します。
+    @param ary Array パーリンノイズの周波数倍率と取得値の倍率の配列を配列にしたものを指定します。
+    @param repeat_x Integer xの繰り返し最大値を指定します。
+    @param repeat_y Integer yの繰り返し最大値を指定します。
+    @param repeat_z Integer zの繰り返し最大値を指定します。
+  
+  
+  def self.perlin_seed(seed)
+    パーリンノイズの乱数の種を指定します。指定しなくても初期値は設定されていますが、指定しないと毎回同じ結果が返ります。
+    @param seed Integer 乱数の種。
+  
   
   def dispose
     selfの画像リソースを解放します。

@@ -16,10 +16,13 @@ class Font
     @option :weight bool|Integer false 太字にするかどうか。
       0～1000の数字を100刻みで設定すると、文字の太さが変わります。trueの太さは1000、falseは400です。
     @option :italic bool false イタリック体にするかどうか。
+    @option :auto_fitting bool false 指定されたサイズが描画されるフォントサイズを意味するかどうか。
+      trueにすると余白を除いた部分が指定サイズとなるように補正されます。例えば32を指定したとしてもフォントの作られ方によっては上に余白が多く入っている場合などで32*32に収まらないことがあります。
+      falseにすると余白が大きいフォントの場合に文字が小さく描画されます。
     @see get_width
     @see info
-
-
+  
+  
   def self.install(path) -> Array
     指定されたフォントファイルを、一時的にシステムにインストールします。
     このメソッドを実行すると、ユーザーのシステムにインストールされていないファイルでも、Font.newで使用することができるようになります。
@@ -80,6 +83,10 @@ class Font
   
   def weight -> bool|Integer
      Font.newで指定されたFontオブジェクトの太さを返します。
+  
+  
+  def auto_fitting -> bool
+     Font.newで指定されたauto_fittingの値を返します。
   
   
   def info(text) -> Struct
