@@ -7,7 +7,7 @@
 <title>更新履歴</title>
 </head>
 <body>
-<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.4 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='index.html'>TOPへ戻る</a>
@@ -17,7 +17,6 @@
 
 <ol>
 <li><a href="#AUTOINDEXANCHOR_0">DXRuby</a></li>
-<li><a href="#AUTOINDEXANCHOR_1">DXRubyExtension</a></li>
 </ol>
 
 <hr>
@@ -27,6 +26,20 @@
 <h2>DXRuby</h2>
 
 <ul>
+<li>2016/05/07 1.4.4
+
+<ul>
+<li>Window.resizeが失敗することがある不具合を修正しました。</li>
+</ul></li>
+<li>2016/05/07 1.4.3
+
+<ul>
+<li>パーリンノイズを生成するメソッド、Image#perlin_noise/octave_perlin_noise/custom_perlin_noise/perlin_seedを追加しました。</li>
+<li>Font.newのオプションに:auto_fittingを追加しました。Font#auto_fittingを追加しました。</li>
+<li>RenderTargetがGCに解放された場合にたまにSEGVする不具合を修正しました。</li>
+<li>ウィンドウ外へのドラッグ後にボタン解放が正しく認識できなかった不具合を修正しました。</li>
+<li>フルスクリーンからウィンドウモードに変更した際にTOPMOST設定がされていなかったので設定を追加しました。</li>
+</ul></li>
 <li>2015/09/06 1.4.2
 
 <ul>
@@ -256,68 +269,10 @@
 </ul></li>
 </ul>
 
-<p><a name='AUTOINDEXANCHOR_1'></a></p>
-
-<h2>DXRubyExtension</h2>
-
-<ul>
-<li>2012/03/17 1.0.4
-
-<ul>
-<li>同じ配列の衝突チェック時、shotメソッドが無い場合にhitメソッドが呼ばれなかった不具合を修正</li>
-</ul></li>
-<li>2011/10/02 1.0.3
-
-<ul>
-<li>ライセンスをzlib/libpngライセンスに変更しました。</li>
-</ul></li>
-<li>2010/02/26 1.0.2
-
-<ul>
-<li>衝突検出時にshot、hitメソッドが無かった場合に呼ばないよう修正</li>
-<li>Collision.checkに渡す配列に衝突判定オブジェクト以外が入っていた場合に無視するよう修正</li>
-</ul></li>
-<li>2009/10/12 1.0.1
-
-<ul>
-<li>通知先取得メソッド追加。外部インターフェースの追加</li>
-</ul></li>
-<li>2009/07/16 1.0.0
-
-<ul>
-<li>DXRubyExtensionのクラスと同じ名称のクラスを定義した場合に異常終了する不具合修正</li>
-</ul></li>
-<li>2009/05/17 0.0.5
-
-<ul>
-<li>判定範囲取得メソッド追加、Arrayクラス用hs_each、hs_delete_if追加</li>
-</ul></li>
-<li>2009/05/13 0.0.4
-
-<ul>
-<li>三角の判定追加</li>
-</ul></li>
-<li>2009/05/?? 0.0.3
-
-<ul>
-<li>別の形の判定追加</li>
-</ul></li>
-<li>2009/05/?? 0.0.2
-
-<ul>
-<li>円と点の同じ形同士の判定追加</li>
-</ul></li>
-<li>2009/05/?? 0.0.1
-
-<ul>
-<li>矩形のみの判定で初版リリース</li>
-</ul></li>
-</ul>
-
 <a href='index.html'>TOPへ戻る</a>
 </section>
 </section>
 
-<footer>&copy; 2009-2015 mirichi</footer>
+<footer>&copy; 2009-2016 mirichi</footer>
 </body>
 </html>

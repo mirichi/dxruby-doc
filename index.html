@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <link rel='stylesheet' type='text/css' href='dxruby-code-highlight.css' />
 <link rel='stylesheet' type='text/css' href='dxruby.css' />
-<title>DXRuby 1.4.2 リファレンスマニュアル</title>
+<title>DXRuby 1.4.4 リファレンスマニュアル</title>
 </head>
 <body>
-<header>DXRuby 1.4.2 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.4 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 
-<h1>DXRuby 1.4.2 リファレンスマニュアル</h1>
+<h1>DXRuby 1.4.4 リファレンスマニュアル</h1>
 
 <h2>目次</h2>
 
@@ -31,22 +31,18 @@
 
 <p>DXRubyは、オブジェクト指向スクリプト言語RubyからDirectXを扱う為の拡張ライブラリです。<br>
 Rubyを使ってWindows用2Dアクションゲームなどを作ることができます。<br>
-このヘルプファイルはDXRubyのリファレンスマニュアルとなっております。<br>
-更なる情報をお求めの方はosdn.jpのプロジェクトWikiを参照してください。</p>
-
-<ul>
-<li>プロジェクトWiki<br>
-<a href="http://dxruby.osdn.jp/cgi-bin/hiki.cgi">http://dxruby.osdn.jp/cgi-bin/hiki.cgi</a></li>
-</ul>
-
-<p>また、プロジェクトWebにはOggVorbis再生ライブラリVoxをRubyから使うラッパvox.rb、<br>
-高機能オーディオライブラリを扱うラッパbass.rbも置いてあります。<br>
-Ayame/Rubyも追加しました。一長一短です。<br>
-未完成な部分もありますが、用途に合わせてお使いください。</p>
+このヘルプファイルはDXRubyのリファレンスマニュアルとなっております。</p>
 
 <ul>
 <li>プロジェクトWeb
 <a href="http://dxruby.osdn.jp/">http://dxruby.osdn.jp/</a></li>
+</ul>
+
+<p>また、貧弱なオーディオ関連を補間するためのオーディオライブラリAyame/RubyをWikiに置いてありますのでご利用ください。DXRuby用のサンプルコードもここに置いてあります。</p>
+
+<ul>
+<li>プロジェクトWiki
+<a href="https://github.com/mirichi/dxruby-doc/wiki">https://github.com/mirichi/dxruby-doc/wiki</a></li>
 </ul>
 
 <p><a name='AUTOINDEXANCHOR_1'></a></p>
@@ -79,7 +75,6 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 <li><a href="tips/release_resources.html">リソースの解放</a></li>
 <li><a href="tips/cancel_window_closing.html">&#39;ウィンドウを閉じる&#39;のキャンセル</a></li>
 <li><a href="tips/ocra.html">ocraによるexe化</a></li>
-<li><a href="tips/dxruby_extension.html">DXRubyExtension</a></li>
 </ul></li>
 <li><p><a href="CHANGELOG.html">更新履歴</a></p></li>
 </ul>
@@ -125,9 +120,9 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 <li>Ruby本体
 
 <ul>
-<li>mswin32もしくはmingw32のRuby2.0系、Ruby2.1系、Ruby2.2系。</li>
+<li>mswin32もしくはmingw32のRuby2.1系、Ruby2.2系、Ruby2.3系。</li>
 <li>ActiveScriptRuby同梱版など、mswin32/mingw32以外でもそれ用にコンパイルされていれば動作します。</li>
-<li>64bit版では動作しません。</li>
+<li>64bit版Rubyでは動作しません。64bitOSでも32bit版Rubyをお使いください。</li>
 </ul></li>
 <li>OS
 
@@ -146,11 +141,10 @@ Ayame/Rubyも追加しました。一長一短です。<br>
 <h2>インストール方法</h2>
 
 <p><strong>注意</strong><br>
-arton氏作のActiveScriptRubyは、コンパイラのバージョンが違うためSourceForge.jpからダウンロードしてインストールしても動作しません。<br>
-ActiveScriptRuby同梱のバージョンをお使いください。<br>
+arton氏作のActiveScriptRubyの場合は、ActiveScriptRuby同梱のバージョンをお使いください(入っていれば)。<br>
 その他のWindows用パッケージでmswin32/mingw32のRuby(RubyInstller for Windowsなど)を使っている方は<br>
-dxruby.soとdxrubyex.so、install.rbが同じディレクトリにある状態で、install.rbを実行してください。<br>
-install.rbを実行したら、sampleディレクトリ以下のファイルを実行してみて、きちんと動作すればインストール成功です。</p>
+gem install dxruby<br>
+でどうぞ。</p>
 
 <p><a name='AUTOINDEXANCHOR_4'></a></p>
 
@@ -214,6 +208,6 @@ Permission is granted to anyone to use this software for any purpose, including 
 </section>
 </section>
 
-<footer>&copy; 2009-2015 mirichi</footer>
+<footer>&copy; 2009-2016 mirichi</footer>
 </body>
 </html>
