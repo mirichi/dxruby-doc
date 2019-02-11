@@ -1,4 +1,4 @@
-# DXRuby 1.4.5 リファレンスマニュアル
+# DXRuby 1.4.6 リファレンスマニュアル
 ## はじめに
 DXRubyは、オブジェクト指向スクリプト言語RubyからDirectXを扱う為の拡張ライブラリです。
 Rubyを使ってWindows用2Dアクションゲームなどを作ることができます。
@@ -43,7 +43,7 @@ DXRubyは以下のような特徴を持つライブラリです。
 * RubyからDirectXを自然に扱える、Rubyと親和性の高い設計がされています。
 * 初心者でも簡単に使えるよう、非常にシンプルなAPI構成になっています。
 * 描画が速いので、遅いといわれるRubyでも普通にゲームが作れるぐらいの実行速度が出ます。
-* Ruby2.0系/2.1系/2.2系に対応しています。自分でコンパイルできればそれ以降でも動くと思います。
+* Ruby2.3～2.6に対応しています。自分でコンパイルできればそれ以降でも動くと思います。
 * 配布しやすいよう、コンパクトな拡張ライブラリとなっています。
 
 また、デメリットとしては以下のものがあります。
@@ -66,7 +66,7 @@ DXRubyが提供する機能は大まかに以下のものです。
 DXRubyを実行するのに必要な環境は以下のものです。
 
 * Ruby本体
-  * mswin32もしくはmingw32のRuby2.1系、Ruby2.2系、Ruby2.3系。
+  * mingw32のRuby2.3～2.6(RubyInstallerでインストールすればOKです)。
   * ActiveScriptRuby同梱版など、mswin32/mingw32以外でもそれ用にコンパイルされていれば動作します。
   * 64bit版Rubyでは動作しません。64bitOSでも32bit版Rubyをお使いください。
 * OS
@@ -78,7 +78,7 @@ DXRubyを実行するのに必要な環境は以下のものです。
 ## インストール方法
 **注意**
 arton氏作のActiveScriptRubyの場合は、ActiveScriptRuby同梱のバージョンをお使いください(入っていれば)。
-その他のWindows用パッケージでmswin32/mingw32のRuby(RubyInstller for Windowsなど)を使っている方は
+その他のWindows用パッケージでmingw32のRuby(RubyInstller for Windowsなど)を使っている方は
 gem install dxruby
 でどうぞ。
 
