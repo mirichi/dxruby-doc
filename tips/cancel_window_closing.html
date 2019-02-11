@@ -7,7 +7,7 @@
 <title>'ウィンドウを閉じる'のキャンセル</title>
 </head>
 <body>
-<header>DXRuby 1.4.5 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.6 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -15,7 +15,7 @@
 
 <p>DXRuby1.4.2からWindow.loopの引数にclose_cancel(初期値false)が追加され、trueを指定するとユーザの閉じる操作で閉じられなくできるようになりました。<br>
 この機能とInput.requested_close?を使うと閉じる操作の確認を以前より簡単に実現することができます。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">flg</span> <span class="o">=</span> <span class="kp">false</span>
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span> <span class="k">do</span>
@@ -32,12 +32,11 @@
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <a href='../index.html'>TOPへ戻る</a>
 </section>
 </section>
 
-<footer>&copy; 2009-2016 mirichi</footer>
+<footer>&copy; 2009-2019 mirichi</footer>
 </body>
 </html>

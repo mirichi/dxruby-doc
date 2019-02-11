@@ -7,7 +7,7 @@
 <title>Shaderチュートリアル</title>
 </head>
 <body>
-<header>DXRuby 1.4.5 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.6 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -117,10 +117,9 @@
 <h2>シェーダの動作とテクスチャ</h2>
 
 <p>画像を描画するとDirectXはまず描画対象のピクセルがどれかを計算します。</p>
-<pre class="highlight ruby"><code><span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">])</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">image</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">])</span>
 <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">image</span><span class="p">)</span>
-</code></pre>
-
+</code></pre></div>
 <p>というコードの場合、(0,0)から(99,99)の範囲に描画する、といった感じです。</p>
 
 <p>ピクセルシェーダはその10000個のピクセルに対し、1回ずつ動作します。ピクセルシェーダへの入力は画像データであるテクスチャと、テクスチャ内のどの部分の色かを表すテクスチャ座標で、ピクセルシェーダはテクスチャから指定された位置の色を取得し、出力します。出力する場所はGPUが制御しますので、ピクセルシェーダ内で知る必要はなく、従ってそれを知ることはできません。ピクセルシェーダは画面のどの位置のピクセルを描画しているかは意識しないものなのです。</p>
@@ -138,7 +137,7 @@
 <h3>必要最低限のHLSLの例</h3>
 
 <p>テクスチャから単純に色を拾って出力するだけですので、普通に描画するのと結果は変わりません。</p>
-<pre class="highlight plaintext"><code>// (1) グローバル変数
+<div class="highlight"><pre class="highlight plaintext"><code>// (1) グローバル変数
   texture tex0;
 
 // (2) サンプラ
@@ -164,8 +163,7 @@
     PixelShader = compile ps_2_0 PS();
    }
   }
-</code></pre>
-
+</code></pre></div>
 <p><a name='AUTOINDEXANCHOR_6'></a></p>
 
 <h4>説明</h4>
@@ -199,7 +197,7 @@ Rubyから呼び出す単位であるtechniqueを定義します。名称はNorm
 <p>今回の例は通常のdrawと全く同じ結果になりますので、２つを並べて描画してみましょう。</p>
 
 <p>HLSL部分は上と重複していますが、全文載せておきます。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">hlsl</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">EOS</span><span class="sh">
   texture tex0;
@@ -235,8 +233,7 @@ Rubyから呼び出す単位であるtechniqueを定義します。名称はNorm
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_shader</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">shader</span><span class="p">)</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p>これを動かすと、白い100*100ピクセルの四角が横に2個並ぶと思います。</p>
 
 <p><a name='AUTOINDEXANCHOR_8'></a></p>
@@ -262,7 +259,7 @@ Rubyから呼び出す単位であるtechniqueを定義します。名称はNorm
 <h3>強制的に赤にする</h3>
 
 <p>では描画する画像のrの値を強制的にMAXにするシェーダを作ってみましょう。コードは前回とほぼ同じなので、違いがあるピクセルシェーダ本体の部分のみを記載します。</p>
-<pre class="highlight plaintext"><code>float4 PS(float2 input : TEXCOORD0) : COLOR0
+<div class="highlight"><pre class="highlight plaintext"><code>float4 PS(float2 input : TEXCOORD0) : COLOR0
 {
   float4 output;
 
@@ -270,14 +267,13 @@ Rubyから呼び出す単位であるtechniqueを定義します。名称はNorm
   output.r = 1.0;
   return output;
 }
-</code></pre>
-
+</code></pre></div>
 <p>outputに格納されたテクスチャの色情報にたいして、赤の情報を1.0に書き換えるようにしました。これだと例えば青一色の画像を描画しただけで紫一色になるはずです。</p>
 
 <p><a name='AUTOINDEXANCHOR_12'></a></p>
 
 <h3>実行してみる</h3>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">hlsl</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">EOS</span><span class="sh">
   texture tex0;
@@ -314,8 +310,7 @@ Rubyから呼び出す単位であるtechniqueを定義します。名称はNorm
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_shader</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">shader</span><span class="p">)</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p>techniqueの名前は省略するようにしました。これを実行すると、左のdrawで描画した画像は青ですが、右のシェーダを使った画像は紫になります。</p>
 
 <p><a name='AUTOINDEXANCHOR_13'></a></p>
@@ -334,31 +329,26 @@ Rubyから呼び出す単位であるtechniqueを定義します。名称はNorm
 <h3>SIMD演算</h3>
 
 <p>HLSLのfloat4という型は4つのfloat型がセットになっており、それぞれr、g、b、aでアクセスできることは前回説明しました。前回はrだけ書き換えるという方法で値を変更しましたが、今回はテクスチャの値になんらかの計算をほどこして出力してみます。計算するには普通に計算式を書けばOKです。</p>
-<pre class="highlight plaintext"><code>output.r = output.r / 2;
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>output.r = output.r / 2;
+</code></pre></div>
 <p>とすれば赤情報が半分になります。このような形でそれぞれの色を計算すればよいわけですが、GPUはSIMD(Single Instruction Multiple Data)プロセッサですので、そのような計算をまとめて行うことができます。例えば、</p>
-<pre class="highlight plaintext"><code>output = output / 2;
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>output = output / 2;
+</code></pre></div>
 <p>とすると、outputのr、g、b、aがすべて半分になります。float4を4要素のベクトルと考えれば、ベクトルとスカラの計算ということになりますね。同様にベクトルとベクトルの計算もできます。</p>
-<pre class="highlight plaintext"><code>output = output + float4(0.1, 0.2, 0.3, 0.4);
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>output = output + float4(0.1, 0.2, 0.3, 0.4);
+</code></pre></div>
 <p>このfloat4(...)という書き方はfloat4型のリテラル表記です。上記の計算をするとoutputのr、g、b、aがそれぞれ0.1、0.2、0.3、0.4だけ足されます。また、output.rgbなどという書き方もでき、この場合r、g、bを持つfloat3の値になります。同様の記法でrgbだけの書き換えも可能です。rgやgbなどといった自由な組み合わせの指定ができます。</p>
-<pre class="highlight plaintext"><code>output.rgb = output.rgb * float3(1.1, 1.2, 1.3);
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>output.rgb = output.rgb * float3(1.1, 1.2, 1.3);
+</code></pre></div>
 <p>上記の計算はrとgとbをそれぞれ1.1倍、1.2倍、1.3倍します。あと、計算式は+=とか*=という代入演算子が使えますのでちょっと短く書くことができます。</p>
-<pre class="highlight plaintext"><code>output.rgb *= float3(1.1, 1.2, 1.3);
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>output.rgb *= float3(1.1, 1.2, 1.3);
+</code></pre></div>
 <p><a name='AUTOINDEXANCHOR_16'></a></p>
 
 <h3>暗くするシェーダ</h3>
 
 <p>では描画する画像のα値以外を半分にするシェーダを作ってみましょう。コードは前回とほぼ同じなので、違いがあるピクセルシェーダ本体の部分のみを記載します。</p>
-<pre class="highlight plaintext"><code>float4 PS(float2 input : TEXCOORD0) : COLOR0
+<div class="highlight"><pre class="highlight plaintext"><code>float4 PS(float2 input : TEXCOORD0) : COLOR0
 {
   float4 output;
 
@@ -366,14 +356,13 @@ Rubyから呼び出す単位であるtechniqueを定義します。名称はNorm
   output.rgb /= 2.0;
   return output;
 }
-</code></pre>
-
+</code></pre></div>
 <p>outputに格納されたテクスチャの色情報RGBにたいして、すべてを半分にしています。これで画像が暗くなるはずです。</p>
 
 <p><a name='AUTOINDEXANCHOR_17'></a></p>
 
 <h3>実行してみる</h3>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">hlsl</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">EOS</span><span class="sh">
   texture tex0;
@@ -410,8 +399,7 @@ Rubyから呼び出す単位であるtechniqueを定義します。名称はNorm
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_shader</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">shader</span><span class="p">)</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p>これを実行すると、左のdrawで描画した画像は黄色ですが、右のシェーダで描画した画像は暗い黄色になります。</p>
 
 <p><a name='AUTOINDEXANCHOR_18'></a></p>
@@ -469,7 +457,7 @@ floatの配列を渡す場合も同様です。<br>
 <h3>塗りつぶしシェーダを作ってみる</h3>
 
 <p>ではRGBをRubyから指定して、α以外の要素をその色で置き換える塗りつぶしシェーダを作ってみましょう。</p>
-<pre class="highlight plaintext"><code>// HLSLプログラム
+<div class="highlight"><pre class="highlight plaintext"><code>// HLSLプログラム
 
 // グローバル変数
 float3 rgb;
@@ -483,13 +471,11 @@ float4 PS(float2 input : TEXCOORD0) : COLOR0
   output.rgb = rgb;
   return output;
 }
-</code></pre>
-<pre class="highlight ruby"><code><span class="c1"># Rubyプログラム</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby"><code><span class="c1"># Rubyプログラム</span>
 <span class="n">core</span> <span class="o">=</span> <span class="no">Shader</span><span class="o">::</span><span class="no">Core</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">hlsl</span><span class="p">,</span> <span class="p">{</span><span class="ss">:rgb</span><span class="o">=&gt;</span><span class="ss">:float</span><span class="p">})</span>
 <span class="n">shader</span> <span class="o">=</span> <span class="no">Shader</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">core</span><span class="p">)</span>
 <span class="n">shader</span><span class="p">.</span><span class="nf">rgb</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">]</span>
-</code></pre>
-
+</code></pre></div>
 <p>outputに格納されたテクスチャの色情報RGBを、Rubyから引き渡された色で上書きしています。<br>
 これで画像の色が指定色だけになるはずです。<br>
 Rubyの配列は整数が入っていますが、:floatを指定した引数はfloat型に自動変換されます。</p>
@@ -497,7 +483,7 @@ Rubyの配列は整数が入っていますが、:floatを指定した引数はf
 <p><a name='AUTOINDEXANCHOR_24'></a></p>
 
 <h3>実行してみる</h3>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">hlsl</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">EOS</span><span class="sh">
   float3 rgb;
@@ -536,8 +522,7 @@ Rubyの配列は整数が入っていますが、:floatを指定した引数はf
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_shader</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">shader</span><span class="p">)</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p>これを実行すると、左のdrawで描画した画像は紫の円ですが、右のシェーダで描画した画像は水色の円になります。</p>
 
 <p><a name='AUTOINDEXANCHOR_25'></a></p>
@@ -565,7 +550,7 @@ DirectX側で制御されており、意識しなくてよいためです。</p>
 <p>代わりに、どの色を描画しようとしているのか、という情報を受け取ります。<br>
 直接色を受け取るのではなく、描画しようとするテクスチャに対するテクスチャ座標という形になります。<br>
 HLSLプログラムは引数で受け取ったfloat2の座標を使ってテクスチャを参照し、色を拾ってきて描画するのが基本となります。</p>
-<pre class="highlight plaintext"><code>sampler Samp0 = sampler_state
+<div class="highlight"><pre class="highlight plaintext"><code>sampler Samp0 = sampler_state
 {
  Texture =&lt;tex0&gt;;
 };
@@ -575,8 +560,7 @@ float4 PS(float2 input : TEXCOORD0) : COLOR0
   output = tex2D( Samp0, input );
   return output;
 }
-</code></pre>
-
+</code></pre></div>
 <p>ここでいうinputというのが引数で、float2の中にxとyがセットで入っています。<br>
 この値は(0.0～1.0, 0.0～1.0)で、テクスチャの左上から右下を相対的に表します。<br>
 tex2Dという組み込み関数はテクスチャtex0を設定したサンプラSamp0から、inputで表された位置の色をfloat4で取得します。</p>
@@ -589,7 +573,7 @@ tex2Dという組み込み関数はテクスチャtex0を設定したサンプ�
 例外はImage.load_tilesやImage#slice_tilesをshare_switch=trueにして作ったImageで、1枚の画像を部分的に参照しているためテクスチャ座標は半端になります。</p>
 
 <p>さて、このテクスチャ座標を色の生成に利用することで、例えばグラデーションなどを描くことができます。うまいこと計算すればもっと複雑な形状の図を作ることもできるでしょう。</p>
-<pre class="highlight plaintext"><code>sampler Samp0 = sampler_state
+<div class="highlight"><pre class="highlight plaintext"><code>sampler Samp0 = sampler_state
 {
  Texture =&lt;tex0&gt;;
 };
@@ -600,8 +584,7 @@ float4 PS(float2 input : TEXCOORD0) : COLOR0
   output = float4(input.x, input.x, input.x, 1.0);
   return output;
 }
-</code></pre>
-
+</code></pre></div>
 <p>この例では、出力する色のrgbをテクスチャ座標のxとしています。<br>
 左のほうが黒で、右の方が白になるグラデーションを表しています。<br>
 また、画像のサイズによらず、全体がグラデーションになります。</p>
@@ -609,7 +592,7 @@ float4 PS(float2 input : TEXCOORD0) : COLOR0
 <p><a name='AUTOINDEXANCHOR_29'></a></p>
 
 <h3>実行してみる</h3>
-<pre class="highlight plaintext"><code>require 'dxruby'
+<div class="highlight"><pre class="highlight plaintext"><code>require 'dxruby'
 
 hlsl = &lt;&lt;EOS
   texture tex0;
@@ -643,8 +626,7 @@ image = Image.new(640, 480).circle_fill(100, 100, 100, [0, 255, 0])
 Window.loop do
   Window.draw_shader(0, 0, image, shader)
 end
-</code></pre>
-
+</code></pre></div>
 <p>ウィンドウ全体にグラデーションを描画してみました。<br>
 描画するImageに円を描いていますが、結果の画面は円などカケラもありませんね。<br>
 これはTex2D関数を使わないので、Imageの中身をまったく参照していないからです。<br>
@@ -664,9 +646,8 @@ DXRubyではいまのところ描画するときにImageを使う必要があり
 テクスチャ座標は引数で渡されて、inputという変数に入るようにしています。<br>
 inputの値をいじってやれば、テクスチャの色を取得する位置を変えることができますね。<br>
 真ん中が(0.5, 0.5)ですので、例えば</p>
-<pre class="highlight plaintext"><code>input = (input - 0.5) / 2 + 0.5;
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>input = (input - 0.5) / 2 + 0.5;
+</code></pre></div>
 <p>とすると拡大描画ができます。<br>
 ただし画面に対して描画される範囲、つまりHLSLが動作して描画するピクセルは変わりませんので、このようなことをすると普通は画像が描画範囲からはみ出して切れます。</p>
 
@@ -681,7 +662,7 @@ HLSLプログラムは描画位置がわからないだけでなく、描画し�
 <h3>横ローテーションさせてみる</h3>
 
 <p>ではRubyからサイズと移動量を渡して、横にずらしてみましょう。はみ出した部分は逆側からでてくるようにして、無限ループさせることにします。</p>
-<pre class="highlight plaintext"><code>float2 size;
+<div class="highlight"><pre class="highlight plaintext"><code>float2 size;
 float2 d;
 
 sampler Samp0 = sampler_state
@@ -697,8 +678,7 @@ float4 PS(float2 input : TEXCOORD0) : COLOR0
   output = tex2D( Samp0, input - d / size);
   return output;
 }
-</code></pre>
-
+</code></pre></div>
 <p>サンプラ定義のところにあるAddressU/AddressVというのはサンプラステートといって、テクスチャ座標が(0.0, 1.0)からはみ出した場合にどうするかを表します。<br>
 よく使うのが、</p>
 
@@ -726,7 +706,7 @@ float4 PS(float2 input : TEXCOORD0) : COLOR0
 <p><a name='AUTOINDEXANCHOR_33'></a></p>
 
 <h3>実行してみる</h3>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">hlsl</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">EOS</span><span class="sh">
   float2 size;
@@ -768,8 +748,7 @@ float4 PS(float2 input : TEXCOORD0) : COLOR0
   <span class="n">shader</span><span class="p">.</span><span class="nf">d</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_shader</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">shader</span><span class="p">)</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p>これを実行すると、円の画像が横にスクロールします。</p>
 
 <p><a name='AUTOINDEXANCHOR_34'></a></p>
@@ -799,9 +778,8 @@ float4 PS(float2 input : TEXCOORD0) : COLOR0
 
 <p>ラスタスクロールは行ごとに違う量を移動させますが、うねうねさせる場合には行単位で角度を変更して三角関数に突っ込んで、出てきた値で横にずらします。<br>
 HLSLで書くとこんな感じです。</p>
-<pre class="highlight plaintext"><code>input.x += sin(radians(input.y * 360)) * pixel;
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>input.x += sin(radians(input.y * 360)) * pixel;
+</code></pre></div>
 <p>この場合ですと、一番上がy座標0.0から始まりますのでsin(0.0)で結果は0.0となり、元の位置に描画されます。<br>
 下の行に移るとy座標が少し増えますので、下に行けば行くほど結果は+pixelに近づいていき、yが0.25(90度)になった時が最大でsinの戻りは1.0、x座標のズレは+pixelとなります。<br>
 yが0.5(180度)で再び0.0になり、左にズレていき、yが0.75で-pixel、yが1.0で0.0に戻ります。<br>
@@ -812,13 +790,12 @@ yが0.5(180度)で再び0.0になり、左にズレていき、yが0.75で-pixel
 Ruby側では値を+にしたほうが直感的なので、ずらす値はyから引くことになります。<br>
 このへんの計算は実際に動かしていじってみればよく理解できるでしょう。<br>
 コードはこのような感じになります。</p>
-<pre class="highlight plaintext"><code>float4 PS(float2 input : TEXCOORD0) : COLOR0
+<div class="highlight"><pre class="highlight plaintext"><code>float4 PS(float2 input : TEXCOORD0) : COLOR0
 {
   input.x += sin(radians(input.y * 360 - start)) * pixel;
   return tex2D( Samp, input );
 }
-</code></pre>
-
+</code></pre></div>
 <p>また、このコードでは画像の上から下までで360度となっていますが、360の値を変更することで2周させたり0.5周させたりすることもできます。</p>
 
 <p><a name='AUTOINDEXANCHOR_37'></a></p>
@@ -833,17 +810,16 @@ Ruby側では値を+にしたほうが直感的なので、ずらす値はyか�
 <p>具体的にはImageの画像サイズとずらすピクセル数から必要なサイズのRenderTargetオブジェクトを生成し、いったんRenderTargetオブジェクトの真ん中にImageを描画したあとで、それをShaderでラスタスクロール描画します。<br>
 はみ出しを考慮した大きなRenderTargetを用意することで、はみ出した部分までHLSLプログラムを走らせることができます。<br>
 このような感じです。</p>
-<pre class="highlight plaintext"><code>pixel = 50
+<div class="highlight"><pre class="highlight plaintext"><code>pixel = 50
 image = Image.new(200, 200).circle_fill(100, 100, 100, [0, 255, 0])
 rt = RenderTarget.new(image.width + pixel * 2, 200)
-</code></pre>
-
+</code></pre></div>
 <p>RenderTargetの真ん中に描画する場合は、描画座標をpixelにすればいいでしょう。</p>
 
 <p><a name='AUTOINDEXANCHOR_38'></a></p>
 
 <h3>実行してみる</h3>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">hlsl</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">EOS</span><span class="sh">
   float start;
@@ -887,8 +863,7 @@ rt = RenderTarget.new(image.width + pixel * 2, 200)
   <span class="n">rt</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">pixel</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">image</span><span class="p">).</span><span class="nf">update</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_shader</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">rt</span><span class="p">,</span> <span class="n">shader</span><span class="p">)</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p>これを実行すると、円が横方向にラスタスクロールします。なめらかに気持ち悪いうねうね具合です。</p>
 
 <p><a name='AUTOINDEXANCHOR_39'></a></p>
@@ -901,6 +876,6 @@ rt = RenderTarget.new(image.width + pixel * 2, 200)
 </section>
 </section>
 
-<footer>&copy; 2009-2016 mirichi</footer>
+<footer>&copy; 2009-2019 mirichi</footer>
 </body>
 </html>

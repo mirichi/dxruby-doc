@@ -7,7 +7,7 @@
 <title>ocraによるexe化</title>
 </head>
 <body>
-<header>DXRuby 1.4.5 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.6 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -55,19 +55,17 @@ gem install ocra<br>
 <h3>実行コードの用意</h3>
 
 <p>例として、以下のコードをsample.rbという名前で保存します。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="c1"># 何もしない黒い画面が表示されます</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p><a name='AUTOINDEXANCHOR_3'></a></p>
 
 <h3>実行ファイルを生成する</h3>
-<pre class="highlight plaintext"><code>ocra --windows sample.rb
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>ocra --windows sample.rb
+</code></pre></div>
 <p><code>--windows</code>オプションを付けないとコンソール画面表示後にウィンドウが起動することになります。<br>
 上記コマンド実行後、同一フォルダにsample.exeが出力されます。</p>
 
@@ -86,7 +84,7 @@ gem install ocra<br>
 
 <p>例として、以下のコードをsample.rbという名前で保存し、コードと同じフォルダにimageフォルダを作り、さらにその中にsample.pngを配置します。<br>
 ocraは実行時に一時ディレクトリにデータを展開するため、その展開先のスクリプトのファイルパスからの相対位置から読み込むようにする必要があります。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="vg">$GAME_PATH</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="kp">__FILE__</span><span class="p">)</span>
 <span class="n">sprite</span> <span class="o">=</span> <span class="no">Sprite</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Image</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="vg">$GAME_PATH</span><span class="si">}</span><span class="s2">/image/sample.png"</span><span class="p">))</span>
@@ -94,19 +92,16 @@ ocraは実行時に一時ディレクトリにデータを展開するため、�
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="n">sprite</span><span class="p">.</span><span class="nf">draw</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p><a name='AUTOINDEXANCHOR_6'></a></p>
 
 <h3>実行ファイルを生成する</h3>
-<pre class="highlight plaintext"><code>ocra --windows sample.rb image
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>ocra --windows sample.rb image
+</code></pre></div>
 <p>同梱したいフォルダ名が複数ある場合は、下記のように指定します。</p>
-<pre class="highlight plaintext"><code># imageフォルダだけでなくsoundフォルダ、scenarioフォルダも含めたい場合
+<div class="highlight"><pre class="highlight plaintext"><code># imageフォルダだけでなくsoundフォルダ、scenarioフォルダも含めたい場合
 ocra --windows sample.rb image sound scenario
-</code></pre>
-
+</code></pre></div>
 <p><a name='AUTOINDEXANCHOR_7'></a></p>
 
 <h3>注意事項</h3>
@@ -118,6 +113,6 @@ ocra --windows sample.rb image sound scenario
 </section>
 </section>
 
-<footer>&copy; 2009-2016 mirichi</footer>
+<footer>&copy; 2009-2019 mirichi</footer>
 </body>
 </html>

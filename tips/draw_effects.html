@@ -7,7 +7,7 @@
 <title>描画の効果について</title>
 </head>
 <body>
-<header>DXRuby 1.4.5 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.6 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 <a href='../index.html'>TOPへ戻る</a>
@@ -39,17 +39,16 @@
 またマイナスの値を指定すると反転しますので、-1で左右、上下反転の絵を描画することができます。<br>
 5つ目と6つ目の引数は拡大・縮小の際の中心位置となります。<br>
 省略すると画像の中心となります。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># 赤い四角</span>
 <span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>  <span class="c1"># 青い四角</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image1</span><span class="p">)</span>  <span class="c1"># 赤い四角を描画する</span>
-  <span class="no">Window</span><span class="p">.</span><span class="nf">draw_scale</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
+  <span class="no">Window</span><span class="p">.</span><span class="nf">draw_scale</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p><img src="../images/gamen09.jpg" alt="sample"></p>
 
 <p>また、Window.min_filter=とWindow.mag_filter=メソッドで、それぞれ縮小、拡大時のフィルタを選択することができます。<br>
@@ -62,7 +61,7 @@
 <p>draw_rotは画像を回転させることができます。<br>
 回転角度（360度）と、回転の中心位置を指定します。<br>
 中心位置は省略すると画像の中心となります。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># 赤い四角</span>
 <span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>  <span class="c1"># 青い四角</span>
@@ -71,8 +70,7 @@
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image1</span><span class="p">)</span>  <span class="c1"># 赤い四角を描画する</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_rot</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p><img src="../images/gamen10.jpg" alt="sample"></p>
 
 <p><a name='AUTOINDEXANCHOR_2'></a></p>
@@ -83,7 +81,7 @@
 pngファイルを使うと、画像そのものにα値を設定することができますが、それではだんだん薄くするなどができません。<br>
 draw_alphaを使えば描画時にα値を指定できるので、自由に半透明化することができます。<br>
 引数にα値（0～255、0が完全に透明、255は完全に不透明）を指定します。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># 赤い四角</span>
 <span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>  <span class="c1"># 青い四角</span>
@@ -92,8 +90,7 @@ draw_alphaを使えば描画時にα値を指定できるので、自由に半�
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image1</span><span class="p">)</span>  <span class="c1"># 赤い四角を描画する</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_alpha</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p><img src="../images/gamen11.jpg" alt="sample"></p>
 
 <p>雲や霧、ガラスなど、向こう側が見えているけど少し色があるものなどに使います。</p>
@@ -104,7 +101,7 @@ draw_alphaを使えば描画時にα値を指定できるので、自由に半�
 
 <p>draw_addは加算合成を行います。<br>
 半透明合成はα値によって色を暗くしますが、加算合成は暗くせず、元の絵と描画する絵のRGBを単純に足し算します。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># 赤い四角</span>
 <span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>  <span class="c1"># 青い四角</span>
@@ -113,8 +110,7 @@ draw_alphaを使えば描画時にα値を指定できるので、自由に半�
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image1</span><span class="p">)</span>  <span class="c1"># 赤い四角を描画する</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_add</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p><img src="../images/gamen12.jpg" alt="sample"></p>
 
 <p>単純足し算なので、赤と青が足されると紫になります。<br>
@@ -128,7 +124,7 @@ draw_alphaを使えば描画時にα値を指定できるので、自由に半�
 これは、名前に反して加算合成の逆ではないので、説明が必要でしょう。<br>
 減算合成は、描画する画像に色が指定されている部分(何色でも色があるだけで）を、黒くします。<br>
 従って、赤い絵に対して青い絵を減算合成すると、赤い絵も消えます。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># 赤い四角</span>
 <span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>  <span class="c1"># 青い四角</span>
@@ -137,8 +133,7 @@ draw_alphaを使えば描画時にα値を指定できるので、自由に半�
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image1</span><span class="p">)</span>  <span class="c1"># 赤い四角を描画する</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw_sub</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p><img src="../images/gamen13.jpg" alt="sample"></p>
 
 <p>主に画面のフェードイン／アウトなどの効果に使用します。</p>
@@ -150,17 +145,16 @@ draw_alphaを使えば描画時にα値を指定できるので、自由に半�
 <p>これまで解説してきた効果をすべて、まとめてつけることができるメソッドです。<br>
 他のメソッドと違い、4つ目の引数にハッシュを渡すことでオプションを指定します。<br>
 指定方法の詳細はリファレンスのほうを参照してください。</p>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
+<div class="highlight"><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'dxruby'</span>
 
 <span class="n">image1</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># 赤い四角</span>
 <span class="n">image2</span> <span class="o">=</span> <span class="no">Image</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>  <span class="c1"># 青い四角</span>
 
 <span class="no">Window</span><span class="p">.</span><span class="nf">loop</span> <span class="k">do</span>
   <span class="no">Window</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">image1</span><span class="p">)</span>  <span class="c1"># 赤い四角を描画する</span>
-  <span class="no">Window</span><span class="p">.</span><span class="nf">draw_ex</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">,</span> <span class="ss">:angle</span><span class="o">=&gt;</span><span class="mi">45</span><span class="p">,</span> <span class="ss">:alpha</span><span class="o">=&gt;</span><span class="mi">180</span><span class="p">,</span> <span class="ss">:scalex</span><span class="o">=&gt;</span><span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="ss">:scaley</span><span class="o">=&gt;</span><span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="ss">:blend</span><span class="o">=&gt;</span><span class="ss">:add</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
+  <span class="no">Window</span><span class="p">.</span><span class="nf">draw_ex</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">image2</span><span class="p">,</span> <span class="ss">:angle</span><span class="o">=&gt;</span><span class="mi">45</span><span class="p">,</span> <span class="ss">:alpha</span><span class="o">=&gt;</span><span class="mi">180</span><span class="p">,</span> <span class="ss">:scalex</span><span class="o">=&gt;</span><span class="mf">1.5</span><span class="p">,</span> <span class="ss">:scaley</span><span class="o">=&gt;</span><span class="mf">1.5</span><span class="p">,</span> <span class="ss">:blend</span><span class="o">=&gt;</span><span class="ss">:add</span><span class="p">)</span>  <span class="c1"># 青い四角を描画する</span>
 <span class="k">end</span>
-</code></pre>
-
+</code></pre></div>
 <p><img src="../images/gamen14.jpg" alt="sample"></p>
 
 <p>このメソッドは、これまでのそれぞれ単体ではできない効果を生み出すことができます。<br>
@@ -171,6 +165,6 @@ draw_alphaを使えば描画時にα値を指定できるので、自由に半�
 </section>
 </section>
 
-<footer>&copy; 2009-2016 mirichi</footer>
+<footer>&copy; 2009-2019 mirichi</footer>
 </body>
 </html>

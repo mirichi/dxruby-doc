@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <link rel='stylesheet' type='text/css' href='dxruby-code-highlight.css' />
 <link rel='stylesheet' type='text/css' href='dxruby.css' />
-<title>DXRuby 1.4.5 リファレンスマニュアル</title>
+<title>DXRuby 1.4.6 リファレンスマニュアル</title>
 </head>
 <body>
-<header>DXRuby 1.4.5 <span class="title">Reference Manual</span></header>
+<header>DXRuby 1.4.6 <span class="title">Reference Manual</span></header>
 <section id="document">
 <section id="content">
 
-<h1>DXRuby 1.4.5 リファレンスマニュアル</h1>
+<h1>DXRuby 1.4.6 リファレンスマニュアル</h1>
 
 <h2>目次</h2>
 
@@ -89,7 +89,7 @@ Rubyを使ってWindows用2Dアクションゲームなどを作ることがで�
 <li>RubyからDirectXを自然に扱える、Rubyと親和性の高い設計がされています。</li>
 <li>初心者でも簡単に使えるよう、非常にシンプルなAPI構成になっています。</li>
 <li>描画が速いので、遅いといわれるRubyでも普通にゲームが作れるぐらいの実行速度が出ます。</li>
-<li>Ruby2.0系/2.1系/2.2系に対応しています。自分でコンパイルできればそれ以降でも動くと思います。</li>
+<li>Ruby2.3～2.6に対応しています。自分でコンパイルできればそれ以降でも動くと思います。</li>
 <li>配布しやすいよう、コンパクトな拡張ライブラリとなっています。</li>
 </ul>
 
@@ -120,7 +120,7 @@ Rubyを使ってWindows用2Dアクションゲームなどを作ることがで�
 <li>Ruby本体
 
 <ul>
-<li>mswin32もしくはmingw32のRuby2.1系、Ruby2.2系、Ruby2.3系。</li>
+<li>mingw32のRuby2.3～2.6(RubyInstallerでインストールすればOKです)。</li>
 <li>ActiveScriptRuby同梱版など、mswin32/mingw32以外でもそれ用にコンパイルされていれば動作します。</li>
 <li>64bit版Rubyでは動作しません。64bitOSでも32bit版Rubyをお使いください。</li>
 </ul></li>
@@ -142,7 +142,7 @@ Rubyを使ってWindows用2Dアクションゲームなどを作ることがで�
 
 <p><strong>注意</strong><br>
 arton氏作のActiveScriptRubyの場合は、ActiveScriptRuby同梱のバージョンをお使いください(入っていれば)。<br>
-その他のWindows用パッケージでmswin32/mingw32のRuby(RubyInstller for Windowsなど)を使っている方は<br>
+その他のWindows用パッケージでmingw32のRuby(RubyInstller for Windowsなど)を使っている方は<br>
 gem install dxruby<br>
 でどうぞ。</p>
 
@@ -190,7 +190,7 @@ gem install dxruby<br>
 使うだけでは著作権表示がいらないぶん、1.0.9以前で採用していたMITライセンスよりももうちょっとゆるくなっています。<br>
 また、著作権表示は以下のものです。<br>
 これそのものがzlib/libpngライセンス自体の原文で、上記のようなことが書いてあります。</p>
-<pre class="highlight plaintext"><code>The zlib/libpng License
+<div class="highlight"><pre class="highlight plaintext"><code>The zlib/libpng License
 Copyright (c) &lt;2012&gt; &lt;DXRubyDevelopers&gt;
 
 This software is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
@@ -202,12 +202,11 @@ Permission is granted to anyone to use this software for any purpose, including 
 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 
 3. This notice may not be removed or altered from any source distribution.
-</code></pre>
-
+</code></pre></div>
 
 </section>
 </section>
 
-<footer>&copy; 2009-2016 mirichi</footer>
+<footer>&copy; 2009-2019 mirichi</footer>
 </body>
 </html>
