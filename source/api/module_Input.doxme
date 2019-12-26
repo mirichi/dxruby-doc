@@ -2,18 +2,18 @@
 module Input
   キーボード・ゲームパッド・マウスの入力を扱います。
   
-  def x(pad_number=0) -> Integer
+  def self.x(pad_number=0) -> Integer
     カーソルキー・パッドの方向キーの入力をX座標の増分(-1, 0, 1のいずれか)で返します。
     pad_numberを省略すると0(パッド０もしくはキーボード）とみなします。
     @param pad_number Integer パッド番号
   
   
-  def y(pad_number=0) -> Integer
+  def self.y(pad_number=0) -> Integer
     カーソルキー・パッドの方向キーの入力をY座標の増分(-1, 0, 1のいずれか)で返します。
     pad_numberを省略すると0(パッド０もしくはキーボード）とみなします。
   
   
-  def key_down?(key_code) -> bool
+  def self.key_down?(key_code) -> bool
     キーボードのキーが押されているあいだ真を返します。
     @param key_code Constant [キーコード定数][constant_keycode]
       K_ESCAPE
@@ -39,19 +39,19 @@ module Input
     @see key_release?
 
 
-  def key_push?(key_code) -> bool
+  def self.key_push?(key_code) -> bool
     キーボードのキーが押された瞬間のみ真を返します。
     @see key_down?
     @see key_release?
     
 
-  def key_release?(key_code) -> bool
+  def self.key_release?(key_code) -> bool
     キーボードのキーが離された瞬間のみ真を返します。
     @see key_down?
     @see key_push?
   
   
-  def pad_down?(pad_code, pad_number=0) -> bool
+  def self.pad_down?(pad_code, pad_number=0) -> bool
     パッドのボタンが押されているあいだ真を返します。
     pad_numberが0の場合、デフォルトでは十字ボタンとカーソルキー、P_BUTTON0とZ、P_BUTTON1とX、P_BUTTON2とCを割り当てます。
     @param pad_code Constant ボタン定数
@@ -75,21 +75,21 @@ module Input
     @see pad_push?
     @see pad_release?
   
-  def pad_push?(pad_code, pad_number=0) -> bool
+  def self.pad_push?(pad_code, pad_number=0) -> bool
     パッドのボタンが押された瞬間のみ真を返します。
     pad_numberが0の場合、デフォルトでは十字ボタンとカーソルキー、P_BUTTON0とZ、P_BUTTON1とX、P_BUTTON2とCを割り当てます。
     @see pad_down?
     @see pad_release?
   
   
-  def pad_release?(pad_code, pad_number=0) -> bool
+  def self.pad_release?(pad_code, pad_number=0) -> bool
     パッドのボタンが離された瞬間のみ真を返します。
     pad_numberが0の場合、デフォルトでは十字ボタンとカーソルキー、P_BUTTON0とZ、P_BUTTON1とX、P_BUTTON2とCを割り当てます。
     @see pad_down?
     @see pad_push?
   
   
-  def set_repeat(wait, interval)
+  def self.set_repeat(wait, interval)
     key_push?、pad_push?メソッドを、オートリピートモードに変更します。
     wait, intervalともに1にすると毎フレーム入力、つまりkey_down?/pad_down?と同じ動作になります。
     ともに0にすると解除です。
@@ -97,46 +97,46 @@ module Input
     @param interval Integer リピート開始してから入力がONになるまでのフレーム数
   
   
-  def set_key_repeat(key_code, wait, interval)
+  def self.set_key_repeat(key_code, wait, interval)
     特定のキーのみkey_push?メソッドをオートリピートモードに変更します。
     @see set_repeat
   
   
-  def set_pad_repeat(pad_code, wait, interval, pad_number=0)
+  def self.set_pad_repeat(pad_code, wait, interval, pad_number=0)
     特定のパットボタンのみkey_push?メソッドをオートリピートモードに変更します。
     @see set_repeat
   
   
-  def set_config(pad_code, key_code, pad_number=0)
+  def self.set_config(pad_code, key_code, pad_number=0)
     パッドとキーの割り当てを変更します。
     この設定はkey_push?/key_down?/pad_push?/pad_down?メソッドを使った際、一方が押されていると対応したもう一方も押されたものとして扱うために用いられます。
     pad_codeないしkey_codeへnilを指定することで、そのパッドボタンやキーへ割り当てられたもの全てを解除します。
     デフォルトでは十字ボタンとカーソルキー、P_BUTTON0とZ、P_BUTTON1とX、P_BUTTON2とCを割り当てています。
   
   
-  def mouse_x -> Integer
+  def self.mouse_x -> Integer
     マウスのX座標を返します。
     座標はウィンドウの左上を(0,0)としたスクリーン座標です。
     @see mouse_y
   
   
-  def mouse_y -> Integer
+  def self.mouse_y -> Integer
     マウスのY座標を返します。
     座標はウィンドウの左上を(0,0)としたスクリーン座標です。
     @see mouse_x
   
   
-  def mouse_pos_x -> Integer
+  def self.mouse_pos_x -> Integer
     マウスのX座標を返します。mouse_xの古い名称です。
     @see mouse_x
   
   
-  def mouse_pos_y -> Integer
+  def self.mouse_pos_y -> Integer
     マウスのY座標を返します。mouse_yの古い名称です。
     @see mouse_y
   
   
-  def set_mouse_pos(x, y)
+  def self.set_mouse_pos(x, y)
     マウスの座標を変更します。
     座標はウィンドウの左上を(0,0)としたスクリーン座標です。
     @param x Integer X座標
@@ -145,7 +145,7 @@ module Input
     @see mouse_pos_y
   
   
-  def mouse_down?(mouse_code) -> bool
+  def self.mouse_down?(mouse_code) -> bool
     マウスのボタンが押されているあいだ真を返します。
     @param mouse_code Constant マウスボタン定数
       M_LBUTTON 左ボタン
@@ -154,47 +154,47 @@ module Input
     @see mouse_push?
     @see mouse_release?
   
-  def mouse_push?(mouse_code) -> bool
+  def self.mouse_push?(mouse_code) -> bool
     マウスのボタンが押された瞬間のみ真を返します。
     @see mouse_down?
     @see mouse_release?
   
   
-  def mouse_release?(mouse_code) -> bool
+  def self.mouse_release?(mouse_code) -> bool
     マウスのボタンが離された瞬間のみ真を返します。
     @see mouse_down?
     @see mouse_push?
     
   
-  def mouse_wheel_pos -> Integer
+  def self.mouse_wheel_pos -> Integer
     マウスのホイール位置を返します。
     @see mouse_wheel_pos=
   
   
-  def mouse_wheel_pos=(pos)
+  def self.mouse_wheel_pos=(pos)
     マウスのホイール位置を変更します。
     @param pos Integer ホイール位置
   
   
-  def mouse_enable=(val)
+  def self.mouse_enable=(val)
     マウスカーソルがウィンドウ上にある際、カーソルを描画するどうかを変更します。
     @param val bool trueで描画、falseで描画しません。初期値はtrueです。
   
   
-  def keys -> Array
+  def self.keys -> Array
     現在押されているキーのキーボード定数を配列で返します。
   
   
-  def pads(pad_number=0) -> Array
+  def self.pads(pad_number=0) -> Array
     現在押されているパッドのボタン定数を配列で返します。
   
   
-  def requested_close? -> bool
+  def self.requested_close? -> bool
     そのフレームの前にウィンドウが閉じられた場合にtrueを返します。
     ユーザの閉じる操作でウィンドウが閉じられないようにしたい場合に、Window.loopの引数にtrueを渡すのと合わせて使います。
   
   
-  def update -> bool
+  def self.update -> bool
     入力情報を更新します。
     Window.loopの中で同じ処理がされていますので、Window.loopを使わずに自分でゲームループを組み立てるときにのみ使ってください。
     通常は偽を返しますが、ウィンドウを閉じる操作がされたときのみ真を返します。
@@ -202,63 +202,63 @@ module Input
     @note この機能はDXruby1.4.2以降では推奨されません。
   
   
-  def pad_num -> Integer
+  def self.pad_num -> Integer
     現在接続されているパッドの数を返します。
   
   
-  def pad_axis(pad_number=0) -> Array
+  def self.pad_axis(pad_number=0) -> Array
     アナログパッドの軸の入力を[x, y, z, rx, ry, rz]の配列で返します。
     値はそれぞれ0.0～1.0のFloatオブジェクトです。
     存在しない軸については0.0とみなします。
     DirectInputデバイスの場合、デフォルトでは左スティックがxとy、右スティックがzとrzに入ります。
   
   
-  def pad_lstick(pad_number=0) -> Float
+  def self.pad_lstick(pad_number=0) -> Float
     アナログパッドの左スティックの入力を-1.0～1.0に補正して返します。
     デバイスの定義により中心がちょうど0にならない場合があります。
   
   
-  def pad_rstick(pad_number=0) -> Float
+  def self.pad_rstick(pad_number=0) -> Float
     アナログパッドの右スティックの入力を-1.0～1.0に補正して返します。
     デバイスの定義により中心がちょうど0にならない場合があります。
   
   
-  def pad_pov(pad_number=0) -> Integer
+  def self.pad_pov(pad_number=0) -> Integer
     アナログパッドのPOV(ハットスイッチ、通常のスティック付パッドの場合は十字ボタン)の入力を角度の100倍の値(0～335999)で返します。
     十字ボタンの場合は4500ごとの値になります。
   
   
-  def pad_lx(pad_number=0) -> Integer
+  def self.pad_lx(pad_number=0) -> Integer
     アナログパッドの左スティックのX軸入力を-1、0、1の値で返します。
     アナログ入力デバイスのデジタル入力用です。
   
   
-  def pad_ly(pad_number=0) -> Integer
+  def self.pad_ly(pad_number=0) -> Integer
     アナログパッドの左スティックのY軸入力を-1、0、1の値で返します。
     アナログ入力デバイスのデジタル入力用です。
   
   
-  def pad_rx(pad_number=0) -> Integer
+  def self.pad_rx(pad_number=0) -> Integer
     アナログパッドの右スティックのX軸入力を-1、0、1の値で返します。
     アナログ入力デバイスのデジタル入力用です。
 
 
-  def pad_ry(pad_number=0) -> Integer
+  def self.pad_ry(pad_number=0) -> Integer
     アナログパッドの右スティックのY軸入力を-1、0、1の値で返します。
     アナログ入力デバイスのデジタル入力用です。
 
 
-  def pad_pov_x(pad_number=0) -> Integer
+  def self.pad_pov_x(pad_number=0) -> Integer
     POVのX軸入力を-1、0、1の値で返します。
     アナログ入力デバイスのデジタル入力用です。
 
 
-  def pad_pov_y(pad_number=0) -> Integer
+  def self.pad_pov_y(pad_number=0) -> Integer
     POVのY軸入力を-1、0、1の値で返します。
     アナログ入力デバイスのデジタル入力用です。
 
 
-  def set_cursor(cursor_type)
+  def self.set_cursor(cursor_type)
     マウスカーソルの形状を変更します。
     @param cursor_type Constant マウスカーソル定数
       IDC_APPSTARTING 標準の矢印カーソルと小さい砂時計カーソル

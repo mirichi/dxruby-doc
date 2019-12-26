@@ -561,7 +561,8 @@ EOS
 
     def generate_method_index(obj)
       x = obj.class == MethodDoc ? obj.parent : obj
-      methods = x.methods.map { |m| m == obj ? "<li>#{m.name}</li>" : "<li><a href='#{link_name(m)}'>#{m.name}</a></li>" }.join
+      class_methods = x.methods.select {|m| m.unique}.map { |m| m == obj ? "<li>.#{m.name}</li>" : "<li><a href='#{link_name(m)}'>.#{m.name}</a></li>" }.join
+      instance_methods = x.methods.select {|m| !m.unique}.map { |m| m == obj ? "<li>##{m.name}</li>" : "<li><a href='#{link_name(m)}'>##{m.name}</a></li>" }.join
 
       t = <<-EOS
 <section id="navi">
@@ -570,7 +571,8 @@ EOS
   <li><strong><a href="#{link_name(x)}">#{x.name}</a></strong></li>
   <li>
     <ul>
-    #{methods}
+      #{class_methods}
+      #{instance_methods}
     </ul>
   </li>
 </ul>
